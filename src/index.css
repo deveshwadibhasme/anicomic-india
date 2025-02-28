@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@layer base {
+  html,
+  body {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  @keyframes moveLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-120%);
+    }
+    0%{
+      transform: translateX(0);
+    }
+  }
+  @keyframes moveRight {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(120%);
+    }
+    0%{
+      transform: translateX(0);
+    }
+  }
+
+  @media (max-width:700px) {
+    @keyframes moveLeft {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-200%);
+      }
+      0%{
+        transform: translateX(0);
+      }
+    }
+    @keyframes moveRight {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(200%);
+      }
+      0%{
+        transform: translateX(0);
+      }
+    }
+  }
+
+  .animate-move-r {
+    animation: moveRight 10s linear alternate-reverse infinite;
+  }
+  .animate-move-l {
+    animation: moveLeft 10s linear alternate-reverse infinite;
+  }
+}
+
+@theme {
+  --font-monteseret-regular: "Montserrat", sans-serif;
+  --font-Caprasimo-regular: "Caprasimo", sans-serif;
+}
