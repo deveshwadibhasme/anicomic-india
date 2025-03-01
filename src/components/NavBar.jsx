@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,9 +21,11 @@ const NavBar = () => {
     { title: "Home", link: "/", icon: faHome },
     { title: "Services", link: "/services", icon: faBolt },
     { title: "About", link: "/about", icon: faInfo },
-    { title: "Careers", link: "/carrer", icon: faGraduationCap },
+    { title: "Careers", link: "/career", icon: faGraduationCap },
     { title: "Contact", link: "/contact", icon: faContactCard },
   ];
+
+  const {pathname} = useLocation()
 
   return (
     <nav
@@ -42,7 +44,7 @@ const NavBar = () => {
             to={navItem.link}
             key={i}
             href={navItem.link}
-            className="text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white"
+            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-red-400' : ''}`}
           >
             <FontAwesomeIcon icon={navItem.icon} /> {navItem.title}
           </Link>

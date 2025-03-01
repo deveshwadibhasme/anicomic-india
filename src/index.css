@@ -6,15 +6,16 @@
     font-family: "Space Grotesk", sans-serif;
   }
 
+  .blur{
+    backdrop-filter:blur(10px);
+  }
+
   @keyframes moveLeft {
     0% {
-      transform: translateX(0);
+      transform: translateX(-230%);
     }
     100% {
-      transform: translateX(-120%);
-    }
-    0%{
-      transform: translateX(0);
+      transform: translateX(100%);  
     }
   }
   @keyframes moveRight {
@@ -22,43 +23,15 @@
       transform: translateX(0);
     }
     100% {
-      transform: translateX(120%);
-    }
-    0%{
-      transform: translateX(0);
-    }
-  }
-
-  @media (max-width:700px) {
-    @keyframes moveLeft {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-200%);
-      }
-      0%{
-        transform: translateX(0);
-      }
-    }
-    @keyframes moveRight {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(200%);
-      }
-      0%{
-        transform: translateX(0);
-      }
+      transform: translateX(-100%);
     }
   }
 
   .animate-move-r {
-    animation: moveRight 10s linear alternate-reverse infinite;
+    animation: moveRight 50s linear infinite;
   }
   .animate-move-l {
-    animation: moveLeft 10s linear alternate-reverse infinite;
+    animation: moveLeft 60s linear infinite;
   }
 }
 

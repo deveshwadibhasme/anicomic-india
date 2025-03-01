@@ -40,7 +40,7 @@ const Header = () => {
         <motion.a
           initial={{ x: 30 }}
           animate={{ x: 0 }}
-          href="https://wa.me/8605688071?text=Hello!%20I'm%20interested%20in%20your%20digital%20marketing%20services.%20Please%20share%20more%20details."
+          href="https://wa.me/918605688071?text=Hello!%20I'm%20interested%20in%20your%20digital%20marketing%20services.%20Please%20share%20more%20details."
           target="_blank"
           className="w-28 md:w-28 h-8 md:h-10 px-3 rounded-lg font-bold flex items-center gap-2 text-center bg-green-400 text-sm hover:bg-green-500 mt-2 md:mt-0"
         >
