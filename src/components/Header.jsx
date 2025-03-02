@@ -1,17 +1,11 @@
-import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform } from "framer-motion";
+
+import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "./NavBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const Header = () => {
-  const { scrollY } = useScroll();
-  const backgroundColor = useTransform(
-    scrollY,
-    [0, 100],
-    ["transparent", "#000"]
-  );
   const [scrolled, setScrolled] = useState(false);
  
   window.addEventListener("resize", () => {
@@ -23,17 +17,16 @@ const Header = () => {
   });
 
   return (
-    <div className="max-w-screen w-full h-full fixed left-1/2 -translate-x-1/2 z-30">
+    <div className="max-w-screen w-full h-full fixed left-1/2 -translate-x-1/2 z-50 border-b-2 border-red">
       <motion.header
-        style={{ backgroundColor }}
-        className="max-w-screen w-full mx-auto py-3 px-4 flex justify-between md:justify-around min-h-10 items-center mb-10"
+        className="max-w-screen w-full mx-auto py-3 px-4 flex bg-black justify-between lg:justify-around min-h-10 items-center mb-10"
       >
         <motion.div
           initial={{ x: -40 }}
           animate={{ x: 0 }}
-          className="w-52 md:w-75 shrink-0 text-lg md:text-2xl pt-3 md:pt-1 h-10 font-monteseret-regular"
+          className="w-52 md:w-88 shrink-0 text-lg md:text-2xl 2xl:text-3xl pt-3 md:pt-1 h-10 font-monteseret-regular"
         >
-          <span className="text-amber-300 font-bold">ANICOMIC</span>{" "}
+          <span className="text-amber-600 font-bold">ANICOMIC</span>{" "}
           <span className="text-white font-semibold">SERVICES</span> .
         </motion.div>
        { !scrolled ? <NavBar /> : ''} 

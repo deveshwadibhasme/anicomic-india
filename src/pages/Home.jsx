@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import ImageSlider from "../components/ImageSlider";
 import Homepage from "../components/Homepage";
+import Services from "./Services";
 
 const Home = () => {
   // const HomePoster = [`${AnicomicPoster}`];
@@ -24,7 +25,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="max-w-screen w-full mx-auto mt-30 md:mt-12 ">
+    <div className="max-w-screen w-full mx-auto mt-30 md:mt-12">
       {loading ? (
         <Loading />
       ) : (
@@ -38,6 +39,7 @@ const Home = () => {
             <Homepage />
           </motion.div>
           <ImageSlider count={20} moveLeft={false} />
+          <Services/>
         </>
       )}
     </div>

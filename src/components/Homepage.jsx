@@ -18,7 +18,7 @@ const Homepage = () => {
         ANICOMIC SERVICES
         <br />
         <span className="text-orange-500 mt-4 text-lg md:text-2xl">
-          DIGITAL ADVERTISING AGENCY
+          DIGITAL ADVERTISMENT COMPANY
         </span>
       </motion.h1>
       <motion.p
@@ -32,7 +32,7 @@ const Homepage = () => {
         podcasts, branding, content creation, and advertising to help brands
         grow.
       </motion.p>
-      <div className="relative flex max-w-sm w-full justify-around mt-5 z-30">
+      <div className="relative flex max-w-sm w-full justify-center gap-6 mt-5 z-30">
         <motion.span
           initial={{ scale: 0.2 }}
           animate={{ scale: 1 }}
@@ -42,7 +42,7 @@ const Homepage = () => {
           <Link
             to={"/services"}
             href={"/services"}
-            className={`text-white px-8 md:px-3 flex items-center gap-2 py-1 mb:py-2 text-sm md:text-xl 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
+            className={`text-white px-5 md:px-3 flex items-center gap-2 py-1 mb:py-2 text-sm md:text-xl 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
           >
             <FontAwesomeIcon icon={faBolt} /> Services
           </Link>
@@ -56,33 +56,12 @@ const Homepage = () => {
           <Link
             to={"/career"}
             href={"/career"}
-            className={`text-white px-8 md:px-3 flex items-center gap-2 py-1 mb:py-2 text-sm md:text-xl 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
+            className={`text-white px-5 md:px-3 flex items-center gap-2 py-1 mb:py-2 text-sm md:text-xl 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
           >
             <FontAwesomeIcon icon={faGraduationCap} /> Careers
           </Link>
         </motion.span>
       </div>
-      {/* <motion.div
-        initial={{ opacity: 0, scale: 0.2 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className=" max-w-screen-lg md:rounded-full min-h-44 w-full grid grid-cols-2 gap-x-2 items-center justify-center mt-4 bg-orange-500 text-white py-2 px-4 rounded-lg bottom-shadow"
-      >
-        {[
-          "Content Marketing",
-          "Web Development",
-          "Social Media Marketing",
-          "Video Editing",
-        ].map((service, index) => (
-          <div
-            key={index}
-            className="flex items-center gap-2 max-w-80 w-full h-14 justify-center bg-sky-200 text-black rounded-2xl mx-auto"
-          >
-            <span className="text-black text-sm xl:text-xl">✔</span>
-            <p className="text-black text-sm md:text-xl">{service}</p>
-          </div>
-        ))}
-      </motion.div> */}
     </div>
   );
 };
