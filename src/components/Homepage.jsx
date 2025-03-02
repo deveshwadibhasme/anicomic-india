@@ -5,7 +5,7 @@ import { faBolt, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 
 const Homepage = () => {
   return (
-    <div className="relative -z-10 max-w-screen w-full min-h-[200px] md:min-h-[440px] mx-auto flex pt-3 items-center justify-center flex-col bg-image overflow-y-hidden 2xl:scale-130">
+    <div className="relative -z-10 max-w-screen w-full min-h-[200px] md:min-h-[440px] mx-auto flex pt-3 items-center justify-center flex-col bg-image overflow-y-hidden">
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const Homepage = () => {
           <Link
             to={"/services"}
             href={"/services"}
-            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
+            className={`text-white px-8 md:px-3 flex items-center gap-2 py-1 mb:py-2 text-sm md:text-xl 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
           >
             <FontAwesomeIcon icon={faBolt} /> Services
           </Link>
@@ -56,7 +56,7 @@ const Homepage = () => {
           <Link
             to={"/career"}
             href={"/career"}
-            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
+            className={`text-white px-8 md:px-3 flex items-center gap-2 py-1 mb:py-2 text-sm md:text-xl 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400`}
           >
             <FontAwesomeIcon icon={faGraduationCap} /> Careers
           </Link>
