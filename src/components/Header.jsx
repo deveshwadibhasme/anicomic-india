@@ -26,7 +26,7 @@ const Header = () => {
     <div className="max-w-screen w-full h-full fixed left-1/2 -translate-x-1/2 z-30">
       <motion.header
         style={{ backgroundColor }}
-        className="max-w-screen w-full mx-auto py-3 px-4 flex justify-between md:justify-around min-h-10 items-center"
+        className="max-w-screen w-full mx-auto py-3 px-4 flex justify-between md:justify-around min-h-10 items-center mb-10"
       >
         <motion.div
           initial={{ x: -40 }}

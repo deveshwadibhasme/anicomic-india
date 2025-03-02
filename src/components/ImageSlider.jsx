@@ -17,13 +17,15 @@ export default function ImageSlider({ count, moveLeft }) {
         duplicateImages.map((_, i) => {
           {
             return (
-            images.length === 0 ? <div className="rounded-2xl max-w-40 md:max-w-52 min-h-40 md:min-h-52 w-full shrink-0 bg-slate-300"></div> : (
+            images.length === count + 20 ?
+             <div className="rounded-2xl max-w-40 md:max-w-52 min-h-40 md:min-h-52 w-full shrink-0 bg-slate-300"></div> : (
                 <div
                   key={i}
-                  className={`max-w-40 md:max-w-52 min-h-40 md:min-h-52 w-full shrink-0 overflow-hidden rounded-2xl border-2 border-white object-center`}
+                  className={`max-w-30 md:max-w-52 h-full md:min-h-52 w-full shrink-0 overflow-hidden rounded-2xl border-2 border-white object-center`}
                 >
                   <img
                     src={duplicateImages[i]}
+                    loading="lazy"
                     alt=""
                   />
                 </div>
