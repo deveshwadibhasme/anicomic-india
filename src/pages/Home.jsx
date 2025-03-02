@@ -1,9 +1,9 @@
 import Loading from "../components/Loading";
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
 import ImageSlider from "../components/ImageSlider";
 import Homepage from "../components/Homepage";
 import Services from "./Services";
+import Contact from "./Contact";
 
 const Home = () => {
   // const HomePoster = [`${AnicomicPoster}`];
@@ -25,21 +25,16 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="max-w-screen w-full mx-auto mt-30 md:mt-12">
+    <div className="max-w-screen w-full mx-auto mt-30 md:mt-15 flex flex-col">
       {loading ? (
         <Loading />
       ) : (
         <>
           <ImageSlider count={1} moveLeft={true} />
-          <motion.div
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            className="flex max-w-screen-xl 2xl:max-w-screen-2xl w-full min-h-[200px] border-white gap-2 px-1 items-center justify-center mx-auto z-30 relative mb-5"
-          >
-            <Homepage />
-          </motion.div>
+          <Homepage />
           <ImageSlider count={20} moveLeft={false} />
-          <Services/>
+          <Services />
+          <Contact/>
         </>
       )}
     </div>

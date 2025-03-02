@@ -65,10 +65,10 @@ const services = [
 const Services = () => {
   return (
     <>
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-orange-600 mt-20 mb-6">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-orange-600 mt-30 md:mt-20">
         Our Services
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-5 gap-6 p-6 min-h-[200px] md:min-h-[400px] xl:min-h-[500px]">
+      <div className="grid grid-cols-4 gap-6 p-6 min-h-[200px] md:min-h-[400px] xl:min-h-[500px]">
         {services.map((service, index) => (
           <motion.div
             initial={{ opacity: 0.4, scale: 0.3 }}
