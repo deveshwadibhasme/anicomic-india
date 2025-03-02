@@ -33,7 +33,7 @@ const Home = () => {
           <motion.div
             initial={{ y: 20 }}
             animate={{ y: 0 }}
-            className="flex max-w-screen-xl 2xl:max-w-screen-2xl w-full min-h-[200px] border-white gap-2 px-1 items-center justify-center mx-auto"
+            className="flex max-w-screen-xl 2xl:max-w-screen-2xl w-full min-h-[200px] border-white gap-2 px-1 items-center justify-center mx-auto z-30 relative"
           >
             <Homepage />
           </motion.div>
