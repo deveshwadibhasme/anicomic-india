@@ -8,10 +8,9 @@ const Loading = () => {
       initial={{scale:0 }}
       animate={{ scale:1 }}
       exit={{scale:1.5}}
-      transition={{ duration: 0.2, ease: "anticipate" }}
-      className="max-w-screen min-h-screen w-full bg-slate-800 flex items-center justify-center">
-        {/* <img src={load} alt="loading..." /> */}
-        <div className="text-white text-3xl">Loading...</div>
+      transition={{ duration:0.5, ease: "easeInOut" }}
+      className="max-w-screen min-h-screen w-full bg-black flex items-center justify-center animate-pulse">
+        <img src={load} alt="loading..." />
       </motion.div>
     </AnimatePresence>
   );

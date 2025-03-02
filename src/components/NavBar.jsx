@@ -13,7 +13,7 @@ const NavBar = () => {
   const { scrollY } = useScroll();
   const backgroundColor = useTransform(
     scrollY,
-    [0, 100],
+    [0, 20],
     ["transparent", "#000"]
   );
 
@@ -29,7 +29,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`fixed md:relative max-w-screen-lg overflow-x-auto md:overflow-hidden top-15 md:top-0 left-0 justify-between gap-5 w-full h-14 md:h-10 flex items-center pl-3 md:pl-0 md:justify-center`}
+      className={`fixed md:relative max-w-screen-lg overflow-x-auto md:overflow-hidden top-15 md:top-0 left-0 justify-between gap-5 w-full h-14 md:h-10 flex items-center pl-3 md:pl-0 md:justify-center ${backgroundColor.current}`}
     >
       {navContent.map((navItem, i) => (
         <motion.span
@@ -40,8 +40,7 @@ const NavBar = () => {
           whileHover={{ scale: 1.04, transition: 0.1, delay: 0 }}
         >
           <Link
-            style={{ backgroundColor }}
-            to={navItem.link}
+            to={navItem.link} 
             key={i}
             href={navItem.link}
             className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-lg hover:border-white hover:ring-1 ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-red-400' : ''}`}

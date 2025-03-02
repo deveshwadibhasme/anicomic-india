@@ -6,16 +6,42 @@
     font-family: "Space Grotesk", sans-serif;
   }
 
-  .blur{
-    backdrop-filter:blur(10px);
+  .blur {
+    backdrop-filter: blur(10px);
+  }
+
+  .bg-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;  
+    height: 100%;
+    background-image: url("../src/assets/loadingLOGO.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+    filter: opacity(0.2);
+    z-index: -5;
+    /* background-size: cover; */
+  }
+
+  @media (max-width: 768px) {
+    .bg-image::after {
+      background-size: 60%;
+    }
+    
+  }
+
+  .bottom-shadow{
+    box-shadow: 0 10px 10px 0 rgba(239, 71, 5, 0.1);
   }
 
   @keyframes moveLeft {
     0% {
-      transform: translateX(-230%);
+      transform: translateX(0%);
     }
     100% {
-      transform: translateX(100%);  
+      transform: translateX(-100%);
     }
   }
   @keyframes moveRight {
@@ -31,7 +57,7 @@
     animation: moveRight 50s linear infinite;
   }
   .animate-move-l {
-    animation: moveLeft 60s linear infinite;
+    animation: moveLeft 70s linear reverse infinite;
   }
 }
 
