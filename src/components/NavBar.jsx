@@ -23,7 +23,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`fixed xl:relative max-w-screen-lg overflow-x-auto xl:overflow-hidden top-15 lg:top-12 xl:top-0 left-0 justify-between gap-2 w-full h-14 xl:h-10 flex items-center pl-3 xl:pl-0 lg:justify-center md`}
+      className={`fixed xl:relative max-w-screen-lg overflow-x-auto xl:overflow-hidden top-13 lg:top-16 xl:top-0 left-1/2 -translate-x-1/2 xl:-translate-0   xl:left-0 justify-between gap-2 w-full h-14 xl:h-10 flex items-center pl-3 xl:pl-0 xl:justify-center`}
     >
       {navContent.map((navItem, i) => (
         <motion.span
@@ -38,7 +38,7 @@ const NavBar = () => {
             to={navItem.link} 
             key={i}
             href={navItem.link}
-            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-lg  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}
+            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-md  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}
           >
             <FontAwesomeIcon icon={navItem.icon} /> {navItem.title}
           </Link>

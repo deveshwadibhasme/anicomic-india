@@ -17,9 +17,9 @@ const Homepage = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-3xl 2xl:text-6xl md:text-5xl font-extrabold text-sky-50 text-center max-w-5xl mx-auto font-monteseret-regular "
         >
-          <h6 className="text-white text-xl md:text-3xl text-center font-monteseret-regular mb-2 md:mb-4 uppercase">
+          <span className="text-white block text-3xl md:text-xl text-center font-monteseret-regular mb-2 md:mb-4 uppercase">
             Welcome to{" "}
-          </h6>
+          </span>
           ANICOMIC SERVICES
           <br />
           <span className="text-orange-500 mt-4 text-lg md:text-2xl">

@@ -25,7 +25,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="max-w-screen w-full mx-auto mt-30 md:mt-15 flex flex-col">
+    <div className="max-w-screen w-full mx-auto mt-30 xl:mt-15 flex flex-col">
       {loading ? (
         <Loading />
       ) : (
