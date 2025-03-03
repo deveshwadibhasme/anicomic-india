@@ -73,7 +73,7 @@ const Services = () => {
           <motion.div
             initial={{ opacity: 0.4, scale: 0.3 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
+            transition={{ duration: 0.5}}
             key={index}
             className={`relative p-6 z-20 after:[animation:floating-water_4s_alternate-reverse_infinite] floating-water bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center`}
           >
