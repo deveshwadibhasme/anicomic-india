@@ -22,17 +22,19 @@ const Contact = () => {
     setFormDataValues({ ...formDataValues, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post('https://anicomic-india-production.up.railway.app/send-email',formDataValues).catch((err)=>{
-      console.log(err);
-    })
-   
-    setTimeout(()=>{
-      e.target.reset();
-    }, 100);
-    addToast("Email sent successfully!");
+    try {
+      await axios.post(`https://anicomic-india-production.up.railway.app/send-email`, formDataValues); 
+      addToast('Thanks For Contacting !')
+      setTimeout(()=>{
+        e.target.reset();
+      }, 500);
+    } catch (error) {
+      addToast('Error While Sending! Try again later')
+      console.log(error);
+    }
   };
 
   return (
