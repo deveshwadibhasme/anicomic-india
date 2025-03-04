@@ -18,12 +18,12 @@ const sendMail = async (name, email, phone, service, company, message) => {
             subject: `Enquiry for ${service || 'Service'}`,
             html: `
         <html>
-        <body style="font-family: Arial, sans-serif; text-align: center;">
+        <body style="font-family: Arial, sans-serif; text-align: left; background-color:#111;color:white;">
+            <h1>Company : ${company}</h1>
+            <h2>Service : ${service}</h2>
             <h2>Name : ${name}</h2>
-            <h1>Service : ${service}</h1>
-            <p>Email : ${email}</p>
-            <p>Phone : ${phone}</p>
-            <p>Company : ${company}</p>
+            <h2>Email : ${email}</h2>
+            <h2>Phone : ${phone}</h2>
             <p>Message : ${message}</p>
         </body>
         </html>
