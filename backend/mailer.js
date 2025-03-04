@@ -14,26 +14,24 @@ const sendMail = async (name, email, phone, service, company, message) => {
     try {
         const mailOptions = {
             from: process.env.GMAIL_USER,
-            to: 'info@anicomic.in',
-            subject: `Enquiry for ${service || 'Service'}`,
-            html: `
-        <html>
-        <body style="font-family: Arial, sans-serif; text-align: left; background-color:#111;color:white;">
-            <h1>Company : ${company}</h1>
-            <h2>Service : ${service}</h2>
-            <h2>Name : ${name}</h2>
-            <h2>Email : ${email}</h2>
-            <h2>Phone : ${phone}</h2>
-            <p>Message : ${message}</p>
-        </body>
-        </html>
-      `,
+            to: "info@anicomic.in",
+            subject: `Enquiry for ${service || "Service"}`,
+            html: `<body style="font-family: Arial, sans-serif; background-color: #111; color: white; margin: 0; padding: 20px;">
+    <div style="max-width: 600px; margin: auto; text-align: center; border: 1px solid #444; padding: 20px; border-radius: 8px;">
+        <h1 style="margin-bottom: 10px; font-size: 24px; color: #f2a900;">${company}</h1>
+        <h2 style="margin-bottom: 10px; font-size: 20px; color: #f2f2f2;">${service}</h2>
+        <p style="font-size: 18px; color: #ddd;"><strong>Name:</strong> ${name}</p>
+        <p style="font-size: 18px; color: #ddd;"><strong>Email:</strong> ${email}</p>
+        <p style="font-size: 18px; color: #ddd;"><strong>Phone:</strong> ${phone}</p>
+        <p style="font-size: 16px; color: #bbb; margin-top: 20px;"><strong>Message:</strong> ${message}</p>
+    </div>
+</body>`,
         };
 
-        await transporter.sendMail(mailOptions);
-        console.log("✅ Email sent successfully!");
+        const info = await transporter.sendMail(mailOptions);
+        console.log("✅ Email sent successfully!", info.response);
     } catch (error) {
-        console.error("❌ Error sending email:", error);
+        console.error("❌ Error sending email:", error.message, error.response);
     }
 };
 
