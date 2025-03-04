@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.post("/send-email", async (req, res) => {
   const { name, email, phone, service, company, message} = req.body;
 
-  if (!name || !email || !amount || !phone || !company || !message) {
+  if (!name || !email || !phone || !company || !message) {
     return res.status(400).json({ success: false, message: "Missing required fields" });
   }
 
