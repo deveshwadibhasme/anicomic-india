@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
@@ -24,7 +25,10 @@ const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(formDataValues);
+    axios.post('https://anicomic-india-production.up.railway.app/send-email',formDataValues).catch((err)=>{
+      console.log(err);
+    })
+   
     setTimeout(()=>{
       e.target.reset();
     }, 100);
