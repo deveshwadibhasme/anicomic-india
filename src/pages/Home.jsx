@@ -4,6 +4,8 @@ import ImageSlider from "../components/ImageSlider";
 import Homepage from "../components/Homepage";
 import Services from "./Services";
 import Contact from "./Contact";
+import Testimonials from "../components/Testimonials";
+import Counter from "../components/Counter";
 
 const Home = () => {
   // const HomePoster = [`${AnicomicPoster}`];
@@ -33,6 +35,8 @@ const Home = () => {
           <ImageSlider count={1} moveLeft={true} />
           <Homepage />
           <ImageSlider count={20} moveLeft={false} />
+          <Testimonials/> 
+          <Counter />
           <Services />
           <Contact/>
         </>
