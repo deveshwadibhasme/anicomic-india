@@ -55,10 +55,13 @@ const services = [
 ];
 
 const Services = () => {
-  const [hover, setHover] = useState(false);
 
-  const handleHover = (i) => {
-    setHover(!hover);
+
+  const handleHover = (e) => {
+    e.target.parentNode.childNodes[2].style.transform = "translateY(-150%)";
+    setTimeout(() => {
+      e.target.parentNode.childNodes[2].style.transform = "translateY(0)";
+    },2000)
   };
 
   return (
@@ -72,22 +75,23 @@ const Services = () => {
             initial={{ opacity: 0.4, scale: 0.3 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            onHoverStart={() => handleHover(index)}
+            id='div-to-hover'
             key={index}
-            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 md:h-85 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
+            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 md:h-85 2xl:h-95 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
           >
             <img
-              className="mix-blend-multiply group peer md:h-64 md:w-64 h-15 w-15 mb-4"
+            onClick={(e) => handleHover(e)}
+              className="mix-blend-multiply group peer md:h-64 md:w-64 h-18 w-18 mb-4"
               src={service.icon}
               alt=""
             />
-            <h3 className="text-sm md:text-xl font-semibold">{service.title}</h3>
+            <h3 className="text-sm md:text-xl xl:text-4xl font-semibold">{service.title}</h3>
             <div
-              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full peer-focus-within::-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-4 absolute top-full`}
+              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-4 absolute top-full peer-mobile`}
             >
-              <p className="text-slate-800 peer">{service.description}</p>
+              <p className="text-slate-800 text-sm lg:text-xl xl:text-2xl">{service.description}</p>
               <Link
-                className="w-[60%] h-8 bg-orange-600 flex items-center justify-center rounded-2xl hover:bg-orange-500 text-white"
+                className="w-[60%] h-8 xl:h-15 text-[10px] md:text-lg xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl xl:rounded-full hover:bg-orange-500 text-white"
                 to={"/contact"}
                 
               >
