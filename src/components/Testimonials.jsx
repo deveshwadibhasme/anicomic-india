@@ -59,7 +59,7 @@ export default function Testimonials() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
         viewport={{ once: true }}
-        className="text-orange-600 font-monteseret-regular max-w-screen-sm text-2xl md:text-4xl mb-4 text-center items-center mx-auto font-bold"
+        className="text-orange-600 font-Caprasimo-regular max-w-screen-sm text-2xl md:text-4xl 2xl:text-5xl mb-4 text-center items-center mx-auto"
       >
         Our Valuable Client
       </motion.h1>

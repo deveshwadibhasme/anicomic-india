@@ -1,4 +1,5 @@
-import axios from 'axios'
+import axios from "axios";
+import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
@@ -6,11 +7,15 @@ import { useState } from "react";
 import useToaster from "../hooks/toaster";
 
 const Contact = () => {
+  const  location  = useLocation();
+
+  console.log(location)
+
   const [formDataValues, setFormDataValues] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "",
+    service: location.state?.service || "",
     company: "",
     message: "",
   });
@@ -26,13 +31,16 @@ const Contact = () => {
     e.preventDefault();
 
     try {
-      await axios.post(`https://anicomic-india-production.up.railway.app/send-email`, formDataValues); 
-      addToast('Thanks For Contacting !')
-      setTimeout(()=>{
+      await axios.post(
+        `https://anicomic-india-production.up.railway.app/send-email`,
+        formDataValues
+      );
+      addToast("Thanks For Contacting !");
+      setTimeout(() => {
         e.target.reset();
       }, 500);
     } catch (error) {
-      addToast('Error While Sending! Try again later')
+      addToast("Error While Sending! Try again later");
       console.log(error);
     }
   };
@@ -62,6 +70,7 @@ const Contact = () => {
             autoComplete="off"
             type="text"
             name="name"
+            value={formDataValues.name}
             onChange={(e) => handleChange(e)}
             placeholder="Name"
             className="outline-0 w-full px-3 py-2 rounded-lg border-b-2 border-gray-300 focus:outline-none focus:border-orange-600 text-white"
@@ -71,6 +80,7 @@ const Contact = () => {
             autoComplete="off"
             type="email"
             name="email"
+            value={formDataValues.email}
             onChange={(e) => handleChange(e)}
             placeholder="Email"
             className="outline-0 w-full mt-4 px-3 py-2 rounded-lg border-b-2 border-gray-300 focus:outline-none focus:border-orange-600 text-white"
@@ -80,6 +90,7 @@ const Contact = () => {
             autoComplete="off"
             type="text"
             name="phone"
+            value={formDataValues.phone}
             onChange={(e) => handleChange(e)}
             placeholder="Phone"
             className="outline-0 w-full mt-4 px-3 py-2 rounded-lg border-b-2 border-gray-300 focus:outline-none focus:border-orange-600 text-white"
@@ -88,6 +99,7 @@ const Contact = () => {
             autoComplete="off"
             type="text"
             name="company"
+            value={formDataValues.company}
             onChange={(e) => handleChange(e)}
             placeholder="Company"
             className="outline-0 w-full mt-4 px-3 py-2 rounded-lg border-b-2 border-gray-300 focus:outline-none focus:border-orange-600 text-white"
@@ -95,6 +107,7 @@ const Contact = () => {
           <select
             onChange={(e) => handleChange(e)}
             name="service"
+            value={formDataValues.service}
             id=""
             className="outline-0 w-full mt-4 px-3 py-2 bg-slate-500 rounded-lg border-b-2 border-gray-300 focus:outline-none focus:border-orange-600 text-white"
           >

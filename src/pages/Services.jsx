@@ -66,14 +66,15 @@ const Services = () => {
 
   return (
     <>
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-orange-600 mt-30 md:mt-20">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl text-center text-orange-600 mt-30 md:mt-20 font-Caprasimo-regular">
         Our Services
       </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[300px] md:min-h-[400px] xl:min-h-[500px]">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10">
         {services.map((service, index) => (
           <motion.div
-            initial={{ opacity: 0.4, scale: 0.3 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0.4, x: 50 }}
+            whileInView={{ opacity: 1, x: 1 }}
+            threshold={0.8}
             transition={{ duration: 0.5 }}
             id='div-to-hover'
             key={index}
@@ -85,15 +86,15 @@ const Services = () => {
               src={service.icon}
               alt=""
             />
-            <h3 className="text-sm md:text-xl xl:text-4xl font-semibold">{service.title}</h3>
+            <h3 className="text-sm md:text-xl 2xl:text-4xl font-semibold">{service.title}</h3>
             <div
-              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-4 absolute top-full peer-mobile`}
+              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-8 absolute top-full peer-mobile`}
             >
-              <p className="text-slate-800 text-sm lg:text-xl xl:text-2xl">{service.description}</p>
+              <p className="text-slate-800 w-[80%] text-sm lg:text-xl 2xl:text-2xl">{service.description}</p>
               <Link
-                className="w-[60%] h-8 xl:h-15 text-[10px] md:text-lg xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl xl:rounded-full hover:bg-orange-500 text-white"
+                className="w-[60%] h-8 2xl:h-15 text-[10px] md:text-lg 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
                 to={"/contact"}
-                
+                state={{service:service.title}}
               >
                 Go with Service
               </Link>
