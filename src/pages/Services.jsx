@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect } from "react";
 import { images } from "../components/SliderImages";
 
 const services = [
@@ -56,14 +56,19 @@ const services = [
 
 const Services = () => {
 
-  const w = window.innerWidth;
+  let w
 
+  useEffect(()=>{
+    w = window.innerWidth;
+  },[window.innerWidth])
+  
   const handleHover = (e) => {
-    e.target.parentNode.childNodes[2].style.transform = `translateY(${w < 800 ? '-100%' : '-120%'})`;
+    e.target.parentNode.childNodes[2].style.transform = `translateY(${w < 300 ? '-100%' : '-150%'})`;
     setTimeout(() => {
       e.target.parentNode.childNodes[2].style.transform = "translateY(0)";
     },2000)
   };
+
 
   return (
     <>
@@ -79,7 +84,7 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             id='div-to-hover'
             key={index}
-            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 md:h-85 2xl:h-95 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
+            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 sm:h-80 md:h-70 2xl:h-95 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
           >
             <img
               onClick={(e) => handleHover(e)}
@@ -91,9 +96,9 @@ const Services = () => {
             <div
               className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-8 absolute top-full peer-mobile`}
             >
-              <p className="text-slate-800 w-[80%] text-[10px] lg:text-xl 2xl:text-2xl">{service.description}</p>
+              <p className="text-slate-800 w-[80%] text-[10px] md:text-lg lg:text-xl 2xl:text-2xl">{service.description}</p>
               <Link
-                className="w-[60%] h-5 lg:h-10 2xl:h-15 text-[10px] md:text-lg 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
+                className="w-[60%] h-5 md:h-10 2xl:h-15 text-[10px] md:text-sm 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
                 to={"/contact"}
                 state={{service:service.title}}
               >
