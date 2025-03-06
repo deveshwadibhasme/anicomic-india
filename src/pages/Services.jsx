@@ -66,33 +66,34 @@ const Services = () => {
       <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-orange-600 mt-30 md:mt-20">
         Our Services
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[200px] md:min-h-[400px] xl:min-h-[500px]">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[300px] md:min-h-[400px] xl:min-h-[500px]">
         {services.map((service, index) => (
           <motion.div
             initial={{ opacity: 0.4, scale: 0.3 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            onHoverStart={()=>handleHover(index)}
+            onHoverStart={() => handleHover(index)}
             key={index}
-            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-full md:h-85 overflow-y-hidden cursor-pointer`}
+            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 md:h-85 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
           >
             <img
-              className="mix-blend-multiply peer"
+              className="mix-blend-multiply group peer md:h-64 md:w-64 h-15 w-15 mb-4"
               src={service.icon}
               alt=""
             />
-            <h3 className="text-xl font-semibold">{service.title}</h3>
-            <motion.div
-              initial={{ y: 100 }}
-              animate={{ y: -280 }}
-              transition={{ duration: 0.8 }}
-              className={`bg-orange-400/80 hidden peer-hover:block w-68 min-h-85 transition-transform duration-300 h-full z-10`}
+            <h3 className="text-sm md:text-xl font-semibold">{service.title}</h3>
+            <div
+              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full peer-focus-within::-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-4 absolute top-full`}
             >
-              <p className="text-slate-800 mt-2 peer h-full">
-                {service.description}
-              </p>
-              <Link>Go with Service</Link>
-            </motion.div>
+              <p className="text-slate-800 peer">{service.description}</p>
+              <Link
+                className="w-[60%] h-8 bg-orange-600 flex items-center justify-center rounded-2xl hover:bg-orange-500 text-white"
+                to={"/contact"}
+                
+              >
+                Go with Service
+              </Link>
+            </div>
           </motion.div>
         ))}
       </div>
