@@ -23,7 +23,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`fixed xl:relative max-w-screen-lg overflow-x-auto xl:overflow-hidden top-13 lg:top-16 xl:top-0 left-1/2 -translate-x-1/2 xl:-translate-0   xl:left-0 justify-between gap-2 w-full h-14 xl:h-10 flex items-center pl-3 xl:pl-0 xl:justify-center`}
+      className={`fixed xl:relative max-w-screen-lg overflow-x-auto xl:overflow-hidden top-13 lg:top-16 xl:top-0 left-1/2 -translate-x-1/2 xl:-translate-0 2xl:h-full xl:left-0 justify-between gap-2 w-full h-14 xl:h-10 flex items-center pl-3 xl:pl-0 xl:justify-center`}
     >
       {navContent.map((navItem, i) => (
         <motion.span

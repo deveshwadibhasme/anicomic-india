@@ -1,7 +1,8 @@
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { images } from "../components/SliderImages";
+import useToaster from "../hooks/toaster";
 
 const services = [
   {
@@ -55,52 +56,55 @@ const services = [
 ];
 
 const Services = () => {
+ 
+  let w;
 
-  let w
-
-  useEffect(()=>{
-    w = window.innerWidth;
-  },[window.innerWidth])
-  
   const handleHover = (e) => {
-    e.target.parentNode.childNodes[2].style.transform = `translateY(${w < 300 ? '-100%' : '-150%'})`;
+    e.target.parentNode.childNodes[2].style.transform = `translateY(${
+      w < 300 ? "-100%" : `${w > 770 ? "-150%" : "-150%"}`
+    })`;
     setTimeout(() => {
       e.target.parentNode.childNodes[2].style.transform = "translateY(0)";
-    },2000)
+    }, 2000);
   };
-
 
   return (
     <>
       <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl text-center text-orange-600 mt-30 md:mt-20 font-Caprasimo-regular">
         Our Services
       </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10">
+      <div
+        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10"
+      >
         {services.map((service, index) => (
           <motion.div
             initial={{ opacity: 0.4, x: 50 }}
             whileInView={{ opacity: 1, x: 1 }}
             threshold={0.8}
             transition={{ duration: 0.5 }}
-            id='div-to-hover'
+            id="div-to-hover"
             key={index}
-            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 sm:h-80 md:h-70 2xl:h-95 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
+            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[600px] justify-center overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
           >
             <img
               onClick={(e) => handleHover(e)}
-              className="mix-blend-multiply group peer md:h-64 md:w-64 h-18 w-18 mb-4"
+              className="mix-blend-multiply group peer xl:h-64 xl:w-64 md:h-23 md:w-23 h-18 w-18 mb-4 xl:mb-1"
               src={service.icon}
               alt=""
             />
-            <h3 className="text-sm md:text-xl 2xl:text-4xl font-semibold">{service.title}</h3>
+            <h3 className="text-sm md:text-sm xl:text-2xl 2xl:text-5xl font-semibold">
+              {service.title}
+            </h3>
             <div
-              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-8 absolute top-full peer-mobile`}
+              className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full peer-mobile`}
             >
-              <p className="text-slate-800 w-[80%] text-[10px] md:text-lg lg:text-xl 2xl:text-2xl">{service.description}</p>
+              <p className="text-slate-800 w-[80%] text-[10px] md:text-sm lg:text-xl 2xl:text-5xl">
+                {service.description}
+              </p>
               <Link
-                className="w-[60%] h-5 md:h-10 2xl:h-15 text-[10px] md:text-sm 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
+                className="w-[60%] h-5 sm:h-8 md:h-10 2xl:h-20 text-[10px] sm:text-sm 2xl:text-3xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
                 to={"/contact"}
-                state={{service:service.title}}
+                state={{ service: service.title }}
               >
                 Go with Service
               </Link>

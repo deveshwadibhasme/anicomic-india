@@ -13,7 +13,7 @@ const useToaster = () => {
     };
 
     const ToastContainer = () => (
-        <div className="absolute z-50 top-2 left-1/2 transform -translate-x-1/2 space-y-2 text-m md:text-xl">
+        <div className="absolute z-50 top-15 left-30 transform -translate-x-1/2 space-y-2 text-m md:text-xl">
             {toasts.map((toast) => (
                 <div
                     key={toast.id}

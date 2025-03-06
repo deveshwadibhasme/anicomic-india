@@ -10,7 +10,12 @@ function App() {
     <>
       <div className="relative max-w-screen w-full mx-auto bg-black min-h-screen overflow-x-hidden flex flex-col justify-between">
         <Header />
-        <Outlet />
+        {
+          <>
+          <Loading/>
+          <Outlet />
+          </>
+        }
         <Footer />
       </div>
     </>

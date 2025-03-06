@@ -1,4 +1,4 @@
-vite.config.js
+
 # Logs
 logs
 *.log
@@ -22,3 +22,4 @@ dist
 *.njsproj
 *.sln
 *.sw?
+vite.config.js

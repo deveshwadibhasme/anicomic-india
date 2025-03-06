@@ -27,7 +27,7 @@
 
   @media (max-width: 800px) {
     .bg-image::after {
-      background-size: 60%;
+      background-size: 50%;
     }
   }
 

@@ -17,7 +17,7 @@ const Counter = () => {
     },
   ];
 
-  const { ref, inView } = useInView({  threshold: 0.8 });
+  const { ref, inView } = useInView({ triggerOnce:false, threshold: 0.8 });
 
   useEffect(() => {
     const counters = document.querySelectorAll("#counter");
@@ -35,9 +35,12 @@ const Counter = () => {
           } else {
             counter.innerText = target + "+";
           }
-        };
+        }
         updateCount();
       });
+    }
+    else{
+      counters.forEach((counter) => {counter.innerText = 0})
     }
   },[inView]);
 

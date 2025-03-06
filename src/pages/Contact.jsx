@@ -44,7 +44,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative md:max-w-screen max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-30 md:mt-20 mx-auto text-center mb-5">
+    <div className="relative md:max-w-screen overflow-hidden max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-30 md:mt-20 mx-auto text-center mb-5">
       <motion.h1
         initial={{ opacity: 0, y: -80 }}
         whileInView={{ opacity: 1, y: 0 }}
