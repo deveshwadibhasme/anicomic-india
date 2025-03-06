@@ -11,7 +11,6 @@ node_modules
 dist-ssr
 dist
 *.local
-slider-images
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
