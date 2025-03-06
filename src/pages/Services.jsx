@@ -1,4 +1,4 @@
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { images } from "../components/SliderImages";
@@ -21,37 +21,37 @@ const services = [
     title: "Content Creation",
     description:
       "Crafting compelling and engaging content for various digital platforms to captivate audiences.",
-    icon: images.digital,
+    icon: images.content,
   },
   {
     title: "Web Development",
     description:
       "Building responsive, high-performance websites tailored to user experience and business needs.",
-    icon: images.digital,
+    icon: images.webDevs,
   },
   {
     title: "Graphic Design",
     description:
       "Creating visually appealing designs that effectively communicate brand identity and messaging.",
-    icon: images.digital,
+    icon: images.design,
   },
   {
     title: "Video Editing",
     description:
       "Professional editing services to enhance video content with smooth transitions and effects.",
-    icon: images.digital,
+    icon: images.video,
   },
   {
     title: "3D Animation",
     description:
       "Producing stunning 3D animations for storytelling, product visualization, and branding.",
-    icon: images.digital,
+    icon: images.threeD,
   },
   {
     title: "Cinematography",
     description:
       "Capturing high-quality visuals and storytelling through expert cinematography techniques.",
-    icon: images.digital,
+    icon: images.cinematography,
   },
 ];
 
@@ -65,7 +65,7 @@ const Services = () => {
     })`;
     setTimeout(() => {
       e.target.parentNode.childNodes[2].style.transform = "translateY(0)";
-    }, 2000);
+    }, 4000);
   };
 
   return (
@@ -74,7 +74,7 @@ const Services = () => {
         Our Services
       </h1>
       <div
-        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10"
+        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 "
       >
         {services.map((service, index) => (
           <motion.div
@@ -84,25 +84,27 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             id="div-to-hover"
             key={index}
-            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[600px] justify-center overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
+            className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[500px] 2xl:max-w-screen-sm justify-center mx-auto w-full overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
           >
             <img
               onClick={(e) => handleHover(e)}
-              className="mix-blend-multiply group peer xl:h-64 xl:w-64 md:h-23 md:w-23 h-18 w-18 mb-4 xl:mb-1"
+              className="mix-blend-multiply group peer 
+              xl:h-64 xl:w-64 md:h-23 md:w-23 2xl:w-90 2xl:h-80
+              h-18 w-18 mb-4 xl:mb-1 object-cover"
               src={service.icon}
               alt=""
             />
-            <h3 className="text-sm md:text-sm xl:text-2xl 2xl:text-5xl font-semibold">
+            <h3 className="text-sm md:text-sm xl:text-2xl 2xl:text-4xl font-semibold">
               {service.title}
             </h3>
             <div
               className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full peer-mobile`}
             >
-              <p className="text-slate-800 w-[80%] text-[10px] md:text-sm lg:text-xl 2xl:text-5xl">
+              <p className="text-slate-800 w-[80%] text-[10px] lg:text-[18px] 2xl:text-3xl">
                 {service.description}
               </p>
               <Link
-                className="w-[60%] h-5 sm:h-8 md:h-10 2xl:h-20 text-[10px] sm:text-sm 2xl:text-3xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
+                className="w-[60%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
                 to={"/contact"}
                 state={{ service: service.title }}
               >

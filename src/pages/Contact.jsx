@@ -20,6 +20,7 @@ const Contact = () => {
 
   const { addToast, ToastContainer } = useToaster();
 
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormDataValues({ ...formDataValues, [name]: value });
@@ -44,17 +45,17 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative md:max-w-screen overflow-hidden max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-30 md:mt-20 mx-auto text-center mb-5">
+    <div className="relative md:max-w-screen overflow-hidden max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-30 md:mt-25 mx-auto text-center mb-5">
       <motion.h1
-        initial={{ opacity: 0, y: -80 }}
+        initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9 }}
+        transition={{ duration: 0.7 }}
         className="text-white font-monteseret-regular max-w-screen-sm text-xl md:text-3xl items-center mx-auto"
       >
         <b className="text-orange-600">Get in touch</b> with us for our Digital
         Media Services.
       </motion.h1>
-      <div className="relative flex flex-col xl:flex-row justify-center md:justify-around max-w-screen-lg w-full mx-auto h-full rounded-2xl mt-5 items-center">
+      <div className="relative 2xl:scale-110 flex flex-col xl:flex-row justify-center md:justify-around max-w-screen-lg w-full mx-auto h-full rounded-2xl mt-2 items-center">
         <motion.form
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}

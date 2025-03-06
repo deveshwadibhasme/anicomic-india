@@ -51,8 +51,23 @@ import img50 from "../slider-images/50.png";
 
 import social from "../assets/social-marketing.jpg";
 import digital from "../assets/digital advertisement.svg";
+import content from "../assets/content-creation.jpg";
+import webDevs from "../assets/web-devs.jpg";
+import design from "../assets/graphic-design.jpg";
+import video from "../assets/video-editing.jpg";
+import threeD from "../assets/3d-animation.jpg"; 
+import cinematography from "../assets/cinematography.avif"; 
 
-export const images = { social: social, digital: digital };
+export const images = {
+  social: social,
+  digital: digital,
+  content: content,
+  webDevs: webDevs,
+  design: design,
+  video: video,
+  threeD: threeD,
+  cinematography:cinematography
+ };
 
 const sliderImages = [
   img1,
