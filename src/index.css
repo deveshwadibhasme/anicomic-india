@@ -4,7 +4,9 @@
   html,
   body {
     font-family: "Space Grotesk", sans-serif;
+    --loading-image:url('./public/ani-comic.svg')
   }
+
 
   .blur {
     backdrop-filter: blur(10px);

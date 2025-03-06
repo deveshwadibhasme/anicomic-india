@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useState } from "react";
 import { images } from "../components/SliderImages";
-import useToaster from "../hooks/toaster";
 
 const services = [
   {
@@ -56,7 +55,12 @@ const services = [
 ];
 
 const Services = () => {
- 
+  const [loading, setLoading] = useState(true);
+
+  const handleLoad = () => {
+    setLoading(false);
+  };
+
   let w;
 
   const handleHover = (e) => {
@@ -73,9 +77,7 @@ const Services = () => {
       <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl text-center text-orange-600 mt-30 md:mt-20 font-Caprasimo-regular">
         Our Services
       </h1>
-      <div
-        className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 "
-      >
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 ">
         {services.map((service, index) => (
           <motion.div
             initial={{ opacity: 0.4, x: 50 }}
@@ -88,9 +90,14 @@ const Services = () => {
           >
             <img
               onClick={(e) => handleHover(e)}
-              className="mix-blend-multiply group peer 
+              onLoad={handleLoad}
+              className={`mix-blend-multiply group peer 
               xl:h-64 xl:w-64 md:h-23 md:w-23 2xl:w-90 2xl:h-80
-              h-18 w-18 mb-4 xl:mb-1 object-cover"
+              h-18 w-18 mb-4 xl:mb-1 object-cover ${
+                loading
+                  ? `bg-slate-200/50 animate-pulse border-red-500`
+                  : "bg-transparent animate-none border-white"
+              } `}
               src={service.icon}
               alt=""
             />
