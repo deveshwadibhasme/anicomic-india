@@ -1,4 +1,4 @@
-import load from "../assets/loadingLogo.png";
+import load from "../assets/loadingLOGO.png";
 import { AnimatePresence , motion } from "framer-motion";
 
 const Loading = () => {
