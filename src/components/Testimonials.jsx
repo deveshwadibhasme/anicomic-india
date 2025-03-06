@@ -71,7 +71,7 @@ export default function Testimonials() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x : value  }}
             transition={{ duration: 0.5 }}
-            className="bg-orange-200 min-h-52 p-8 rounded-lg shadow-lg border-2 flex flex-col gap-3 text-center items-center border-orange-500"
+            className="bg-white min-h-96 justify-center p-8 rounded-lg shadow-lg border-2 flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
           >
             <p className="text-xl mb-4 text-gray-600 italic min-h-25">
               "{testimonials[currentIndex].quote}"
@@ -96,7 +96,7 @@ export default function Testimonials() {
         >
           <FontAwesomeIcon
             icon={faAnglesLeft}
-            className="w-6 h-6 text-black"
+            className="w-6 h-6 text-7xl text-black"
           />
         </button>
         <button
@@ -106,7 +106,7 @@ export default function Testimonials() {
         >
           <FontAwesomeIcon
             icon={faAnglesRight}
-            className="w-6 h-6 text-gray-600"
+            className="w-6 h-6 text-black text-7xl"
           />
         </button>
       </div>

@@ -56,9 +56,10 @@ const services = [
 
 const Services = () => {
 
+  const w = window.innerWidth;
 
   const handleHover = (e) => {
-    e.target.parentNode.childNodes[2].style.transform = "translateY(-150%)";
+    e.target.parentNode.childNodes[2].style.transform = `translateY(${w < 800 ? '-100%' : '-120%'})`;
     setTimeout(() => {
       e.target.parentNode.childNodes[2].style.transform = "translateY(0)";
     },2000)
@@ -81,7 +82,7 @@ const Services = () => {
             className={`relative p-6 z-20 bg-slate-300 text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 md:h-85 2xl:h-95 overflow-y-hidden cursor-pointer group overflow-x-hidden peer`}
           >
             <img
-            onClick={(e) => handleHover(e)}
+              onClick={(e) => handleHover(e)}
               className="mix-blend-multiply group peer md:h-64 md:w-64 h-18 w-18 mb-4"
               src={service.icon}
               alt=""
@@ -90,9 +91,9 @@ const Services = () => {
             <div
               className={`bg-orange-400/80 flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-8 absolute top-full peer-mobile`}
             >
-              <p className="text-slate-800 w-[80%] text-sm lg:text-xl 2xl:text-2xl">{service.description}</p>
+              <p className="text-slate-800 w-[80%] text-[10px] lg:text-xl 2xl:text-2xl">{service.description}</p>
               <Link
-                className="w-[60%] h-8 2xl:h-15 text-[10px] md:text-lg 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
+                className="w-[60%] h-5 lg:h-10 2xl:h-15 text-[10px] md:text-lg 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
                 to={"/contact"}
                 state={{service:service.title}}
               >

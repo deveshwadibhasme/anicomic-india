@@ -53,7 +53,7 @@ const Counter = () => {
         >
           <span
             id="counter"
-            className="text-7xl h-15 text-center font-bold text-orange-700"
+            className="text-7xl h-15 text-center font-bold text-yellow-400"
             data-value={item.digit}
           ></span>
           <span className="text-xl font-medium text-gray-500">{item.text}</span>

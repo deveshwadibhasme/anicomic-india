@@ -9,8 +9,6 @@ import useToaster from "../hooks/toaster";
 const Contact = () => {
   const  location  = useLocation();
 
-  console.log(location)
-
   const [formDataValues, setFormDataValues] = useState({
     name: "",
     email: "",
