@@ -23,7 +23,7 @@ const Homepage = () => {
           ANICOMIC SERVICES
           <br />
           <span className="text-orange-500 mt-4 text-lg md:text-2xl">
-            DIGITAL ADVERTISMENT COMPANY
+            DIGITAL ADVERTISEMENT COMPANY
           </span>
         </motion.h1>
         <motion.p

@@ -121,7 +121,7 @@ const Contact = () => {
             <option value="">Select Service</option>
             <option value="Web Development">Web Development</option>
             <option value="Graphic Design">Graphic Design</option>
-            <option value="Social Media Marketing">
+            <option value="Social Media Management">
               Social Media Marketing
             </option>
             <option value="Digital Advertisement">Digital Advertisement</option>
