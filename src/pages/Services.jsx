@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { images } from "../components/SliderImages";
 import { getServices } from "../utils/Services.js";
+import useToaster from "../hooks/toaster.jsx";
 
 const services = [
   {
@@ -64,21 +65,20 @@ const Services = () => {
     setLoading(false);
   };
 
+  const { addToast, ToastContainer } = useToaster();
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (location.pathname === "/services") {
-      if(state?.service) {
+      if (state?.service) {
         setServices(getServices(state.service));
+        addToast(`Site is in development state !! `)
       }
     }
-    return () => {
-      
-    }
+    return () => {};
   }, [service]);
-  
 
-
-  let w ;
+  let w;
   const handleHover = (e) => {
     e.target.parentNode.childNodes[2].style.transform = `translateY(${
       w < 300 ? "-100%" : `${w > 770 ? "-150%" : "-150%"}`
@@ -95,6 +95,7 @@ const Services = () => {
       <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl text-center text-orange-600 mt-30 md:mt-20 font-Caprasimo-regular">
         Our Services
       </h1>
+      <ToastContainer/>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 ">
         {services.map((service, index) => (
           <motion.div
@@ -138,8 +139,9 @@ const Services = () => {
                 </Link>
                 <Link
                   className="w-[40%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl bg-green-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-green-500 text-white"
-                  to={`${location.pathname==='/' ? '/services' : ''}`}
+                  to={`${location.pathname === "/" ? "/services" : ""}`}
                   state={{ service: service.title }}
+                  onClick={()=>addToast('Site is in developent state !!')}
                 >
                   Learn More
                 </Link>
@@ -148,9 +150,7 @@ const Services = () => {
           </motion.div>
         ))}
       </div>
-      <div className="max-w-screen-lg mx-auto mt-10 min-h-96">
-
-      </div>
+      <div className="max-w-screen-lg mx-auto mt-10 min-h-96"></div>
     </>
   );
 };

@@ -7,7 +7,7 @@ import { useState } from "react";
 import useToaster from "../hooks/toaster";
 
 const Contact = () => {
-  const  location  = useLocation();
+  const location = useLocation();
 
   const [formDataValues, setFormDataValues] = useState({
     name: "",
@@ -18,16 +18,15 @@ const Contact = () => {
     message: "",
   });
 
-  if(location.pathname === "/contact"){
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (location.pathname === "/contact") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   const { addToast, ToastContainer } = useToaster();
 
-  if(location.state?.service){
+  if (location.state?.service) {
     window.scrollTo(0, 0);
   }
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -122,12 +121,12 @@ const Contact = () => {
             <option value="Web Development">Web Development</option>
             <option value="Graphic Design">Graphic Design</option>
             <option value="Social Media Management">
-              Social Media Marketing
+              Social Media Management
             </option>
             <option value="Digital Advertisement">Digital Advertisement</option>
             <option value="Content Creation">Content Creation</option>
             <option value="Cinematography">Cinematography</option>
-            <option value="video-editing">Video Editing</option>
+            <option value="Video Editing">Video Editing</option>
             <option value="3D Animation">3D Animation</option>
             <option value="Other">Other</option>
           </select>

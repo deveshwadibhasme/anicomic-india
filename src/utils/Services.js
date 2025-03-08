@@ -109,7 +109,7 @@ const servicesInfo = [
     ,
     {
         "id": 5,
-        "category": "Social Media Marketing",
+        "category": "Social Media Management",
         "services": [
             {
                 "name": "Social Media Strategy & Planning",
