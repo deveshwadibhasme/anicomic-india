@@ -18,7 +18,15 @@ const Contact = () => {
     message: "",
   });
 
+  if(location.pathname === "/contact"){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   const { addToast, ToastContainer } = useToaster();
+
+  if(location.state?.service){
+    window.scrollTo(0, 0);
+  }
 
 
   const handleChange = (e) => {

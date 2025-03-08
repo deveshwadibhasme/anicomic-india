@@ -8,16 +8,16 @@ const Counter = () => {
       text: "Years of Experience",
     },
     {
-      digit: 100,
+      digit: 50,
       text: "Clients Served",
     },
     {
-      digit: 200,
+      digit: 150,
       text: "Creative Brains",
     },
   ];
 
-  const { ref, inView } = useInView({ triggerOnce:false, threshold: 0.8 });
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.4 });
 
   useEffect(() => {
     const counters = document.querySelectorAll("#counter");
@@ -35,14 +35,15 @@ const Counter = () => {
           } else {
             counter.innerText = target + "+";
           }
-        }
+        };
         updateCount();
       });
+    } else {
+      counters.forEach((counter) => {
+        counter.innerText = 0;
+      });
     }
-    else{
-      counters.forEach((counter) => {counter.innerText = 0})
-    }
-  },[inView]);
+  }, [inView]);
 
   return (
     <div

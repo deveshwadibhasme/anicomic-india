@@ -61,6 +61,10 @@ const Services = () => {
     setLoading(false);
   };
 
+  if(location.pathname === "/services"){
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   let w;
 
   const handleHover = (e) => {
