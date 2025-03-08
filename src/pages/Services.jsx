@@ -59,7 +59,7 @@ const services = [
 const Services = () => {
   const [loading, setLoading] = useState(true);
   const { state } = useLocation();
-  const [service, setServices] = useState(false);
+  const [service, setServices] = useState([]);
 
   const handleLoad = () => {
     setLoading(false);
@@ -70,9 +70,10 @@ const Services = () => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
     if (location.pathname === "/services") {
-      if (state?.service) {
-        setServices(getServices(state.service));
-        addToast(`Site is in development state !! `)
+      if (state) {
+        setServices(getServices(state?.service));
+        console.log(service);
+        addToast(`Site is in development state !! `);
       }
     }
     return () => {};
@@ -80,22 +81,28 @@ const Services = () => {
 
   let w;
   const handleHover = (e) => {
+    e.target.parentNode.childNodes[2].style.opacity = "1";
     e.target.parentNode.childNodes[2].style.transform = `translateY(${
       w < 300 ? "-100%" : `${w > 770 ? "-150%" : "-150%"}`
     })`;
-    e.target.parentNode.childNodes[2].style.opacity = "1";
     setTimeout(() => {
       e.target.parentNode.childNodes[2].style.opacity = "0";
       e.target.parentNode.childNodes[2].style.transform = "translateY(100%)";
     }, 4000);
   };
 
+  function handleMore(){
+    setServices(getServices(state?.service));
+    console.log(service);
+
+  }
+
   return (
     <>
       <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl text-center text-orange-600 mt-30 md:mt-20 font-Caprasimo-regular">
         Our Services
       </h1>
-      <ToastContainer/>
+      <ToastContainer />
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 ">
         {services.map((service, index) => (
           <motion.div
@@ -129,9 +136,9 @@ const Services = () => {
               <p className="text-slate-800 w-[80%] text-[10px] lg:text-[18px] 2xl:text-3xl">
                 {service.description}
               </p>
-              <div className="flex flex-col gap-2 2xl:gap-8 w-full items-center justify-center">
+              <div className="flex z-30 flex-col gap-2 2xl:gap-8 w-full items-center justify-center">
                 <Link
-                  className="w-[60%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
+                  className="w-[60%] z-20 h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl bg-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-orange-500 text-white"
                   to={"/contact"}
                   state={{ service: service.title }}
                 >
@@ -139,9 +146,12 @@ const Services = () => {
                 </Link>
                 <Link
                   className="w-[40%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl bg-green-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-green-500 text-white"
-                  to={`${location.pathname === "/" ? "/services" : ""}`}
+                  to={`${location.pathname !== "/services" ? "/services" : ``}`}
                   state={{ service: service.title }}
-                  onClick={()=>addToast('Site is in developent state !!')}
+                  onClick={() => {
+                    addToast("Site is in developent state !!") 
+                    handleMore()
+                  }}
                 >
                   Learn More
                 </Link>
@@ -150,7 +160,7 @@ const Services = () => {
           </motion.div>
         ))}
       </div>
-      <div className="max-w-screen-lg mx-auto mt-10 min-h-96"></div>
+      <div className="max-w-screen-lg mx-auto mt-10 min-h-96">{}</div>
     </>
   );
 };
