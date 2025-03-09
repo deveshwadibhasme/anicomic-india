@@ -101,7 +101,7 @@ const Services = () => {
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className=  "min-h-[200px] md:min-h-[400px] 2xl:min-h-[500px] mt-25 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center"
+        className="min-h-[200px] md:min-h-[400px] 2xl:min-h-[500px] mt-30 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center"
       >
         <motion.img
           initial={{ opacity: 0, y: -50 }}
@@ -112,11 +112,14 @@ const Services = () => {
           alt=""
         />
       </div>
-      <h1 className="text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 mt-20 md:mt-10 font-Caprasimo-regular">
+      <h1
+        style={{ display: `${location.pathname !== "/" ? "none" : "block"}` }}
+        className="text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
+      >
         Our Services
-      <ToastContainer />
+        <ToastContainer />
       </h1>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 ">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10">
         {services.map((service, index) => (
           <motion.div
             initial={{ opacity: 0.4, x: 50 }}
@@ -125,7 +128,7 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             id="div-to-hover"
             key={index}
-            className={`relative p-6 z-20 bg-white text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[500px] 2xl:max-w-screen-sm justify-center mx-auto w-full overflow-y-hidden cursor-pointer group overflow-x-hidden`}
+            className="relative p-6 z-20 bg-white text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[500px] justify-center mx-auto w-full overflow-y-hidden cursor-pointer group overflow-x-hidden"
           >
             <img
               onClick={(e) => handleHover(e)}
@@ -144,14 +147,14 @@ const Services = () => {
               {service.title}
             </h3>
             <div
-              className={`bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full  w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full`}
+              className="bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full"
             >
               <p className="text-slate-800 w-[80%] text-[10px] lg:text-[18px] 2xl:text-3xl">
                 {service.description}
               </p>
               <div className="flex z-30 flex-col gap-2 2xl:gap-8 w-full items-center justify-center">
                 <Link
-                  className="w-[60%] z-20 h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-orange-600 border-b-[3px] flex items-center justify-center rounded-xl 2xl:rounded-full  text-black hover:bg-orange-400"
+                  className="w-[60%] z-20 h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-orange-600 border-b-[3px] flex items-center justify-center rounded-xl 2xl:rounded-full text-black hover:bg-orange-400"
                   to={"/contact"}
                   state={{ service: service.title }}
                 >
@@ -162,7 +165,7 @@ const Services = () => {
                   to={`${location.pathname !== "/services" ? "/services" : ``}`}
                   state={{ service: service.title }}
                   onClick={() => {
-                    addToast("Site is in developent state !!");
+                    addToast("Site is in development state !!");
                     handleMore();
                   }}
                 >

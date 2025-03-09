@@ -68,23 +68,23 @@ const Contact = () => {
           alt=""
         />
       </div>
-      <div className="relative md:max-w-screen overflow-hidden max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-3 md:mt-25 mx-auto text-center mb-5">
+      <div className="relative overflow-hidden max-w-screen-lg md:max-w-screen-2xl w-full min-h-screen flex flex-col justify-center items-center mt-3 md:mt-1 mx-auto text-center mb-5">
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-white font-monteseret-regular max-w-screen-sm text-xl md:text-3xl items-center mx-auto"
+          className="text-white font-monteseret-regular max-w-screen-sm text-xl md:text-3xl 2xl:text-4xl items-center mx-auto mb-4"
         >
           <b className="text-orange-600">Get in touch</b> with us for our
           Digital Media Services.
         </motion.h1>
-        <div className="relative 2xl:scale-110 flex flex-col xl:flex-row justify-center md:justify-around max-w-screen-lg w-full mx-auto h-full rounded-2xl mt-2 items-center">
+        <div className="relative max-w-screen-xl 2xl:scale-110 flex flex-colxl:flex-row w-full  h-full rounded-2xl mt-2 items-center justify-center">
           <motion.form
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.2, delay: 0.4 }}
             onSubmit={handleSubmit}
-            className="flex flex-col p-8 m-2 h-full rounded-2xl max-w-[500px] w-full mx-auto"
+            className="flex flex-col p-8 m-2 h-full ml-auto rounded-2xl max-w-[600px] w-full"
             action=""
           >
             <input
