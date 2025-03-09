@@ -29,7 +29,7 @@ export default function ImageSlider({ count, moveLeft }) {
                 key={i}
                 className={`max-w-30 md:max-w-52 ${
                   loading
-                    ? `bg-slate-700 animate-pulse border-green-500 relative z-30`
+                    ? `bg-slate-700 animate-pulse border-green-500 z-30`
                     : "bg-transparent animate-none border-white static z-0"
                 } h-full md:min-h-52 bg-cover w-full shrink-0 overflow-hidden rounded-2xl border-2  object-center`}/> ) : (
               <div

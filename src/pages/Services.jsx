@@ -102,7 +102,7 @@ const Services = () => {
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`sm:h-[400px] xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-30 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'bg-slate-400 animate-pulse' : 'bg-transparent'}`}
+        className={`sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'bg-slate-400 animate-pulse' : 'bg-transparent'}`}
       >
         <motion.img
           initial={{ opacity: 0, x: 50 }}
