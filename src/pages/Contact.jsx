@@ -5,6 +5,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import useToaster from "../hooks/toaster";
+import contactPoster from '../assets/contact-us.png'
 
 const Contact = () => {
   const location = useLocation();
@@ -53,6 +54,16 @@ const Contact = () => {
 
   return (
     <div className="relative md:max-w-screen overflow-hidden max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-30 md:mt-25 mx-auto text-center mb-5">
+      <div className="min-h-[500px] max-w-screen-xl mx-auto object-cover">
+        <motion.img
+              initial={{ opacity: 0, y: -50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: 0.2 }}
+              className="h-[400px]"
+              src={contactPoster}
+              alt=""
+          />
+      </div>
       <motion.h1
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
