@@ -100,7 +100,7 @@ const Services = () => {
 
   return (
     <>
-       <div className="min-h-[400px] mt-10 max-w-screen-xl mx-auto object-cover">
+       <div className="min-h-[200px] md:min-h-[500px] mt-10 max-w-screen-xl mx-auto object-cover">
               <motion.img
                     initial={{ opacity: 0, y: -50 }}
                     whileInView={{ opacity: 1, y: 0 }}

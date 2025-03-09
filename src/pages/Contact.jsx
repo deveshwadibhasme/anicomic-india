@@ -54,12 +54,12 @@ const Contact = () => {
 
   return (
     <div className="relative md:max-w-screen overflow-hidden max-w-screen-sm w-full min-h-screen flex flex-col justify-center items-center mt-30 md:mt-25 mx-auto text-center mb-5">
-      <div className="min-h-[500px] max-w-screen-xl mx-auto object-cover">
+      <div className="min-h-[200px] md:min-h-[500px] max-w-screen-xl mx-auto object-cover">
         <motion.img
               initial={{ opacity: 0, y: -50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.2, delay: 0.2 }}
-              className="h-[400px]"
+              className="h-full"
               src={contactPoster}
               alt=""
           />
