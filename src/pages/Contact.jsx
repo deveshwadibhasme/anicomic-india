@@ -9,6 +9,11 @@ import contactPoster from "../assets/contact-us.png";
 
 const Contact = () => {
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
+
+  const handleLoad = () => {
+    setLoading(false);
+  };
 
   const [formDataValues, setFormDataValues] = useState({
     name: "",
@@ -56,19 +61,21 @@ const Contact = () => {
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className="min-h-[140px] md:min-h-[400px] mt-30 2xl:min-h-[500px] max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center"
+        className={`h-[200px] sm:h-[400px] xl:h-[700px] 2xl:min-h-[500px] mt-30 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center border-2 border-amber-50 ${
+          loading ? "bg-slate-400 animate-pulse" : "bg-transparent"
+        }`}
       >
         <motion.img
-        width={'1580px'}
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          onLoad={handleLoad}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className="h-full w-full"
+          className="h-full w-full object-cover"
           src={contactPoster}
           alt=""
         />
       </div>
-      <div className="relative overflow-hidden max-w-screen-lg md:max-w-screen-2xl w-full min-h-screen flex flex-col justify-center items-center mt-3 md:mt-1 mx-auto text-center mb-5">
+      <div className="relative overflow-hidden max-w-screen-lg md:max-w-screen-2xl w-full min-h-screen flex flex-col justify-center items-center mt-3 md:mt-5 mx-auto text-center mb-5">
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -78,7 +85,7 @@ const Contact = () => {
           <b className="text-orange-600">Get in touch</b> with us for our
           Digital Media Services.
         </motion.h1>
-        <div className="relative max-w-screen-xl 2xl:scale-110 flex flex-colxl:flex-row w-full  h-full rounded-2xl mt-2 items-center justify-center">
+        <div className="relative max-w-screen-xl 2xl:scale-110 flex flex-col xl:flex-row w-full  h-full rounded-2xl mt-2 items-center justify-center">
           <motion.form
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}

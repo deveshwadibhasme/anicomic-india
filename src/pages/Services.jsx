@@ -58,9 +58,9 @@ const services = [
 ];
 
 const Services = () => {
-  const [loading, setLoading] = useState(true);
   const { state } = useLocation();
   const [service, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
     setLoading(false);
@@ -97,17 +97,19 @@ const Services = () => {
     console.log(service);
   }
 
+
   return (
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className="min-h-[200px] md:min-h-[400px] 2xl:min-h-[500px] mt-30 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center"
+        className={`sm:h-[400px] xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-30 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'bg-slate-400 animate-pulse' : 'bg-transparent'}`}
       >
         <motion.img
-          initial={{ opacity: 0, y: -50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}  
           transition={{ duration: 0.2, delay: 0.2 }}
-          className="h-full w-full object-cover"
+          onLoad={handleLoad}
+          className="w-full h-full object-cover"
           src={servicePoster}
           alt=""
         />
@@ -128,7 +130,7 @@ const Services = () => {
             transition={{ duration: 0.5 }}
             id="div-to-hover"
             key={index}
-            className="relative p-6 z-20 bg-white text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[500px] justify-center mx-auto w-full overflow-y-hidden cursor-pointer group overflow-x-hidden"
+            className="relative p-6 z-20 bg-white text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[500px] justify-center mx-auto w-full overflow-y-hidden cursor-pointer group overflow-x-hidden "
           >
             <img
               onClick={(e) => handleHover(e)}
