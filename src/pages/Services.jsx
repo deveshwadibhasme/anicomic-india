@@ -119,8 +119,8 @@ const Services = () => {
         className="relative custom-border custom-border-2 w-[350px] md:w-[600px] mx-auto h-18 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
       >
         Our Services
-        <ToastContainer />
       </h1>
+        <ToastContainer />
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10">
         {services.map((service, index) => (
           <motion.div

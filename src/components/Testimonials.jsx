@@ -59,7 +59,7 @@ export default function Testimonials() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
         viewport={{ once: true }}
-        className="relative custom-border custom-border-2 w-[300px] md:w-[900px] mx-auto h-20 text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular mb-4"
+        className="relative custom-border custom-border-2 w-[350px] md:w-[900px] mx-auto h-20 text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular mb-4"
       >
         Our Valuable Client
       </motion.h1>
