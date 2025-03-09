@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { images } from "../components/SliderImages";
 import { getServices } from "../utils/Services.js";
 import useToaster from "../hooks/toaster.jsx";
-import servicePoster from '../assets/our-service.png'
+import servicePoster from "../assets/our-service.png";
 
 const services = [
   {
@@ -92,30 +92,31 @@ const Services = () => {
     }, 4000);
   };
 
-  function handleMore(){
+  function handleMore() {
     setServices(getServices(state?.service));
     console.log(service);
-
   }
 
   return (
     <>
-       <div className="min-h-[200px] md:min-h-[500px] mt-10 max-w-screen-xl mx-auto object-cover">
-              <motion.img
-                    initial={{ opacity: 0, y: -50 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: 0.2 }}
-                    className="h-full"
-                    src={servicePoster}
-                    alt=""
-                />
-            </div>
-      {/* <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-7xl text-center text-orange-600 mt-30 md:mt-20 font-Caprasimo-regular">
+      <div
+        style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
+        className=  "min-h-[200px] md:min-h-[400px] 2xl:min-h-[500px] mt-25 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center"
+      >
+        <motion.img
+          initial={{ opacity: 0, y: -50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
+          className="h-full w-full object-cover"
+          src={servicePoster}
+          alt=""
+        />
+      </div>
+      <h1 className="text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 mt-20 md:mt-10 font-Caprasimo-regular">
         Our Services
-      </h1> */}
       <ToastContainer />
+      </h1>
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10 ">
-        
         {services.map((service, index) => (
           <motion.div
             initial={{ opacity: 0.4, x: 50 }}
@@ -150,19 +151,19 @@ const Services = () => {
               </p>
               <div className="flex z-30 flex-col gap-2 2xl:gap-8 w-full items-center justify-center">
                 <Link
-                  className="w-[60%] z-20 h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-black border-b-[3px] flex items-center justify-center rounded-xl 2xl:rounded-full  text-black hover:bg-orange-400"
+                  className="w-[60%] z-20 h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-orange-600 border-b-[3px] flex items-center justify-center rounded-xl 2xl:rounded-full  text-black hover:bg-orange-400"
                   to={"/contact"}
                   state={{ service: service.title }}
                 >
                   Go with Service
                 </Link>
                 <Link
-                  className="w-[40%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-b-[4px] border-black flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-green-500 text-black"
+                  className="w-[40%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-b-[4px] border-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-green-500 text-black"
                   to={`${location.pathname !== "/services" ? "/services" : ``}`}
                   state={{ service: service.title }}
                   onClick={() => {
-                    addToast("Site is in developent state !!") 
-                    handleMore()
+                    addToast("Site is in developent state !!");
+                    handleMore();
                   }}
                 >
                   Learn More
