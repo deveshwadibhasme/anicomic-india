@@ -102,7 +102,7 @@ const Services = () => {
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'bg-slate-400 animate-pulse' : 'bg-transparent'}`}
+        className={`sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'bg-slate-400 animate-pulse' : 'bg-transparent'}`}
       >
         <motion.img
           initial={{ opacity: 0, x: 50 }}
@@ -116,7 +116,7 @@ const Services = () => {
       </div>
       <h1
         style={{ display: `${location.pathname !== "/" ? "none" : "block"}` }}
-        className="text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
+        className="relative custom-border custom-border-2 w-[350px] md:w-[600px] mx-auto h-18 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
       >
         Our Services
         <ToastContainer />
@@ -149,7 +149,7 @@ const Services = () => {
               {service.title}
             </h3>
             <div
-              className="bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full"
+              className="bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full border-t-4 border-orange-400"
             >
               <p className="text-slate-800 w-[80%] text-[10px] lg:text-[18px] 2xl:text-3xl">
                 {service.description}

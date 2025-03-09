@@ -4,15 +4,15 @@ import { useInView } from "react-intersection-observer";
 const Counter = () => {
   const data = [
     {
-      digit: 7,
+      digit: 3,
       text: "Years of Experience",
     },
     {
-      digit: 50,
+      digit: 150,
       text: "Clients Served",
     },
     {
-      digit: 150,
+      digit: 20,
       text: "Creative Brains",
     },
   ];

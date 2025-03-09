@@ -7,7 +7,6 @@
     --loading-image:url('./public/ani-comic.svg')
   }
 
-
   .blur {
     backdrop-filter: blur(10px);
   }
@@ -27,11 +26,22 @@
     /* background-size: cover; */
   }
 
+
+
   @media (max-width: 800px) {
     .bg-image::after {
       background-size: 50%;
     }
   }
+
+  .custom-border::after{
+    content: '';
+    @apply absolute h-[30px] w-[30px] transition-all duration-[0.8s] left-2 -top-2 bg-orange-600 [clip-path:polygon(0%_0%,_0%_100%,_25%_100%,_25%_25%,_100%_25%,_100%_100%,_25%_100%,_25%_100%,_100%_100%,_100%_0%)]; 
+  }
+  .custom-border-2::before{
+    content: '';
+    @apply absolute h-[30px] w-[30px] transition-all duration-[0.8s] right-2 bottom-2 bg-orange-600 [clip-path:polygon(0_0,_0%_100%,_0_99%,_0_0,_76%_0,_76%_76%,_0_78%,_0_100%,_100%_100%,_100%_0%)]
+  } 
 
   .top-shadow {
     z-index: 10;
