@@ -1,28 +1,39 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAnglesLeft ,faAnglesRight, faUser} from "@fortawesome/free-solid-svg-icons";
+import {
+  faAnglesLeft,
+  faAnglesRight,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
 
 const testimonials = [
   {
     quote:
-      "This program transformed my approach to leadership. I'm now more confident and effective in my role.",
-    author: "Sarah Johnson",
-    title: "Marketing Director",
+      "Great experience working with Anicomic! The team is young, energetic, and full of creative ideas. They really helped us improve our Instagram and Facebook ads. Would definitely recommend.",
+    author: "Neha Malhotra",
+    title: "Manager",
     image: faUser,
   },
   {
     quote:
-      "The skills I learned here have been invaluable in building and managing high-performing teams.",
-    author: "Michael Chen",
-    title: "Tech Lead",
+      "Tried a big agency before but felt like just another client. These guys actually care! They took time to understand my business and gave personalized strategies. Already seeing better engagement!.",
+    author: "Rohan Iyer",
+    title: "Lead",
     image: faUser,
   },
   {
     quote:
-      "A game-changer for my career. The program provided practical tools I use every day.",
-    author: "Emily Rodriguez",
+      "Super responsive team! I had a lot of questions since I’m new to digital marketing, but they explained everything clearly. My small business is finally getting noticed online!",
+    author: "Pooja Sharma",
     title: "HR Manager",
+    image: faUser,
+  },
+  {
+    quote:
+      "Really impressed with the fresh ideas from Anicomic. They helped us with social media and SEO, and we’ve already started seeing more inquiries. Excited to see what’s next!",
+    author: "Karan Desai",
+    title: "Client",
     image: faUser,
   },
 ];
@@ -30,22 +41,20 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [value, setValue] = useState(-50);
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentIndex(
-        (prevIndex) => (prevIndex + 1) % testimonials.length
-      );
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
     }, 4000);
-  
+
     return () => clearInterval(interval); // Cleanup function to prevent multiple intervals
   }, [currentIndex]); // Depend on `currentIndex` to reset properly
-  
+
   const nextTestimonial = () => {
     setValue(50);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
   };
-  
+
   const prevTestimonial = () => {
     setValue(-50);
     setCurrentIndex(
@@ -59,7 +68,7 @@ export default function Testimonials() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
         viewport={{ once: true }}
-        className="relative custom-border custom-border-2 w-[350px] md:w-[900px] mx-auto h-20 text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular mb-4"
+        className="relative custom-border custom-border-2 w-[350px] md:w-[800px] lg:w-[900px] mx-auto md:h-38 lg:h-25 text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular mb-4"
       >
         Our Valuable Client
       </motion.h1>
@@ -67,22 +76,24 @@ export default function Testimonials() {
         <AnimatePresence mode="wait">
           <motion.div
             key={currentIndex}
-            initial={{ opacity: 0, x: - value }}
+            initial={{ opacity: 0, x: -value }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x : value  }}
+            exit={{ opacity: 0, x: value }}
             transition={{ duration: 0.5 }}
-            className="bg-white min-h-96 justify-center p-8 rounded-lg shadow-lg border-2 flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
+            className="bg-slate-950 text-white   min-h-96 justify-center p-8 rounded-lg shadow-lg border-2 flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
           >
             <p className="text-xl mb-4 text-gray-600 italic min-h-25">
               "{testimonials[currentIndex].quote}"
             </p>
             <div className="flex items-center gap-3">
-              <span className="border-2 rounded-full p-2">{<FontAwesomeIcon icon ={testimonials[currentIndex].image}/>}</span>
+              <span className="border-2 rounded-full p-3">
+                {<FontAwesomeIcon icon={testimonials[currentIndex].image} />}
+              </span>
               <div className="flex flex-col items-start">
-                <p className="font-semibold text-gray-800">
+                <p className="font-semibold text-inherit">
                   {testimonials[currentIndex].author}
                 </p>
-                <p className="text-gray-900">
+                <p className="text-inherit">
                   {testimonials[currentIndex].title}
                 </p>
               </div>
@@ -91,22 +102,22 @@ export default function Testimonials() {
         </AnimatePresence>
         <button
           onClick={prevTestimonial}
-          className="absolute cursor-pointer md:-left-2 left-8 top-1/2 transform -translate-y-1/2 -translate-x-full bg-orange-500 p-2 rounded-full shadow-md focus:outline-none"
+          className="absolute cursor-pointer md:-left-2 left-8 top-1/2 transform -translate-y-1/2 -translate-x-full bg-orange-700 p-2 rounded-full shadow-md focus:outline-none"
           aria-label="Previous testimonial"
         >
           <FontAwesomeIcon
             icon={faAnglesLeft}
-            className="w-6 h-6 text-7xl text-black"
+            className="w-6 h-6 text-7xl text-white"
           />
         </button>
         <button
           onClick={nextTestimonial}
-          className="absolute cursor-pointer md:-right-2 right-8 top-1/2 transform -translate-y-1/2 translate-x-full bg-orange-500 p-2 rounded-full shadow-md focus:outline-none"
+          className="absolute cursor-pointer md:-right-2 right-8 top-1/2 transform -translate-y-1/2 translate-x-full bg-orange-700 p-2 rounded-full shadow-md focus:outline-none"
           aria-label="Next testimonial"
         >
           <FontAwesomeIcon
             icon={faAnglesRight}
-            className="w-6 h-6 text-black text-7xl"
+            className="w-6 h-6 text-white text-7xl"
           />
         </button>
       </div>

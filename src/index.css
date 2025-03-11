@@ -97,6 +97,11 @@
   .animate-move-l {
     animation: moveRight 70s linear infinite;
   }
+
+  .loader::after{
+    content: '';
+    @apply bg-black absolute top-0 left-0 w-full h-full z-[100] [background-image:url('/loader.webp')] bg-fixed bg-no-repeat bg-[length:300px_300px] ;
+  }
 }
 
 @theme {

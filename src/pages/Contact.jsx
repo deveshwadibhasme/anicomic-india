@@ -12,8 +12,10 @@ const Contact = () => {
   const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
-    setLoading(false);
-  };
+    setTimeout(()=>{
+      setLoading(false);
+    },2000)  
+  };  
 
   const [formDataValues, setFormDataValues] = useState({
     name: "",
@@ -61,8 +63,8 @@ const Contact = () => {
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`h-[200px] sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen object-cover flex justify-between items-center border-2 border-amber-50 ${
-          loading ? "bg-slate-400 animate-pulse" : "bg-transparent"
+        className={`h-[200px] relative sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen bg-[position:50%_50%] object-cover flex justify-between items-center border-2 border-amber-50  ${
+          loading ? "loader after:bg-[position:50%_50%]" : "bg-transparent"
         }`}
       >
         <motion.img
@@ -80,7 +82,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-white relative custom-border custom-border-2 w-[340px] md:max-w-[600px] md:w-full h-20 mt-3 font-monteseret-regular max-w-screen-sm text-xl md:text-3xl 2xl:text-4xl items-center mx-auto mb-4"
+          className="text-white relative custom-border custom-border-2 w-[340px] md:max-w-[620px] lg:max-w-[600px] md:w-full md:h-25 lg:h-22 mt-3 font-monteseret-regular max-w-screen-sm text-xl md:text-3xl 2xl:text-4xl items-center mx-auto mb-4"
         >
           <b className="text-orange-600">Get in touch</b> with us for our
           Digital Media Services.

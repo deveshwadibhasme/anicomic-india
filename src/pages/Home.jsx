@@ -1,5 +1,5 @@
 // import Loading from "../components/Loading";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import ImageSlider from "../components/ImageSlider";
 import Homepage from "../components/Homepage";
 import Services from "./Services";
@@ -9,34 +9,29 @@ import Counter from "../components/Counter";
 
 const Home = () => {
 
+  const [loading, setLoading] = useState(true);
 
-  // const [loading, setLoading] = useState(true);
-
-  // useEffect(() => {
-  //   // Wait for all images & content to fully load
-  //   const handleLoad = () => setLoading(false);
-
-  //   if (document.readyState === "complete") {
-  //     // If already loaded, remove loader
-  //     setLoading(false);
-  //   } else {
-  //     window.addEventListener("load", handleLoad);
-  //   }
-
-  //   return () => window.removeEventListener("load", handleLoad);
-  // }, []);
+  setTimeout(() => {
+    setLoading(false);
+  },3000)
 
   return (
-    <div className="max-w-screen w-full mx-auto mt-30 xl:mt-18 flex flex-col">
-        <>
-          <ImageSlider count={1} moveLeft={true} />
-          <Homepage />
-          <ImageSlider count={20} moveLeft={false} />
-          <Testimonials/> 
-          <Counter />
-          <Services />
-          <Contact/>
-        </>
+    <div
+      className={`max-w-screen w-full min-h-screen mx-auto mt-30 xl:mt-18 relative flex flex-col ${
+        loading
+          ? `loader after:bg-[position:50%_50%]`
+          : "border-white"
+      }`}
+    >
+      <>
+        <ImageSlider count={1} moveLeft={true} />
+        <Homepage />
+        <ImageSlider count={20} moveLeft={false} />
+        <Counter />
+        <Testimonials />
+        <Services />
+        <Contact />
+      </>
     </div>
   );
 };

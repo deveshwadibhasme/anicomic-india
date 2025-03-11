@@ -105,13 +105,24 @@ const Career = () => {
       >
         Careers
       </motion.h1>
-      <h1 className="relative custom-border custom-border-2 mt-5 w-[350px] md:w-[800px] h-23 md:h-22 text-lg md:text-3xl font-Caprasimo-regular text-white text-center">
+      <motion.h1
+        initial={{ opacity: 0.4, y: -100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="relative custom-border custom-border-2 w-[350px] md:w-[800px] h-23 md:h-22 text-lg md:text-3xl font-Caprasimo-regular text-white text-center mt-15"
+      >
         Want to make a carrer with us !!
         <br />
         <span className="text-orange-400"> Join Our Team</span>– Unlock Your
         Potential with Us
-      </h1>
-      <p className="text-lg md:text-xl text-white text-center max-w-screen-lg m-4">
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0.4, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ amount: 0.2, once:true }}
+        className="text-lg md:text-xl text-white text-center max-w-screen-lg m-4"
+      >
         At Anicomic, We believe that the heart of our success lies in the talent
         and passion of our people. We are committed to fostering a diverse,
         friendly and inclusive environment where every team member can thrive,
@@ -119,10 +130,15 @@ const Career = () => {
         you're an experienced professional, we offer a range of opportunities to
         help you reach your full potential. Explore our open positions and take
         the next step in your journey with us!
-      </p>
+      </motion.p>
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] max-w-screen gap-x-20 items-center gap-y-5 mx-auto">
         {roles.map((item, index) => (
-          <div className="w-lg h-70 border-[1px] border-slate-200 p-4 rounded-3xl">
+          <motion.div
+            initial={{ opacity: 0.4, x: -100 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-lg min-h-70 border-[1px] border-slate-200 p-4 rounded-3xl mx-3 md:mx-0"
+          >
             <div className="flex justify-between">
               <div>
                 <FontAwesomeIcon
@@ -131,12 +147,16 @@ const Career = () => {
                 />
                 <h3 className="text-2xl my-5">{item.text}</h3>
               </div>
-              <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSc3Kq9k_PQzLcRvc28jmIpZ9M8yZ2M5zwN7y1TXkJZlEDBeSQ/viewform" className="text-orange-500 p-2 border-b-2 h-full cursor-pointer hover:border-b-white hover:text-white">
+              <a
+                target="_blank"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSc3Kq9k_PQzLcRvc28jmIpZ9M8yZ2M5zwN7y1TXkJZlEDBeSQ/viewform"
+                className="text-orange-500 p-2 border-b-2 h-full cursor-pointer hover:border-b-white hover:text-white"
+              >
                 Apply Now
               </a>
             </div>
             <p>{item.description}</p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </div>

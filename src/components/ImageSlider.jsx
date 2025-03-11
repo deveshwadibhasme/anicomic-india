@@ -22,25 +22,21 @@ export default function ImageSlider({ count, moveLeft }) {
       ${moveLeft ? "animate-move-l" : "animate-move-r"} 
         `}
       >
-        {duplicateImages.map((_, i) => {
+        {duplicateImages.map((item, i) => {
           {
             return images.length === count + 20 ? (
               <div
                 key={i}
-                className={`max-w-30 md:max-w-52 h-full md:min-h-52 bg-cover w-full shrink-0 overflow-hidden rounded-2xl border-2  object-center`}/> ) : (
+                className={`loader relative max-w-30 min-h-52`}/> ) : (
               <div
                 key={i}
-                className={`max-w-30 md:max-w-52 ${
-                  loading
-                    ? `bg-slate-700  border-green-500 relative`
-                    : "bg-transparent  border-white static"
-                } h-full md:min-h-52 z-[10] bg-cover w-full shrink-0 overflow-hidden rounded-2xl border-2 object-center`}
+                className={`max-w-30 md:max-w-52 relative border-white h-full md:min-h-52 z-10 bg-cover w-full shrink-0 overflow-hidden rounded-2xl border-2 object-center`}
               >
                 <img
-                  src={duplicateImages[i]}
+                  src={item}
                   loading="lazy"
-                  className="z-[5]"
                   onLoad={handleLoad}
+                  className={`relative w-full h-full `}
                   alt=""
                 />
               </div>
@@ -51,3 +47,4 @@ export default function ImageSlider({ count, moveLeft }) {
     </>
   );
 }
+  

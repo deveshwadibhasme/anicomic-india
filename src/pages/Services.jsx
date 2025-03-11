@@ -63,7 +63,9 @@ const Services = () => {
   const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
-    setLoading(false);
+    setTimeout(()=>{
+      setLoading(false);
+    },2000)  
   };
 
   const { addToast, ToastContainer } = useToaster();
@@ -94,7 +96,6 @@ const Services = () => {
 
   function handleMore() {
     setServices(getServices(state?.service));
-    console.log(service);
   }
 
 
@@ -102,7 +103,7 @@ const Services = () => {
     <>
       <div
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'bg-slate-400 animate-pulse' : 'bg-transparent'}`}
+        className={`sm:h-[400px] relative 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'loader  after:bg-[position:50%_50%]' : 'bg-transparent'}`}
       >
         <motion.img
           initial={{ opacity: 0, x: 50 }}
@@ -116,7 +117,7 @@ const Services = () => {
       </div>
       <h1
         style={{ display: `${location.pathname !== "/" ? "none" : "block"}` }}
-        className="relative custom-border custom-border-2 w-[350px] md:w-[600px] mx-auto h-18 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
+        className="relative custom-border custom-border-2 w-[350px] md:w-[680px] mx-auto h-22 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
       >
         Our Services
       </h1>
