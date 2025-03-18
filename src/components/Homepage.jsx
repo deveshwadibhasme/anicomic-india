@@ -6,13 +6,13 @@ import { faBolt, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 const Homepage = () => {
   return (
     <motion.div
-      initial={{ y: 20 }}
-      animate={{ y: 0 }}
-      className="flex max-w-screen-xl 2xl:max-w-screen-2xl w-full min-h-[200px] border-white gap-2 px-1 items-center justify-center mx-auto z-30 relative mb-5"
+      initial={{ y: 40 }}
+      whileInView={{ y: 0 }}
+      className="flex max-w-screen-xl 2xl:max-w-screen-2xl w-full min-h-[400px] border-white gap-2 px-1 items-center justify-center mx-auto z-30 relative mb-5"
     >
       <div className="relative -z-10 max-w-screen w-full min-h-[200px] md:min-h-[440px] mx-auto flex pt-3 items-center justify-center flex-col bg-image overflow-y-hidden">
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-3xl 2xl:text-6xl md:text-5xl font-extrabold text-sky-50 text-center max-w-5xl mx-auto font-monteseret-regular "
@@ -27,7 +27,7 @@ const Homepage = () => {
           </span>
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
           className="mt-4 text-gray-300 max-w-screen-sm text-center text-[12px] md:text-lg"

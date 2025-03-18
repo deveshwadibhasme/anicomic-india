@@ -15,6 +15,8 @@ import {
   faCode,
   faTerminal,
 } from "@fortawesome/free-solid-svg-icons";
+import { useState , useRef, useEffect } from "react";
+import CareerForm from "../components/CareerForm";
 
 const Career = () => {
   const roles = [
@@ -92,8 +94,23 @@ const Career = () => {
     },
   ];
 
+  const [form,setForm] = useState({open:false,text:''})
+
+  const handleClick = (text) =>{
+    setForm({open:true,text:text})
+  }
+
+  const formDiv = useRef(null)
+
+  useEffect(()=>{
+    if (form?.text) {
+      const topDistance = formDiv.current.getBoundingClientRect().top + window.scrollY; 
+      window.scrollTo({ top: topDistance , behavior: 'smooth' });
+    }
+  },[form?.text])
+
   return (
-    <div className="mt-20 flex flex-col items-center r min-h-[500px] text-amber-50 bg-black mb-8">
+    <div className="mt-20 flex flex-col items-center min-h-[500px] text-amber-50 bg-black mb-8">
       {/* <div className='bg-white w-80 md:w-xl h-64 md:h-96 animate-pulse'>
       <img src={Contruction} className='mix-blend-difference h-full w-full' alt="under-construction" />
       </div> */}
@@ -101,7 +118,7 @@ const Career = () => {
         initial={{ opacity: 0.4, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className=" text-4xl md:text-7xl text-center text-white py-40 md:p-40 w-full mt-6 md:mt-0 uppercase bg-gradient-to-r from-red-500 to-orange-600 border-2 border-white"
+        className="text-4xl md:text-7xl text-center text-white py-40 md:p-40 w-full mt-6 md:mt-0 uppercase bg-gradient-to-r from-red-500 to-orange-600 border-2 border-white"
       >
         Careers
       </motion.h1>
@@ -131,9 +148,13 @@ const Career = () => {
         help you reach your full potential. Explore our open positions and take
         the next step in your journey with us!
       </motion.p>
+      {
+        form.open ? <CareerForm formDiv={formDiv} position={form.text}/> : null
+      }
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] max-w-screen gap-x-20 items-center gap-y-5 mx-auto">
         {roles.map((item, index) => (
           <motion.div
+            key={index}
             initial={{ opacity: 0.4, x: -100 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -149,7 +170,8 @@ const Career = () => {
               </div>
               <a
                 target="_blank"
-                href="https://docs.google.com/forms/d/e/1FAIpQLSc3Kq9k_PQzLcRvc28jmIpZ9M8yZ2M5zwN7y1TXkJZlEDBeSQ/viewform"
+                onClick={()=>handleClick(item.text)}
+                // href="https://docs.google.com/forms/d/e/1FAIpQLSc3Kq9k_PQzLcRvc28jmIpZ9M8yZ2M5zwN7y1TXkJZlEDBeSQ/viewform"
                 className="text-orange-500 p-2 border-b-2 h-full cursor-pointer hover:border-b-white hover:text-white"
               >
                 Apply Now

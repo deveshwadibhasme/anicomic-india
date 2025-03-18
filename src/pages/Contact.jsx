@@ -6,16 +6,15 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import useToaster from "../hooks/toaster";
 import contactPoster from "../assets/contact-us.png";
+import Loading from "../components/Loading";
 
 const Contact = () => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
-    setTimeout(()=>{
-      setLoading(false);
-    },2000)  
-  };  
+    setLoading(false);
+  };
 
   const [formDataValues, setFormDataValues] = useState({
     name: "",
@@ -46,7 +45,7 @@ const Contact = () => {
 
     try {
       await axios.post(
-        `https://anicomic-india-production.up.railway.app/send-email`,
+        `https://anicomic-india-production.up.railway.app/send-email`, 
         formDataValues
       );
       addToast("Thanks For Contacting !");
@@ -61,22 +60,20 @@ const Contact = () => {
 
   return (
     <>
-      <div
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.2, delay: 0.2 }}
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`h-[200px] relative sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen bg-[position:50%_50%] object-cover flex justify-between items-center border-2 border-amber-50  ${
-          loading ? "loader after:bg-[position:50%_50%]" : "bg-transparent"
-        }`}
+        className={`h-[200px] relative sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen bg-[position:50%_50%] object-cover flex justify-between items-center border-2 border-amber-50`}
       >
-        <motion.img
-          onLoad={handleLoad}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.2, delay: 0.2 }}
-          className="h-full w-full object-cover"
-          src={contactPoster}
-          alt=""
-        />
-      </div>
+          <img
+            onLoad={handleLoad}
+            className="w-full h-full object-cover"
+            src={contactPoster}
+            alt=""
+          />
+      </motion.div>
       <div className="relative overflow-hidden max-w-screen-lg md:max-w-screen-2xl w-full min-h-screen flex flex-col justify-center items-center mt-3 md:mt-5 mx-auto text-center mb-5">
         <motion.h1
           initial={{ opacity: 0, y: 80 }}
@@ -182,7 +179,7 @@ const Contact = () => {
               className="text-4xl md:text-7xl text-orange-600"
             />
             <p className="text-center mt-2 text-lg md:text-2xl">86056 88071</p>
-            <div className="mt-20 font-bold">Nagpur | Mumbai | Chindwaara</div>
+            <div className="mt-20 font-bold">Nagpur | Chindwaara | Mumbai</div>
             <h1>Email : info@anicomic.in</h1>
           </motion.div>
         </div>

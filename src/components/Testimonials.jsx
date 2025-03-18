@@ -45,7 +45,7 @@ export default function Testimonials() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 4000);
+    }, 7000);
 
     return () => clearInterval(interval); // Cleanup function to prevent multiple intervals
   }, [currentIndex]); // Depend on `currentIndex` to reset properly
@@ -80,9 +80,9 @@ export default function Testimonials() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: value }}
             transition={{ duration: 0.5 }}
-            className="bg-slate-950 text-white   min-h-96 justify-center p-8 rounded-lg shadow-lg border-2 flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
+            className="bg-slate-950 text-white min-h-96 justify-center p-8 rounded-lg shadow-lg flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
           >
-            <p className="text-xl mb-4 text-gray-600 italic min-h-25">
+            <p className="text-xl mb-4 text-white italic min-h-25">
               "{testimonials[currentIndex].quote}"
             </p>
             <div className="flex items-center gap-3">
@@ -102,7 +102,7 @@ export default function Testimonials() {
         </AnimatePresence>
         <button
           onClick={prevTestimonial}
-          className="absolute cursor-pointer md:-left-2 left-8 top-1/2 transform -translate-y-1/2 -translate-x-full bg-orange-700 p-2 rounded-full shadow-md focus:outline-none"
+          className="absolute cursor-pointer md:-left-2 left-8 top-1/2 transform -translate-y-1/2 -translate-x-full border-white border p-2 rounded-full shadow-md focus:outline-none"
           aria-label="Previous testimonial"
         >
           <FontAwesomeIcon
@@ -112,7 +112,7 @@ export default function Testimonials() {
         </button>
         <button
           onClick={nextTestimonial}
-          className="absolute cursor-pointer md:-right-2 right-8 top-1/2 transform -translate-y-1/2 translate-x-full bg-orange-700 p-2 rounded-full shadow-md focus:outline-none"
+          className="absolute cursor-pointer md:-right-2 right-8 top-1/2 transform -translate-y-1/2 translate-x-full border-white border p-2 rounded-full shadow-md focus:outline-none"
           aria-label="Next testimonial"
         >
           <FontAwesomeIcon

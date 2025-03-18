@@ -9,19 +9,10 @@ import Counter from "../components/Counter";
 
 const Home = () => {
 
-  const [loading, setLoading] = useState(true);
-
-  setTimeout(() => {
-    setLoading(false);
-  },3000)
 
   return (
     <div
-      className={`max-w-screen w-full min-h-screen mx-auto mt-30 xl:mt-18 relative flex flex-col ${
-        loading
-          ? `loader after:bg-[position:50%_50%]`
-          : "border-white"
-      }`}
+      className={`max-w-screen w-full min-h-screen mx-auto mt-30 xl:mt-18 relative flex flex-col `}
     >
       <>
         <ImageSlider count={1} moveLeft={true} />

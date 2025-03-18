@@ -5,6 +5,7 @@ import { images } from "../components/SliderImages";
 import { getServices } from "../utils/Services.js";
 import useToaster from "../hooks/toaster.jsx";
 import servicePoster from "../assets/our-service.png";
+import Loading from "../components/Loading.jsx";
 
 const services = [
   {
@@ -63,9 +64,7 @@ const Services = () => {
   const [loading, setLoading] = useState(true);
 
   const handleLoad = () => {
-    setTimeout(()=>{
-      setLoading(false);
-    },2000)  
+    setLoading(false);
   };
 
   const { addToast, ToastContainer } = useToaster();
@@ -98,30 +97,34 @@ const Services = () => {
     setServices(getServices(state?.service));
   }
 
-
   return (
     <>
-      <div
+      <motion.div
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.2, delay: 0.2 }}
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`sm:h-[400px] relative 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50 ${loading ? 'loader  after:bg-[position:50%_50%]' : 'bg-transparent'}`}
+        className={`sm:h-[400px] relative 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50
+          `}
       >
-        <motion.img
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}  
-          transition={{ duration: 0.2, delay: 0.2 }}
-          onLoad={handleLoad}
-          className="w-full h-full object-cover"
-          src={servicePoster}
-          alt=""
-        />
-      </div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <img
+            onLoad={handleLoad}
+            className="w-full h-full object-cover"
+            src={servicePoster}
+            alt=""
+          />
+        )}
+      </motion.div>
       <h1
         style={{ display: `${location.pathname !== "/" ? "none" : "block"}` }}
-        className="relative custom-border custom-border-2 w-[350px] md:w-[680px] mx-auto h-22 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
+        className="relative custom-border custom-border-2 w-[350px] md:w-[680px] mx-auto h-15 md:h-22 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
       >
         Our Services
       </h1>
-        <ToastContainer />
+      <ToastContainer />
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10">
         {services.map((service, index) => (
           <motion.div
@@ -138,20 +141,14 @@ const Services = () => {
               onLoad={handleLoad}
               className={`mix-blend-multiply group 
               xl:h-64 xl:w-64 md:h-23 md:w-23 2xl:w-90 2xl:h-80
-              h-18 w-18 mb-4 xl:mb-1 object-cover ${
-                loading
-                  ? `bg-slate-200/50 animate-pulse border-red-500`
-                  : "bg-transparent animate-none border-white"
-              } `}
+              h-18 w-18 mb-4 xl:mb-1 object-cover`}
               src={service.icon}
               alt=""
             />
             <h3 className="text-sm md:text-sm xl:text-2xl 2xl:text-4xl font-semibold">
               {service.title}
             </h3>
-            <div
-              className="bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full border-t-4 border-orange-400"
-            >
+            <div className="bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full border-t-4 border-orange-400">
               <p className="text-slate-800 w-[80%] text-[10px] lg:text-[18px] 2xl:text-3xl">
                 {service.description}
               </p>

@@ -29,8 +29,8 @@ const NavBar = () => {
         <motion.span
           key={i}
           initial={{ scale: 0.2 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, delay: `0.${i}` }}
+          whileInView={{ scale: 1 }}
+          transition={{ duration: 0.3, delay: `0.${i+2}` }}
           whileHover={{ scale: 1.04, transition: 0.1, delay: 0 }}
           className="bg-black"
         >
