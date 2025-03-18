@@ -4,6 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const sendMail = require("./mailer");
 const mongoose = require("mongoose");
+const upload = require('./config/multerconfig');
 
 dotenv.config();
 const app = express();
@@ -27,18 +28,21 @@ const ApplicantsSchema = new mongoose.Schema({
   address: String,
   position: String,
   message: String,
-  cv: {},
+  resume: String,
+  resumeFilePath: String,
   date: { type: Date, default: Date.now }
 });
 const Applicants = mongoose.models.Applicants || mongoose.model("Applicants", ApplicantsSchema);
 
 module.exports = Applicants;
 
-app.post('/add-applicants', async (req, res) => {
+app.post('/add-applicants', upload.single("resume"), async (req, res) => {
   try {
-    const { firstName, lastName, phone, email, country, city, address, position, message, cv } = req.body;
-    const newApplicants = new Applicants({firstName, lastName, phone, email, country, city, address, position, message, cv });
-    console.log(req.body);
+    const { firstName, lastName, phone, email, country, city, address, position, message } = req.body;
+    const { filename , originalname } = req.file
+
+    const newApplicants = new Applicants({ firstName, lastName, phone, email, country, city, address, position, message, resume: originalname, resumeFilePath:`ResumeFolder/${filename}`});
+    // console.log(resume);
     await newApplicants.save();
 
     return res.status(201).json({ success: true, message: "Applicants recorded!", data: newApplicants });
