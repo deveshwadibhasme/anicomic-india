@@ -6,15 +6,13 @@ import { faBolt, faGraduationCap } from "@fortawesome/free-solid-svg-icons";
 const Homepage = () => {
   return (
     <motion.div
-      initial={{ y: 40 }}
-      whileInView={{ y: 0 }}
       className="flex max-w-screen-xl 2xl:max-w-screen-2xl w-full min-h-[400px] border-white gap-2 px-1 items-center justify-center mx-auto z-30 relative mb-5"
     >
       <div className="relative -z-10 max-w-screen w-full min-h-[200px] md:min-h-[440px] mx-auto flex pt-3 items-center justify-center flex-col bg-image overflow-y-hidden">
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.9, delay: 0.5 }}
           className="text-3xl 2xl:text-6xl md:text-5xl font-extrabold text-sky-50 text-center max-w-5xl mx-auto font-monteseret-regular "
         >
           <span className="text-white block text-3xl md:text-xl text-center font-monteseret-regular mb-2 md:mb-4 uppercase">
@@ -29,7 +27,7 @@ const Homepage = () => {
         <motion.p
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 1 }}
+          transition={{ duration: 0.9, delay: 0.5 }}
           className="mt-4 text-gray-300 max-w-screen-sm text-center text-[12px] md:text-lg"
         >
           Anicomic is a creative marketing agency offering digital marketing,
@@ -41,7 +39,7 @@ const Homepage = () => {
           <motion.span
             initial={{ scale: 0.2 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.2, delay: `0.2` }}
+            transition={{ duration: 0.2, delay:0.3 }}
             whileHover={{ scale: 1.04, transition: 0.1, delay: 0 }}
           >
             <Link
@@ -55,7 +53,7 @@ const Homepage = () => {
           <motion.span
             initial={{ scale: 0.2 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 0.2, delay: `0.2` }}
+            transition={{ duration: 0.2, delay: 0.3 }}
             whileHover={{ scale: 1.04, transition: 0.1, delay: 0 }}
           >
             <Link

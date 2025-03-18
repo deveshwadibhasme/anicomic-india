@@ -28,7 +28,7 @@ export default function ImageSlider({ count, moveLeft }) {
             return( 
               <div
                 key={i}
-                className={`max-w-30 md:max-w-52 relative border-white h-full md:min-h-52 z-10 bg-cover w-full flex items-center justify-center shrink-0 overflow-hidden rounded-2xl border-2 object-center`}
+                className={`max-w-30 md:max-w-52 relative border-white min-h-30 h-full md:min-h-52 z-10 bg-cover w-full flex items-center justify-center shrink-0 overflow-hidden rounded-2xl border-2 object-center`}
               >
                 {
                   loading ? <Loading/> : null

@@ -22,9 +22,9 @@ const Header = () => {
         className="max-w-screen w-full mx-auto md:pt-3 px-4 flex bg-black justify-between md:justify-around min-h-10 items-center"
       >
         <motion.div
-          initial={{ x: -80 }}
-          whileInView={{ x: 0 }}
-          transition={{delay: 0.8}}
+          initial={{ x: -40 }}
+          animate={{ x: 0 }}
+          transition={{duration:0.8,delay: 0.5}}
           className="w-52 md:w-88 shrink-0 text-lg md:text-2xl 2xl:text-3xl pt-3 md:pt-1 h-10 font-monteseret-regular"
         >
           <span className="text-amber-600 font-bold">ANICOMIC</span>{" "}
@@ -32,9 +32,9 @@ const Header = () => {
         </motion.div>
        { !scrolled ? <NavBar /> : ''} 
         <motion.a
-          initial={{ x: 50 }}
-          whileInView={{ x: 0 }}
-          transition={{delay: 0.8}}
+          initial={{ x: 40 }}
+          animate={{ x: 0 }}
+          transition={{duration:0.8 ,delay: 0.5}}
           href="https://wa.me/918605688071?text=Hello!%20I'm%20interested%20in%20your%20digital%20marketing%20services.%20Please%20share%20more%20details."
           target="_blank"
           className="w-28 md:w-28 h-8 md:h-10 px-3 rounded-lg font-bold flex items-center gap-2 text-center bg-green-600 text-sm hover:bg-green-500 mt-2 md:mt-0"

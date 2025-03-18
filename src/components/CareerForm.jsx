@@ -14,7 +14,7 @@ const CareerForm = ({ position , formDiv }) => {
     address: "",
     position: "",
     message: "",
-    cv: null,
+    resume: null,
   });
 
   useEffect(() => {
@@ -38,8 +38,14 @@ const CareerForm = ({ position , formDiv }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const backendURI = 'https://anicomic-india-production.up.railway.app';
+    // const backendURI = 'http://localhost:5000';
     try {
-      await axios.post(`https://anicomic-india-production.up.railway.app/add-applicants`, formData);
+      await axios.post(`${backendURI}/add-applicants`, formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
+        }
+      );
       addToast("Application Submitted !");
       setTimeout(() => {
         handleReset();
@@ -61,7 +67,7 @@ const CareerForm = ({ position , formDiv }) => {
       address: "",
       position: "",
       message: "",
-      cv: "",
+      resume: "",
     });
   };
 
@@ -154,15 +160,15 @@ const CareerForm = ({ position , formDiv }) => {
             onChange={handleChange}
           ></textarea>
           <div className="mt-4 bg-slate-200 p-1 rounded-2xl">
-            <label className="bg-orange-500 text-white py-2 px-4 rounded-xl cursor-pointer inline-block">
+            <label className="bg-orange-500 text-white py-2 px-4 rounded-xl cursor-pointer inline-block" title="PDF only">
               Choose File | Resume{" "}
               <i className="text-sm text-slate-800">{`${
-                formData.cv?.name === undefined ? "" : formData.cv.name
+                formData.resume?.name === undefined ? "" : formData.resume.name
               }`}</i>
               <input
                 type="file"
-                name="cv"
-                accept=".pdf,.doc"
+                name="resume"
+                accept=".pdf"
                 className="hidden"
                 onChange={handleChange}
                 // required

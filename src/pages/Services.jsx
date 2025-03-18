@@ -74,7 +74,6 @@ const Services = () => {
     if (location.pathname === "/services") {
       if (state) {
         setServices(getServices(state?.service));
-        console.log(service);
         addToast(`Site is in development state !! `);
       }
     }
