@@ -4,11 +4,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const sendMail = require("./mailer");
 const mongoose = require("mongoose");
+const cloudinary = require('./config/cloudinary');
 const upload = require('./config/multerconfig');
+const fs = require('fs')
 
 dotenv.config();
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -39,13 +41,30 @@ module.exports = Applicants;
 app.post('/add-applicants', upload.single("resume"), async (req, res) => {
   try {
     const { firstName, lastName, phone, email, country, city, address, position, message } = req.body;
-    const { filename , originalname } = req.file
+    const { path , originalname } = req.file
+    if(!req.file){
+      return res.status(400).json({
+        message:"No File Uploaded"
+      })
+    }
+    const result = await cloudinary.uploader.upload(path, {
+      folder:'ResumeFolder', //change folder name in cloudinary
+      resource_type:'auto'
+    })
+    
 
-    const newApplicants = new Applicants({ firstName, lastName, phone, email, country, city, address, position, message, resume: originalname, resumeFilePath:`ResumeFolder/${filename}`});
+      // Remove Local File After Upload
+      fs.unlinkSync(path);
+
+    const newApplicants = new Applicants({ firstName, lastName, phone, email, country, city, address, position, message, 
+      resume:originalname, 
+      resumeFilePath: result.secure_url}
+    );
     // console.log(resume);
     await newApplicants.save();
 
     return res.status(201).json({ success: true, message: "Applicants recorded!", data: newApplicants });
+
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
