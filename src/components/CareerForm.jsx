@@ -14,7 +14,7 @@ const CareerForm = ({ position , formDiv }) => {
     address: "",
     position: "",
     message: "",
-    resume: null,
+    resume:null,
   });
 
   useEffect(() => {
@@ -38,10 +38,10 @@ const CareerForm = ({ position , formDiv }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const backendURI = 'https://anicomic-india-production.up.railway.app';
-    // const backendURI = 'http://localhost:5000';
+    // const backendURI = 'https://anicomic-india-production.up.railway.app';
+    // const backendURI = '';
     try {
-      await axios.post(`${backendURI}/add-applicants`, formData,
+      await axios.post(`https://anicomic-india-production.up.railway.app/add-applicants`, formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
         }

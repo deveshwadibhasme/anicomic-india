@@ -25,14 +25,14 @@ const Contact = () => {
     message: "",
   });
 
-  if (location.pathname === "/contact") {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  // if (location.pathname === "/contact") {
+  //   window.scrollTo({ top: 0, behavior: "smooth" });
+  // }
 
   const { addToast, ToastContainer } = useToaster();
 
   if (location.state?.service) {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 550, behavior: "smooth" });
   }
 
   const handleChange = (e) => {
@@ -42,7 +42,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    // https://anicomic-india-production.up.railway.app/send-email
     try {
       await axios.post(
         `https://anicomic-india-production.up.railway.app/send-email`, 
