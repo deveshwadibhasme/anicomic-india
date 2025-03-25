@@ -40,7 +40,8 @@ const CareerForm = ({ position , formDiv }) => {
     e.preventDefault();
     // const backendURI = 'https://anicomic-india-production.up.railway.app';
     // const backendURI = '';
-    try {
+    addToast("Sending...")
+    try { 
       await axios.post(`https://anicomic-india-production.up.railway.app/add-applicants`, formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
@@ -146,7 +147,7 @@ const CareerForm = ({ position , formDiv }) => {
           <input
             type="text"
             name="position"
-            placeholder="Choose desired position"
+            placeholder="Type desired position"
             className="px-3 py-2 rounded-lg border-b-2 border-gray-300 focus:outline-none focus:border-orange-600 text-white w-full p-2 input  mt-4"
             value={formData.position}
             onChange={handleChange}

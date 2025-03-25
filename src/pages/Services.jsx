@@ -70,8 +70,8 @@ const Services = () => {
   const { addToast, ToastContainer } = useToaster();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
     if (location.pathname === "/services") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       if (state) {
         setServices(getServices(state?.service));
         addToast(`Site is in development state !! `);
