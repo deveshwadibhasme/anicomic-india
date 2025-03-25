@@ -4,9 +4,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const sendMail = require("./mailer");
 const mongoose = require("mongoose");
-const cloudinary = require('./config/cloudinary');
+
 const upload = require('./config/multerconfig');
-const fs = require('fs')
+const uploadToCloudinary = require('./config/uploadToStream')
 
 dotenv.config();
 const app = express();
@@ -39,36 +39,44 @@ const Applicants = mongoose.models.Applicants || mongoose.model("Applicants", Ap
 module.exports = Applicants;
 
 app.post('/add-applicants', upload.single("resume"), async (req, res) => {
-  try {
     const { firstName, lastName, phone, email, country, city, address, position, message } = req.body;
-    const { path , originalname } = req.file
-    if(!req.file){
+    const { originalname } = req.file
+    if (!req.file) {
       return res.status(400).json({
-        message:"No File Uploaded"
+        message: "No File Uploaded"
       })
     }
-    const result = await cloudinary.uploader.upload(path, {
-      folder:'ResumeFolder', //change folder name in cloudinary
-      resource_type:'auto'
-    })
+    const fileBuffer = req.file.buffer;
+    const fileName = originalname.replace(".pdf", "-") + Date.now() + '.pdf';
+
+    try {
+      console.log("📤 Uploading file to Cloudinary...");
     
-
-      // Remove Local File After Upload
-      fs.unlinkSync(path);
-
-    const newApplicants = new Applicants({ firstName, lastName, phone, email, country, city, address, position, message, 
-      resume:originalname, 
-      resumeFilePath: result.secure_url}
-    );
-    // console.log(resume);
-    await newApplicants.save();
-
-    return res.status(201).json({ success: true, message: "Applicants recorded!", data: newApplicants });
-
-  } catch (error) {
-    return res.status(500).json({ success: false, message: error.message });
-  }
-})
+      // 🔍 Debug: See if we enter this function
+      const cloudinaryResult = await uploadToCloudinary(fileBuffer, fileName);
+      
+      console.log("✅ Cloudinary Upload Result:", cloudinaryResult); // Debugging
+    
+      if (!cloudinaryResult || !cloudinaryResult.secure_url) {
+        return res.status(500).json({ message: "Cloudinary upload failed" });
+      }
+    
+      // ✅ MongoDB Save
+      const newApplicants = new Applicants({
+        firstName, lastName, phone, email, country, city, address, position, message,
+        resume: originalname,
+        resumeFilePath: cloudinaryResult.secure_url
+      });
+    
+      await newApplicants.save();
+    
+      return res.status(200).json({ message: "Upload successful!", url: cloudinaryResult.secure_url });
+    } catch (error) { 
+      console.error("❌ Upload failed:", error);
+      return res.status(500).json({ message: "Upload failed", error: error.message });
+    } 
+  }   
+)
 
 // API to send an email
 app.post("/send-email", async (req, res) => {
