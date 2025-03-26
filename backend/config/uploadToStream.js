@@ -1,6 +1,7 @@
 const { Readable } = require("stream");
+const dotenv = require("dotenv");
 const cloudinary = require('cloudinary').v2; // Make sure to install cloudinary: npm install cloudinary
-
+dotenv.config();
 // Assuming your Cloudinary credentials are in environment variables or a config file:
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME, // Or your config file
