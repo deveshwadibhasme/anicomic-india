@@ -8,6 +8,3 @@ cloudinary.v2.config({
     secure: true,
 })
 
-   
-
-module.exports = cloudinary;
