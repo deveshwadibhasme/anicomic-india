@@ -19,7 +19,7 @@ const sendMail = async (name, email, phone, service, company, message) => {
             from: process.env.GMAIL_USER,
             to: "info@anicomic.in",
             subject: `Enquiry for ${service || "Service"}`,
-            html: `<body style="font-family: Arial, sans-serif; background-color: #111; color: white; margin: 0; padding: 20px;">
+            html: `<body style="font-family: Arial, sans-serif; background-color: #111; color: white; margin: 0; padding: 20px; text-transform:uppercase;">
     <div style="max-width: 600px; margin: auto; text-align: center; border: 1px solid #444; padding: 20px; border-radius: 8px;">
         <h1 style="margin-bottom: 10px; font-size: 24px; color: #f2a900;">${company}</h1>
         <h2 style="margin-bottom: 10px; font-size: 20px; color: #f2f2f2;">${service}</h2>

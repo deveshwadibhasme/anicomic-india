@@ -47,7 +47,7 @@ app.post('/add-applicants', upload.single("resume"), async (req, res) => {
       })
     }
     const fileBuffer = req.file.buffer;
-    const fileName = originalname.replace(".pdf", "-") + Date.now() + '.pdf';
+    const fileName = originalname.replace(' ','-').replace(".pdf", "-") + Date.now() + '.pdf';
 
     try {
       console.log("📤 Uploading file to Cloudinary...");
@@ -91,6 +91,15 @@ app.post("/send-email", async (req, res) => {
     res.status(200).json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
     res.status(500).json({ success: false, message: "Error sending email" });
+  }
+});
+
+app.get('/applicants-list', async function(req, res) {
+  try {
+    const applicants = await Applicants.find({});
+    res.status(200).json({ success: true, applicants });
+  } catch (err) {
+    res.status(500).json({ success: false, message: "Error retrieving applicants", error: err.message });
   }
 });
 
