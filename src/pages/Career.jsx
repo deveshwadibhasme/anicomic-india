@@ -96,6 +96,10 @@ const Career = () => {
 
   const [form,setForm] = useState({open:false,text:''})
 
+  if (location.pathname === "/career") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   const handleClick = (text) =>{
     setForm({open:true,text:text})
   }

@@ -2,6 +2,11 @@ import { motion } from "framer-motion";
 import tree from "../assets/growing-tree.png";
 
 const About = () => {
+
+  if (location.pathname === "/about") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   return (
     <div className="max-w-screen w-full min-h-screen flex flex-col items-center mt-20 justify-center ">
       <motion.h1

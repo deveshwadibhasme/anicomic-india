@@ -68,7 +68,7 @@ export default function Testimonials() {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9 }}
         viewport={{ once: true }}
-        className="relative custom-border custom-border-2 w-[350px] md:w-[800px] lg:w-[900px] mx-auto md:h-38 lg:h-25 text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular mb-4"
+        className="relative custom-border custom-border-2 w-[350px] md:w-[800px] lg:w-[900px] mx-auto h-20 md:h-38 lg:h-25 text-3xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular mb-4"
       >
         Our Valuable Client
       </motion.h1>
@@ -80,24 +80,24 @@ export default function Testimonials() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: value }}
             transition={{ duration: 0.5 }}
-            className="bg-slate-950 text-white min-h-96 justify-center p-8 rounded-lg shadow-lg flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
+            className=" text-white min-h-96 justify-center p-8 rounded-lg shadow-lg flex flex-col gap-3 text-center items-center border-orange-500 md:border-0"
           >
-            <p className="text-xl mb-4 text-white italic min-h-25">
-              "{testimonials[currentIndex].quote}"
-            </p>
-            <div className="flex items-center gap-3">
-              <span className="border-2 rounded-full p-3">
+            <div className="flex flex-col text-center items-center justify-between gap-3">
+              <span className="border-2 text-xl md:text-2xl rounded-full px-8 py-6">
                 {<FontAwesomeIcon icon={testimonials[currentIndex].image} />}
               </span>
               <div className="flex flex-col items-start">
                 <p className="font-semibold text-inherit">
                   {testimonials[currentIndex].author}
                 </p>
-                <p className="text-inherit">
+                <p className="text-orange-500 text-center w-full">
                   {testimonials[currentIndex].title}
                 </p>
               </div>
             </div>
+            <p className="text-sm md:text-xl w-[70%] mb-4 text-white italic min-h-25">
+              "{testimonials[currentIndex].quote}"
+            </p>
           </motion.div>
         </AnimatePresence>
         <button

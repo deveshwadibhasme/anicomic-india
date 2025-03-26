@@ -79,7 +79,7 @@ const Contact = () => {
           initial={{ opacity: 0, y: 80 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-white relative custom-border custom-border-2 w-[340px] md:max-w-[620px] lg:max-w-[600px] md:w-full md:h-25 lg:h-22 mt-3 font-monteseret-regular max-w-screen-sm text-xl md:text-3xl 2xl:text-4xl items-center mx-auto mb-4"
+          className="text-white relative custom-border custom-border-2 w-[330px] md:max-w-[620px] lg:max-w-[600px] md:w-full h-16 md:h-25 lg:h-22 mt-3 font-monteseret-regular max-w-screen-sm text-xl md:text-3xl 2xl:text-4xl items-center mx-auto mb-4"
         >
           <b className="text-orange-600">Get in touch</b> with us for our
           Digital Media Services.

@@ -10,6 +10,10 @@ function App() {
   const location = useLocation();
   // const [image,setImage]= useState([])
 
+  if (location.pathname === "/") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   useEffect(() => {
     const handleLoad = () => {
       console.log('Page fully loaded');
