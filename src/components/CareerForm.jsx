@@ -45,6 +45,10 @@ const CareerForm = ({ position , formDiv }) => {
       await axios.post(`https://anicomic-india-production.up.railway.app/add-applicants`, formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
+          withCredentials:true,
+        },
+        {
+          timeout: 10000,
         }
       );
       addToast("Application Submitted !");
@@ -52,7 +56,7 @@ const CareerForm = ({ position , formDiv }) => {
         handleReset();
       }, 500);
     } catch (error) {
-      addToast("Error While Sending! Try again later");
+      addToast("Error While Sending! Try again with different network");
       console.log(error);
     }
   };
