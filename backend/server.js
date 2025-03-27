@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(cors());
+app.use(cors({origin:'https://anicomic.in',credentials:true}));
 app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGO_URI, {
