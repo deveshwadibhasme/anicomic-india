@@ -42,15 +42,7 @@ const CareerForm = ({ position , formDiv }) => {
     // const backendURI = '';
     addToast("Sending...")
     try { 
-      await axios.post(`https://anicomic-india-production.up.railway.app/add-applicants`, formData,
-        {
-          headers: { "Content-Type": "multipart/form-data" },
-          withCredentials:true,
-        },
-        {
-          timeout: 10000,
-        }
-      );
+      submitApplication(formData)
       addToast("Application Submitted !");
       setTimeout(() => {
         handleReset();
