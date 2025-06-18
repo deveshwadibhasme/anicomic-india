@@ -6,9 +6,12 @@ trefoil.register();
 
 // Default values shown
 
-const Loading = () => {
+const Loading = ({fullScreen}) => {
+
+  const height = fullScreen ? {"minHeight":'100vh'} : {"minHeight":'0vh'}
+
   return (
-    <div className="flex items-center w-full justify-center h-full">
+    <div style={height} className="flex items-center w-full justify-center h-full">
       <l-trefoil
         size="70"
         stroke="4"

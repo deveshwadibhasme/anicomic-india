@@ -1,13 +1,16 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense, lazy } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Services from "./pages/Services.jsx";
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
-import Career from "./pages/Career.jsx";
+import Loading from "./components/Loading.jsx";
+import Projects from "./pages/Projects.jsx";
+
+const Home = lazy(() => import("./pages/Home.jsx"));
+const Services = lazy(() => import("./pages/Services.jsx"));
+const About = lazy(() => import("./pages/About.jsx"));
+const Contact = lazy(() => import("./pages/Contact.jsx"));
+const Career = lazy(() => import("./pages/Career.jsx"));
 
 const routes = createBrowserRouter([
   {
@@ -16,24 +19,52 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}  />}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/services",
-        element: <Services />,
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}/>}>
+            <Services />
+          </Suspense>
+        ),
       },
       {
         path: "/about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}/>}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
-        element: <Contact />,
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}/>}>
+            <Contact />
+          </Suspense>
+        ),
       },
       {
         path: "/career",
-        element:<Career/>
-      }
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}/>}>
+            <Career />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/project",
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}/>}>
+            <Projects />
+          </Suspense>
+        ),
+      },
     ],
   },
 ]);

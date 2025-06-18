@@ -17,9 +17,9 @@ const Header = () => {
   });
 
   return (
-    <div className="max-w-screen w-full py-2 h-23 xl:h-18 2xl:h-20 fixed left-1/2 -translate-x-1/2 z-50 border-b-2 border-red bg-black">
+    <div id="header" className="max-w-screen w-full py-2 h-23 xl:h-20 2xl:h-18 fixed left-1/2 -translate-x-1/2 z-50 border-b-2 border-red bg-black">
       <motion.header
-        className="max-w-screen w-full mx-auto md:pt-3 px-4 flex bg-black justify-between md:justify-around min-h-10 items-center"
+        className="max-w-screen w-full mx-auto md:pt-3 px-4 flex bg-black justify-between md:justify-around h-full items-center"
       >
         <motion.div
           initial={{ x: -40 }}

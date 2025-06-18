@@ -7,6 +7,7 @@ import {
   faGraduationCap,
   faHome,
   faInfo,
+  faClapperboard,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
@@ -15,6 +16,7 @@ const NavBar = () => {
     { title: "Home", link: "/", icon: faHome },
     { title: "Services", link: "/services", icon: faBolt },
     { title: "Careers", link: "/career", icon: faGraduationCap },
+    { title: "Projects", link: "/project", icon: faClapperboard },
     { title: "About", link: "/about", icon: faInfo },
     { title: "Contact", link: "/contact", icon: faContactCard },
   ];
@@ -23,7 +25,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`fixed xl:relative max-w-screen-lg overflow-x-auto xl:overflow-hidden top-13 lg:top-16 xl:top-0 left-1/2 -translate-x-1/2 xl:-translate-0 2xl:h-full xl:left-0 justify-between gap-2 w-full h-14 xl:h-10 flex items-center pl-3 xl:pl-0 xl:justify-center`}
+      className={`fixed xl:relative max-w-screen-xl overflow-x-auto xl:overflow-auto top-13 lg:top-16 xl:top-0 left-1/2 -translate-x-1/2 xl:-translate-0 2xl:h-full xl:left-0 justify-between gap-2 w-full h-full flex items-center pl-3 xl:pl-0 xl:justify-center mt-2`}
     >
       {navContent.map((navItem, i) => (
         <motion.span
@@ -38,7 +40,7 @@ const NavBar = () => {
             to={navItem.link} 
             key={i}
             href={navItem.link}
-            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-lg 2xl:text-xl border-[1px] border-slate-400 rounded-md  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}
+            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-[16px] 2xl:text-xl border-[1px] border-slate-400 rounded-md  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}
           >
             <FontAwesomeIcon icon={navItem.icon} /> {navItem.title}
           </Link>

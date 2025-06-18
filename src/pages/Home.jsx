@@ -6,18 +6,20 @@ import Services from "./Services";
 import Contact from "./Contact";
 import Testimonials from "../components/Testimonials";
 import Counter from "../components/Counter";
+import Projects from "./Projects";
 
 const Home = () => {
 
 
   return (
     <div
-      className={`max-w-screen w-full min-h-screen mx-auto mt-30 xl:mt-18 relative flex flex-col `}
+      className={`max-w-screen w-full min-h-screen mx-auto mt-5 xl:mt-1 relative flex flex-col`}
     >
       <>
-        <ImageSlider count={1} moveLeft={true} />
+        <ImageSlider count={1} direction={true} />
         <Homepage />
-        <ImageSlider count={20} moveLeft={false} />
+        <ImageSlider count={20} direction={false} />
+        <Projects />
         <Counter />
         <Testimonials />
         <Services />

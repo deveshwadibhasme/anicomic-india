@@ -7,175 +7,168 @@ import useToaster from "../hooks/toaster.jsx";
 import servicePoster from "../assets/our-service.png";
 import Loading from "../components/Loading.jsx";
 
-const services = [
-  {
-    title: "Digital Advertisement",
-    description:
-      "Strategic online advertising to maximize reach and engagement across digital platforms.",
-    icon: images.digital,
-  },
-  {
-    title: "Social Media Management",
-    description:
-      "Enhancing brand presence through targeted social media campaigns and audience engagement.",
-    icon: images.social,
-  },
-  {
-    title: "Content Creation",
-    description:
-      "Crafting compelling and engaging content for various digital platforms to captivate audiences.",
-    icon: images.content,
-  },
-  {
-    title: "Web Development",
-    description:
-      "Building responsive, high-performance websites tailored to user experience and business needs.",
-    icon: images.webDevs,
-  },
-  {
-    title: "Graphic Design",
-    description:
-      "Creating visually appealing designs that effectively communicate brand identity and messaging.",
-    icon: images.design,
-  },
-  {
-    title: "Video Editing",
-    description:
-      "Professional editing services to enhance video content with smooth transitions and effects.",
-    icon: images.video,
-  },
-  {
-    title: "3D Animation",
-    description:
-      "Producing stunning 3D animations for storytelling, product visualization, and branding.",
-    icon: images.threeD,
-  },
-  {
-    title: "Cinematography",
-    description:
-      "Capturing high-quality visuals and storytelling through expert cinematography techniques.",
-    icon: images.cinematography,
-  },
-];
+// Services array remains the same
 
 const Services = () => {
   const { state } = useLocation();
   const [service, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const handleLoad = () => {
-    setLoading(false);
-  };
-
   const { addToast, ToastContainer } = useToaster();
+
+  const handleLoad = () => setLoading(false);
 
   useEffect(() => {
     if (location.pathname === "/services") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       if (state) {
         setServices(getServices(state?.service));
-        addToast(`Site is in development state !! `);
+        addToast(`Site is in development state !!`);
       }
     }
-    return () => {};
   }, [service]);
 
-  let w;
-  const handleHover = (e) => {
-    e.target.parentNode.childNodes[2].style.opacity = "1";
-    e.target.parentNode.childNodes[2].style.transform = `translateY(${
-      w < 300 ? "-100%" : `${w > 770 ? "-150%" : "-150%"}`
-    })`;
-    setTimeout(() => {
-      e.target.parentNode.childNodes[2].style.opacity = "0";
-      e.target.parentNode.childNodes[2].style.transform = "translateY(100%)";
-    }, 4000);
-  };
+  const services = [
+    {
+      title: "Digital Advertisement",
+      description:
+        "Strategic online advertising to maximize reach and engagement across digital platforms.",
+      icon: images.digital,
+    },
+    {
+      title: "Social Media Management",
+      description:
+        "Enhancing brand presence through targeted social media campaigns and audience engagement.",
+      icon: images.social,
+    },
+    {
+      title: "Content Creation",
+      description:
+        "Crafting compelling and engaging content for various digital platforms to captivate audiences.",
+      icon: images.content,
+    },
+    {
+      title: "Web Development",
+      description:
+        "Building responsive, high-performance websites tailored to user experience and business needs.",
+      icon: images.webDevs,
+    },
+    {
+      title: "Graphic Design",
+      description:
+        "Creating visually appealing designs that effectively communicate brand identity and messaging.",
+      icon: images.design,
+    },
+    {
+      title: "Video Editing",
+      description:
+        "Professional editing services to enhance video content with smooth transitions and effects.",
+      icon: images.video,
+    },
+    {
+      title: "3D Animation",
+      description:
+        "Producing stunning 3D animations for storytelling, product visualization, and branding.",
+      icon: images.threeD,
+    },
+    {
+      title: "Cinematography",
+      description:
+        "Capturing high-quality visuals and storytelling through expert cinematography techniques.",
+      icon: images.cinematography,
+    },
+  ];
 
-  function handleMore() {
-    setServices(getServices(state?.service));
-  }
 
   return (
-    <>
+    <div className="min-h-screen">
       <motion.div
-        initial={{ opacity: 0, x: 50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.2, delay: 0.2 }}
-        style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`sm:h-[400px] relative 2xl:h-[700px] 2xl:min-h-[500px] h-[200px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen flex justify-between items-center border-2 border-amber-50
-          `}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="mx-auto px-4 py-8"
       >
-        {loading ? (
-          <Loading />
-        ) : (
-          <img
-            onLoad={handleLoad}
-            className="w-full h-full object-cover"
-            src={servicePoster}
-            alt=""
-          />
-        )}
-      </motion.div>
-      <h1
-        style={{ display: `${location.pathname !== "/" ? "none" : "block"}` }}
-        className="relative custom-border custom-border-2 w-[350px] md:w-[680px] mx-auto h-15 md:h-22 text-4xl md:text-4xl uppercase lg:text-6xl 2xl:text-7xl text-center text-orange-600 font-Caprasimo-regular"
-      >
-        Our Services
-      </h1>
-      <ToastContainer />
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 2xl:gap-y-10 p-6 min-h-[300px] md:min-h-[400px] 2xl:min-h-[500px] mt-10">
-        {services.map((service, index) => (
-          <motion.div
-            initial={{ opacity: 0.4, x: 50 }}
-            whileInView={{ opacity: 1, x: 1 }}
-            threshold={0.8}
-            transition={{ duration: 0.5 }}
-            id="div-to-hover"
-            key={index}
-            className="relative p-6 z-20 bg-white text-black rounded-2xl shadow-lg flex flex-col items-center text-center h-40 xl:h-80 2xl:h-[500px] justify-center mx-auto w-full overflow-y-hidden cursor-pointer group overflow-x-hidden "
-          >
+        {/* Hero Section */}
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className={`relative rounded-2xl overflow-hidden shadow-2xl mb-12 ${
+            location.pathname === "/" ? "hidden" : "block"
+          }`}
+        >
+          {loading ? (
+            <Loading />
+          ) : (
             <img
-              onClick={(e) => handleHover(e)}
               onLoad={handleLoad}
-              className={`mix-blend-multiply group 
-              xl:h-64 xl:w-64 md:h-23 md:w-23 2xl:w-90 2xl:h-80
-              h-18 w-18 mb-4 xl:mb-1 object-cover`}
-              src={service.icon}
-              alt=""
+              loading="lazy"
+              className="xl:w-full h-[300px] lg:h-[400px] 2xl:h-[500px] object-cover"
+              src={servicePoster}
+              alt="Services Banner"
             />
-            <h3 className="text-sm md:text-sm xl:text-2xl 2xl:text-4xl font-semibold">
-              {service.title}
-            </h3>
-            <div className="bg-white flex flex-col items-center justify-center translate-y-20 group-hover:-translate-y-full group-focus-within:-translate-y-full w-full h-full transition-transform duration-500 z-10 gap-3 lg:gap-8 2xl:gap-18 absolute top-full border-t-4 border-orange-400">
-              <p className="text-slate-800 w-[80%] text-[10px] lg:text-[18px] 2xl:text-3xl">
-                {service.description}
-              </p>
-              <div className="flex z-30 flex-col gap-2 2xl:gap-8 w-full items-center justify-center">
-                <Link
-                  className="w-[60%] z-20 h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-orange-600 border-b-[3px] flex items-center justify-center rounded-xl 2xl:rounded-full text-black hover:bg-orange-400"
-                  to={"/contact"}
-                  state={{ service: service.title }}
-                >
-                  Go with Service
-                </Link>
-                <Link
-                  className="w-[40%] h-5 sm:h-8 md:h-8 2xl:h-15 text-[10px] sm:text-sm 2xl:text-2xl border-b-[4px] border-orange-600 flex items-center justify-center rounded-2xl 2xl:rounded-full hover:bg-green-500 text-black"
-                  to={`${location.pathname !== "/services" ? "/services" : ``}`}
-                  state={{ service: service.title }}
-                  onClick={() => {
-                    addToast("Site is in development state !!");
-                    handleMore();
-                  }}
-                >
-                  Learn More
-                </Link>
+          )}
+        </motion.div>
+
+        {/* Title */}
+        <h1
+          className={`text-3xl xl:text-6xl relative custom-border custom-border-2 max-w-sm xl:max-w-lg h-13 xl:h-20 w-full text-amber-50 text-center mt-12 mb-12 mx-auto font-Caprasimo-regular ${
+            location.pathname !== "/" ? "hidden" : "block"
+          }`}
+        >
+          Our Services
+        </h1>
+
+        <ToastContainer />
+
+        {/* Services Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+            >
+              <div className="p-6 h-full flex flex-col">
+                <img
+                  className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 object-contain transition-transform duration-300 hover:scale-110"
+                  src={service.icon}
+                  alt={service.title}
+                  onLoad={handleLoad}
+                />
+                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 mb-6 flex-grow text-sm md:text-base">
+                  {service.description}
+                </p>
+                <div className="flex flex-col gap-3 mt-auto">
+                  <Link
+                    to="/contact"
+                    state={{ service: service.title }}
+                    className="w-full px-4 py-2 text-center bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+                  >
+                    Get Started
+                  </Link>
+                  <Link
+                    to={location.pathname !== "/services" ? "/services" : ""}
+                    state={{ service: service.title }}
+                    onClick={() => {
+                      addToast("Site is in development state !!");
+                      handleMore();
+                    }}
+                    className="w-full px-4 py-2 text-center border-2 border-orange-600 text-orange-600 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300"
+                  >
+                    Learn More
+                  </Link>
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </div>
   );
 };
 

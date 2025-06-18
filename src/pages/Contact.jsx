@@ -65,7 +65,7 @@ const Contact = () => {
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.2, delay: 0.2 }}
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
-        className={`h-[200px] relative sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] mt-25 md:mt-20 max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen bg-[position:50%_50%] object-cover flex justify-between items-center border-2 border-amber-50`}
+        className={`h-[200px] relative sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen bg-[position:50%_50%] object-cover flex justify-between items-center border-2 mt-8 xl:mt-0 border-amber-50`}
       >
           <img
             onLoad={handleLoad}

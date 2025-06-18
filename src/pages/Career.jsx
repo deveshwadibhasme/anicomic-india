@@ -114,15 +114,12 @@ const Career = () => {
   },[form?.text])
 
   return (
-    <div className="mt-20 flex flex-col items-center min-h-[500px] text-amber-50 bg-black mb-8">
-      {/* <div className='bg-white w-80 md:w-xl h-64 md:h-96 animate-pulse'>
-      <img src={Contruction} className='mix-blend-difference h-full w-full' alt="under-construction" />
-      </div> */}
+    <div className="flex flex-col items-center min-h-[500px] text-amber-50 mb-8">
       <motion.h1
         initial={{ opacity: 0.4, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="text-4xl md:text-7xl text-center text-white py-40 md:p-40 w-full mt-6 md:mt-0 uppercase bg-gradient-to-r from-red-500 to-orange-600 border-2 border-white"
+        className="text-4xl md:text-7xl text-center text-white py-15 md:py-32 w-full mt-7 md:mt-0 uppercase bg-gradient-to-r from-red-600 via-orange-500 to-red-600 border-y-2 border-white/20 backdrop-blur-sm shadow-2xl"
       >
         Careers
       </motion.h1>
