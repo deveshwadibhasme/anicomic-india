@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors({
   origin: function (origin, callback) {
-    const allowedOrigins = ['http://localhost:5173', 'https://anicomic.in','https://anicomic-dummy.netlify.app/'];
+    const allowedOrigins = ['http://localhost:5173', 'https://anicomic.in','https://anicomic-dummy.netlify.app'];
 
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
