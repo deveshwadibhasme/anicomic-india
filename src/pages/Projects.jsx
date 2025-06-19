@@ -4,6 +4,7 @@ import { motion } from "framer-motion"; // Add this import
 import NightMare from "../assets/nightmare.jpg";
 import Inside from "../assets/inside.png";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Projects = () => {
   if (location.pathname === "/studio") {
@@ -130,12 +131,12 @@ const Projects = () => {
         ))}
       </motion.div>
       {location.pathname !== "/studio" && (
-        <button
-          onClick={() => (window.location.href = "/studio")}
+        <Link
+          to = "/studio"
           className="mt-8 px-6 py-3 bg-orange-400 text-white rounded-lg shadow-lg font-semibold hover:scale-105 transition-transform duration-200"
         >
           Go to Studio
-        </button>
+        </Link>
       )}
     </motion.div>
   );
