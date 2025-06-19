@@ -16,7 +16,7 @@ const NavBar = () => {
     { title: "Home", link: "/", icon: faHome },
     { title: "Services", link: "/services", icon: faBolt },
     { title: "Careers", link: "/career", icon: faGraduationCap },
-    { title: "Projects", link: "/project", icon: faClapperboard },
+    { title: "Studio", link: "/studio", icon: faClapperboard },
     { title: "About", link: "/about", icon: faInfo },
     { title: "Contact", link: "/contact", icon: faContactCard },
   ];

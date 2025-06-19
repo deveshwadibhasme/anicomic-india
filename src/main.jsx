@@ -58,7 +58,7 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/project",
+        path: "/studio",
         element: (
           <Suspense fallback={<Loading fullScreen={true}/>}>
             <Projects />

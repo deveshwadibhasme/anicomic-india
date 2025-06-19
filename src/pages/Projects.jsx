@@ -6,7 +6,7 @@ import Inside from "../assets/inside.png";
 import { useEffect } from "react";
 
 const Projects = () => {
-  if (location.pathname === "/project") {
+  if (location.pathname === "/studio") {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -30,32 +30,20 @@ const Projects = () => {
     },
   ];
 
-  // useEffect(()=>{
-  //   if (location.pathname === "/project") {
-  //     const root = document.body
-  //       .querySelector("#root")
-  //       .querySelector("#fullPage");
-  //     root.classList.add("bg-gradient-to-r");
-  //     root.classList.add("from-gray-200");
-  //     root.classList.add("via-black");
-  //     root.classList.add("to-slate-600");
-  //     const header = document.body
-  //       .querySelector("#root")
-  //       .querySelector("#header");
-  //     header.classList.add("bg-gradient-to-r");
-  //     header.classList.add("from-gray-200");
-  //     header.classList.add("via-black");
-  //     header.classList.add("to-slate-600");
-  //     const innerHeader = document.body
-  //       .querySelector("#root")
-  //       .querySelector("#header")
-  //       .querySelector("header");
-  //     innerHeader.classList.add("bg-gradient-to-r");
-  //     innerHeader.classList.add("from-gray-200");
-  //     innerHeader.classList.add("via-black");
-  //     innerHeader.classList.add("to-slate-600");
-  //   }
-  // },[location.pathname])
+  useEffect(()=>{
+    if (location.pathname === "/studio") {
+      const root = document.body
+        .querySelector("#root")
+        .querySelector("#fullPage")
+        .querySelector(".container")
+      root.classList.remove("relative");
+       const header = document.body
+          .querySelector("#root")
+          .querySelector("#header")
+        header.classList.remove("bg-black");
+        header.querySelector('header').classList.remove("bg-black")
+    }
+  },[location.pathname])
 
 
   const containerVariants = {
@@ -82,21 +70,22 @@ const Projects = () => {
   return (
     <motion.div
       initial="hidden"
-      animate="visible"
+      whileInView="visible"
       variants={containerVariants}
-      className="container mx-auto px-4 py-5 my-10 xl:my-1 max-w-screen-2xl min-h-screen flex flex-col items-center"
+      className="container relative mx-auto px-4 py-5 my-10 xl:my-1 max-w-screen-2xl min-h-130 h-full flex flex-col items-center w-full"
     >
+      <div className="absolute [clip-path:polygon(100%_0,99%_83%,0_100%,0_18%)] top-0 left-0 w-full h-full bg-gradient-to-r from-orange-500 to-lime-500 opacity-70 z-0"></div>
       <motion.h1
         initial={{ scale: 0.5, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
+        whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-3xl xl:text-6xl relative custom-border custom-border-2 max-w-sm xl:max-w-lg h-13 xl:h-20 w-full text-amber-50 text-center mb-12 font-Caprasimo-regular"
+        className="text-3xl xl:text-4xl relative custom-border custom-border-2 after:top-0 after:left-0 before:bottom-0 before:right-0 after:bg-white before:bg-white max-w-sm xl:max-w-lg h-11 xl:h-20 w-full text-center mb-12 font-Caprasimo-regular text-white bg-gradient-to-r from-orange-500 to-lime-500 rounded-lg flex items-center justify-center shadow-lg  tracking-wide hover:shadow-amber-500/20 hover:bg-white/90 transition-all duration-300 text-shadow-lg font-montserrat"
       >
-        Our Projects
+        Our Upcoming Project
       </motion.h1>
       <motion.div 
         variants={containerVariants}
-        className="mx-auto flex flex-col xl:flex-row gap-10 max-w-lg w-full justify-center items-center"
+        className="mx-auto flex flex-col xl:flex-row gap-10 max-w-lg w-full z-10 justify-center items-center"
       >
         {projects.map((project) => (
           <motion.a
@@ -140,6 +129,14 @@ const Projects = () => {
           </motion.a>
         ))}
       </motion.div>
+      {location.pathname !== "/studio" && (
+        <button
+          onClick={() => (window.location.href = "/studio")}
+          className="mt-8 px-6 py-3 bg-orange-400 text-white rounded-lg shadow-lg font-semibold hover:scale-105 transition-transform duration-200"
+        >
+          Go to Studio
+        </button>
+      )}
     </motion.div>
   );
 };

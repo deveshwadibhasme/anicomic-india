@@ -13,7 +13,7 @@ export default function ImageSlider({count,direction}) {
     }, 1000);
   };
 
-  const start = direction ? '-140%' : '50%';
+  const start = direction ? '-110%' : '50%';
   const end = direction ? '0%' : '-100%';
 
 

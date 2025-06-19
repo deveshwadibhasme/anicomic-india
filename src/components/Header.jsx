@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import NavBar from "./NavBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -16,6 +16,16 @@ const Header = () => {
     }
   });
 
+  useEffect(() => {
+    if(location.pathname !== '/studio'){
+      const header = document.body
+          .querySelector("#root")
+          .querySelector("#header")
+        header.classList.add("bg-black");
+        header.querySelector('header').classList.add("bg-black")
+    }
+  }, [location.pathname]);
+
   return (
     <div id="header" className="max-w-screen w-full py-2 h-23 xl:h-20 2xl:h-18 fixed left-1/2 -translate-x-1/2 z-50 border-b-2 border-red bg-black">
       <motion.header
@@ -25,10 +35,10 @@ const Header = () => {
           initial={{ x: -40 }}
           animate={{ x: 0 }}
           transition={{duration:0.8,delay: 0.5}}
-          className="w-52 md:w-88 shrink-0 text-lg md:text-2xl 2xl:text-3xl pt-3 md:pt-1 h-10 font-monteseret-regular"
+          className="w-52 md:w-88 shrink-0 text-lg md:text-2xl 2xl:text-3xl font-bold pt-3 md:pt-1 h-10 font-monteseret-regular"
         >
-          <span className="text-amber-600 font-bold">ANICOMIC</span>{" "}
-          <span className="text-white font-semibold">STUDIO</span> .
+          <span className="text-amber-600 font-extrabold">ANICOMIC</span>{" "}
+          <span className="text-white font-bold">STUDIO</span> .
         </motion.div>
        { !scrolled ? <NavBar /> : ''} 
         <motion.a
