@@ -1,5 +1,5 @@
 // import Loading from "../components/Loading";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ImageSlider from "../components/ImageSlider";
 import Homepage from "../components/Homepage";
 import Services from "./Services";
@@ -10,6 +10,11 @@ import Projects from "./Projects";
 
 const Home = () => {
 
+  useEffect(() => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.pathname]);
 
   return (
     <div
