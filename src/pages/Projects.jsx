@@ -84,19 +84,19 @@ const Projects = () => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="container mx-auto px-4 py-5 my-10 max-w-screen-2xl min-h-screen flex flex-col items-center"
+      className="container mx-auto px-4 py-5 my-10 xl:my-1 max-w-screen-2xl min-h-screen flex flex-col items-center"
     >
       <motion.h1
         initial={{ scale: 0.5, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-3xl xl:text-6xl relative custom-border custom-border-2 max-w-sm xl:max-w-lg h-13 xl:h-20 w-full text-amber-50 text-center mt-2 mb-12 font-Caprasimo-regular"
+        className="text-3xl xl:text-6xl relative custom-border custom-border-2 max-w-sm xl:max-w-lg h-13 xl:h-20 w-full text-amber-50 text-center mb-12 font-Caprasimo-regular"
       >
         Our Projects
       </motion.h1>
       <motion.div 
         variants={containerVariants}
-        className="mx-auto flex flex-col lg:flex-row flex-wrap gap-10 w-full justify-center"
+        className="mx-auto flex flex-col xl:flex-row gap-10 max-w-lg w-full justify-center items-center"
       >
         {projects.map((project) => (
           <motion.a

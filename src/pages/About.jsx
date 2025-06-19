@@ -35,7 +35,7 @@ const About = () => {
             transition={{ duration: 0.7 }}
             className="text-base md:text-xl text-gray-200 leading-relaxed max-w-2xl"
           >
-            Anicomic Services, a branch of Anicomic India, was founded in 2024
+            Anicomic Studios, a branch of Anicomic India, was founded in 2024
             with the vision to provide comprehensive creative solutions for
             businesses and individuals looking to enhance their visual and digital
             presence. Based in Nagpur, India, the company emerged from a deep

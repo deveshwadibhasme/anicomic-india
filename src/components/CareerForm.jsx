@@ -27,6 +27,7 @@ const CareerForm = ({ position , formDiv }) => {
 
   const {addToast,ToastContainer} = useToaster()
   
+  
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -39,8 +40,6 @@ const CareerForm = ({ position , formDiv }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const backendURI = 'https://anicomic-india-production.up.railway.app';
-    // const backendURI = '';
     addToast("Sending...")
     try { 
       submitApplication(formData)
@@ -166,6 +165,7 @@ const CareerForm = ({ position , formDiv }) => {
               <input
                 type="file"
                 name="resume"
+                id="resume"
                 accept=".pdf"
                 className="hidden"
                 onChange={handleChange}

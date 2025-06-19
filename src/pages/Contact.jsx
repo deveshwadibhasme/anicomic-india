@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useToaster from "../hooks/toaster";
 import contactPoster from "../assets/contact-us.png";
 import Loading from "../components/Loading";
@@ -25,9 +25,11 @@ const Contact = () => {
     message: "",
   });
 
-  if (location.pathname === "/contact") {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }
+  useEffect(() => {
+    if (location.pathname === "/contact") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.pathname]);
 
   const { addToast, ToastContainer } = useToaster();
 
@@ -45,7 +47,7 @@ const Contact = () => {
     // https://anicomic-india-production.up.railway.app/send-email
     try {
       await axios.post(
-        `https://anicomic-india-production.up.railway.app/send-email`, 
+        `https://anicomic-india.onrender.com/send-email`,
         formDataValues
       );
       addToast("Thanks For Contacting !");
@@ -67,12 +69,12 @@ const Contact = () => {
         style={{ display: `${location.pathname === "/" ? "none" : "block"}` }}
         className={`h-[200px] relative sm:h-[400px] 2xl:h-[700px] 2xl:min-h-[500px] max-w-screen-xl xl:max-w-screen-2xl 2xl:max-w-screen bg-[position:50%_50%] object-cover flex justify-between items-center border-2 mt-8 xl:mt-0 border-amber-50`}
       >
-          <img
-            onLoad={handleLoad}
-            className="w-full h-full object-cover"
-            src={contactPoster}
-            alt=""
-          />
+        <img
+          onLoad={handleLoad}
+          className="w-full h-full object-cover"
+          src={contactPoster}
+          alt=""
+        />
       </motion.div>
       <div className="relative overflow-hidden max-w-screen-lg md:max-w-screen-2xl w-full min-h-screen flex flex-col justify-center items-center mt-3 md:mt-5 mx-auto text-center mb-5">
         <motion.h1

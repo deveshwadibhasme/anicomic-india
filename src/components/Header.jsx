@@ -28,7 +28,7 @@ const Header = () => {
           className="w-52 md:w-88 shrink-0 text-lg md:text-2xl 2xl:text-3xl pt-3 md:pt-1 h-10 font-monteseret-regular"
         >
           <span className="text-amber-600 font-bold">ANICOMIC</span>{" "}
-          <span className="text-white font-semibold">SERVICES</span> .
+          <span className="text-white font-semibold">STUDIO</span> .
         </motion.div>
        { !scrolled ? <NavBar /> : ''} 
         <motion.a

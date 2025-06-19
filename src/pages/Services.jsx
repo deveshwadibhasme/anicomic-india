@@ -92,7 +92,7 @@ const Services = () => {
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
-          className={`relative rounded-2xl overflow-hidden shadow-2xl mb-12 ${
+          className={`relative rounded-2xl overflow-hidden shadow-2xl mb-12 xl:w-full h-[300px] lg:h-[400px] 2xl:h-[500px] ${
             location.pathname === "/" ? "hidden" : "block"
           }`}
         >
@@ -102,7 +102,7 @@ const Services = () => {
             <img
               onLoad={handleLoad}
               loading="lazy"
-              className="xl:w-full h-[300px] lg:h-[400px] 2xl:h-[500px] object-cover"
+              className="h-full w-full object-center object-cover"
               src={servicePoster}
               alt="Services Banner"
             />
@@ -121,7 +121,7 @@ const Services = () => {
         <ToastContainer />
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 ">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -130,24 +130,24 @@ const Services = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
             >
-              <div className="p-6 h-full flex flex-col">
+              <div className="p-6 h-full flex flex-col text-center">
                 <img
-                  className="w-24 h-24 md:w-32 md:h-32 mx-auto mb-6 object-contain transition-transform duration-300 hover:scale-110"
+                  className="w-34 h-34 md:w-32 md:h-32 mx-auto mb-6 object-contain transition-transform duration-300 hover:scale-110"
                   src={service.icon}
                   alt={service.title}
                   onLoad={handleLoad}
                 />
-                <h3 className="text-xl md:text-2xl font-bold mb-4 text-gray-800">
+                <h3 className="text-xl md:text-2xl font-bold mb-2 text-gray-800">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 mb-6 flex-grow text-sm md:text-base">
+                <p className="text-gray-600 mb-2 flex-grow text-sm md:text-base">
                   {service.description}
                 </p>
-                <div className="flex flex-col gap-3 mt-auto">
+                <div className="flex gap-3 mt-auto items-center">
                   <Link
                     to="/contact"
                     state={{ service: service.title }}
-                    className="w-full px-4 py-2 text-center bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors duration-300 shadow-md hover:shadow-lg"
+                    className="w-full px-4 py-2 lg:h-10 lg:text-sm text-center bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-colors duration-300 shadow-md hover:shadow-lg"
                   >
                     Get Started
                   </Link>
@@ -158,7 +158,7 @@ const Services = () => {
                       addToast("Site is in development state !!");
                       handleMore();
                     }}
-                    className="w-full px-4 py-2 text-center border-2 border-orange-600 text-orange-600 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300"
+                    className="w-full px-4 py-2 lg:h-10 lg:text-sm text-center border-2 border-orange-600 text-orange-600 font-semibold rounded-lg hover:bg-orange-600 hover:text-white transition-colors duration-300"
                   >
                     Learn More
                   </Link>

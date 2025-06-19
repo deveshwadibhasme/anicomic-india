@@ -18,7 +18,7 @@ const Homepage = () => {
           <span className="text-white block text-3xl md:text-2xl text-center font-monteseret-regular mb-3 md:mb-5 uppercase tracking-[0.2em] text-glow">
             Welcome to{" "}
           </span>
-          ANICOMIC STUDIOS
+          ANICOMIC STUDIO
           <br />
           <span className="text-orange-500 mt-6 text-xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text">
              CONTENT CREATION & ADVERTISING COMPANY

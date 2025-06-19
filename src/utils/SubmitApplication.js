@@ -1,6 +1,7 @@
-import axios from 'axios'; // Import Axios
+import axios from 'axios'; 
 
-const API_BASE_URL = 'https://anicomic-india.onrender.com'; // Define base URL
+const API_BASE_URL = 'https://anicomic-india.onrender.com'; 
+const API_LOCAL_URL = 'http://localhost:4000'; 
 
 const submitApplication = async (formData) => { //  Explicitly type formData
   try {
@@ -12,7 +13,7 @@ const submitApplication = async (formData) => { //  Explicitly type formData
           'Content-Type': 'multipart/form-data',
         },
         withCredentials: true,
-        timeout: 10000, // 10 seconds (adjust as needed)    
+        timeout: 10000,  
       }
     );
     return response.data; 
