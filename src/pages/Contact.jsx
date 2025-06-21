@@ -5,7 +5,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useToaster from "../hooks/toaster";
-import contactPoster from "../assets/contact-us.png";
+import contactPoster from "../assets/illustration/contact-us.png";
 import Loading from "../components/Loading";
 
 const Contact = () => {

@@ -49,14 +49,14 @@ import img48 from "../slider-images/48.png";
 import img49 from "../slider-images/49.png";
 import img50 from "../slider-images/50.png";
 
-import social from "../assets/social-marketing.jpg";
-import digital from "../assets/digital advertisement.svg";
-import content from "../assets/content-creation.jpg";
-import webDevs from "../assets/web-devs.jpg";
-import design from "../assets/graphic-design.jpg";
-import video from "../assets/video-editing.jpg";
-import threeD from "../assets/3d-animation.jpg"; 
-import cinematography from "../assets/cinematography.avif"; 
+import social from "../assets/illustration/social-marketing.jpg";
+import digital from "../assets/illustration/digital advertisement.svg";
+import content from "../assets/illustration/content-creation.jpg";
+import webDevs from "../assets/illustration/web-devs.jpg";
+import design from "../assets/illustration/graphic-design.jpg";
+import video from "../assets/illustration/video-editing.jpg";
+import threeD from "../assets/illustration/3d-animation.jpg"; 
+import cinematography from "../assets/illustration/cinematography.avif"; 
 
 export const images = {
   social: social,

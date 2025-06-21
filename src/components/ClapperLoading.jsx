@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import clapperboard from "../assets/clapperboard.gif";
+import clapperboard from "../assets/studio/clapperboard.gif";
 import { motion } from "framer-motion";
 
 const ClapperLoading = () => {

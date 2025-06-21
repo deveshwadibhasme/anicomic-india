@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { images } from "../components/SliderImages";
 import { getServices } from "../utils/Services.js";
 import useToaster from "../hooks/toaster.jsx";
-import servicePoster from "../assets/our-service.png";
+import servicePoster from "../assets/illustration/our-service.png";
 import Loading from "../components/Loading.jsx";
 
 // Services array remains the same
@@ -102,7 +102,7 @@ const Services = () => {
             <img
               onLoad={handleLoad}
               loading="lazy"
-              className="h-full w-full object-center object-cover"
+              className="h-full w-full object-[47%_50%] object-cover"
               src={servicePoster}
               alt="Services Banner"
             />

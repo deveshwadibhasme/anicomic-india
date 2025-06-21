@@ -1,13 +1,15 @@
+import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { faPodcast } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AnimatePresence, motion } from "framer-motion"; 
-import NightMare from "../assets/nightmare.jpg";
-import Inside from "../assets/inside.png";
-import InsidePoster from "../assets/inside-poster.jpg";
-import NightMarePoster from "../assets/nightmare-poster.jpg";
-import clapperboard from "../assets/clapperboard.gif";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import NightMare from "../assets/studio/nightmare.jpg";
+import Inside from "../assets/studio/inside.png";
+import InsidePoster from "../assets/studio/inside-poster.jpg";
+import NightMarePoster from "../assets/studio/nightmare-poster.jpg";
+import clapperboard from "../assets/studio/clapperboard.gif";
+import clapSound from "../assets/studio/clapperboard.mp3";
+import swingSound from '../assets/studio/swing.mp3';
 import ClapperLoading from "../components/ClapperLoading";
 
 const Projects = () => {
@@ -43,6 +45,8 @@ const Projects = () => {
       const img = new Image();
       img.src = image;
     });
+    const loadImg = new Image();
+    loadImg.src = clapperboard;
   };
   preloadImages();
 
@@ -81,13 +85,53 @@ const Projects = () => {
     },
   };
 
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000); 
+  const [loading, setLoading] = useState(true)
+  const clapAudioRef = useRef(null);
+  const swingAudioRef = useRef(null);
 
-    return () => clearTimeout(timer);
+  useEffect(() => {
+    let clapTimer, timer;
+    if (location.pathname === "/studio") {
+      swingAudioRef.current = new Audio(swingSound);
+      swingAudioRef.current.volume = 0.7;
+      swingAudioRef.current.loop = false;
+      swingAudioRef.current.load();
+      clapAudioRef.current = new Audio(clapSound);
+      clapAudioRef.current.volume = 0.2;
+      clapAudioRef.current.loop = false;
+      clapAudioRef.current.load();
+
+      swingAudioRef.current
+        .play()
+        .then(() => {
+          clapTimer = setTimeout(() => {
+            clapAudioRef.current
+              .play()
+              .catch((error) => {
+                console.error("Error playing clap audio:", error);
+              });
+          }, 2100);
+        })
+        .catch((error) => {
+          console.error("Error playing swing audio:", error);
+        });
+    }
+    timer = setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(clapTimer);
+      if (clapAudioRef.current,swingAudioRef.current) {
+        swingAudioRef.current.pause();
+        swingAudioRef.current.currentTime = 0;
+        swingAudioRef.current = null;
+        clapAudioRef.current.pause();
+        clapAudioRef.current.currentTime = 0;
+        clapAudioRef.current = null;
+      }
+    };
   }, []);
 
   return (
@@ -97,7 +141,7 @@ const Projects = () => {
           key="clapper-loading"
           className="flex items-center flex-col absolute w-full top-0 z-50 justify-center min-h-screen bg-black"
           initial={{ y: -100 }}
-          animate={{ y : 0}}
+          animate={{ y: 0 }}
           exit={{ y: -50, opacity: 0.5 }}
           transition={{ duration: 0.5 }}
         >
@@ -109,9 +153,13 @@ const Projects = () => {
               filter: "drop-shadow(0 0 150px orange) brightness(1.5)",
             }}
           />
-          <h1 className="text-3xl font-bold text-white mr-2">Anicomic Studio Presents</h1>
+          <h1 className="text-xl lg:text-3xl font-bold text-white mr-2">
+            Anicomic Studio Presents
+          </h1>
         </motion.div>
-      ) : (
+      ) 
+      : 
+      (
         <>
           <motion.div
             initial="hidden"
@@ -161,10 +209,9 @@ const Projects = () => {
                 </div>
               </motion.div>
             )}
-
             <motion.div
               variants={containerVariants}
-              className="mx-auto relative flex flex-col xl:flex-row max-w-screen gap-10 w-full z-20 lg:justify-center items-center mt-10 pb-10"
+              className="mx-auto relative flex flex-col md:flex-row max-w-screen gap-10 w-full z-20 md:justify-center items-center mt-10 pb-10"
             >
               {location.pathname === "/studio" && (
                 <>
@@ -212,6 +259,7 @@ const Projects = () => {
                 </motion.a>
               ))}
             </motion.div>
+
             {location.pathname !== "/studio" && (
               <Link
                 to="/studio"
