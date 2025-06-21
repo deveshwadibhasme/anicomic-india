@@ -106,17 +106,17 @@ const Projects = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
-      className="container relative mx-auto px-4 py-5 my-5 xl:my-1 max-w-screen-2xl min-h-screen h-full flex flex-col items-center w-full overflow-y-hidden"
+      className="container relative mx-auto px-4 py-5 xl:my-4 max-w-screen min-h-[500px] h-full flex flex-col items-center w-full overflow-y-hidden mb-5"
     >
       {location.pathname !== "/studio" ? (
         <>
-          <div className="absolute [clip-path:polygon(100%_0,99%_83%,0_100%,0_18%)] top-0 left-0 w-full h-full bg-white  z-0"></div>
+          <div className="absolute [clip-path:polygon(0%_10%,100%_0%,100%_85%,0%_100%)] bottom-0 left-0 w-full h-80 bg-white z-0"></div>
           <motion.h1
             initial={{ scale: 0.5, opacity: 0 }}
             whileInView={{ scale: 1, opacity: 1 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl xl:text-4xl relative custom-border custom-border-2 after:top-0 after:left-0 before:bottom-0 before:right-0 after:bg-white before:bg-white max-w-sm xl:max-w-lg h-11 xl:h-20 w-full text-center mb-12 font-Caprasimo-regular text-white bg-gradient-to-r from-orange-500 to-slate-500 rounded-lg flex items-center justify-center shadow-lg tracking-wide hover:shadow-amber-500/20 hover:bg-white/90 transition-all duration-300 text-shadow-lg font-montserrat"
+            className="text-2xl xl:text-4xl relative custom-border custom-border-2 after:top-0 after:left-0 before:bottom-0 before:right-0 after:bg-white before:bg-white max-w-sm xl:max-w-lg h-15 xl:h-20 w-full text-center mb-3 font-Caprasimo-regular text-white bg-gradient-to-r from-orange-500 to-orange-900 rounded-lg flex items-center justify-center shadow-lg tracking-wide hover:shadow-amber-500/20 hover:bg-white/90 transition-all duration-300 text-shadow-lg font-montserrat mt-10"
           >
             Our Upcoming Project
           </motion.h1>
@@ -152,7 +152,7 @@ const Projects = () => {
 
       <motion.div
         variants={containerVariants}
-        className="mx-auto relative flex flex-col xl:flex-row flex-wrap gap-10 w-full z-20 justify-center items-center mt-10 "
+        className="mx-auto relative flex flex-col xl:flex-row overflow-x-clip overflow-y-clip max-w-screen-xl gap-10 w-full z-20 lg:justify-center items-center mt-10 pb-10"
       >
         {location.pathname === "/studio" && (
           <>
@@ -168,7 +168,7 @@ const Projects = () => {
             href={project.spotifyLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group p-2 overflow-hidden flex flex-col gap-2 min-h-70 max-w-60 w-full font-montserrat font-medium justify-between bg-white z-10 shadow-2xl shadow-black border-b-2 hover:border-orange-500"
+            className="group p-2 overflow-hidden flex flex-col shrink-0 gap-2 min-h-70 max-w-60 w-full font-montserrat font-medium justify-between bg-white z-10 shadow-2xl shadow-black border-b-2 hover:border-orange-500"
           >
             <div className="relative w-full h-80 overflow-hidden">
               <motion.img
