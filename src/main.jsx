@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/Loading.jsx";
-import Projects from "./pages/Projects.jsx";
+import Studio from "./pages/Studio.jsx";
+import ClapperLoading from "./components/ClapperLoading.jsx";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Services = lazy(() => import("./pages/Services.jsx"));
@@ -20,15 +21,15 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: (
-          <Suspense fallback={<Loading fullScreen={true}  />}>
+          // <Suspense fallback={<Loading fullScreen={true} />}>
             <Home />
-          </Suspense>
+          // // </Suspense>
         ),
       },
       {
         path: "/services",
         element: (
-          <Suspense fallback={<Loading fullScreen={true}/>}>
+          <Suspense fallback={<Loading fullScreen={true} />}>
             <Services />
           </Suspense>
         ),
@@ -36,7 +37,7 @@ const routes = createBrowserRouter([
       {
         path: "/about",
         element: (
-          <Suspense fallback={<Loading fullScreen={true}/>}>
+          <Suspense fallback={<Loading fullScreen={true} />}>
             <About />
           </Suspense>
         ),
@@ -44,7 +45,7 @@ const routes = createBrowserRouter([
       {
         path: "/contact",
         element: (
-          <Suspense fallback={<Loading fullScreen={true}/>}>
+          <Suspense fallback={<Loading fullScreen={true} />}>
             <Contact />
           </Suspense>
         ),
@@ -52,7 +53,7 @@ const routes = createBrowserRouter([
       {
         path: "/career",
         element: (
-          <Suspense fallback={<Loading fullScreen={true}/>}>
+          <Suspense fallback={<Loading fullScreen={true} />}>
             <Career />
           </Suspense>
         ),
@@ -60,9 +61,9 @@ const routes = createBrowserRouter([
       {
         path: "/studio",
         element: (
-          <Suspense fallback={<Loading fullScreen={true}/>}>
-            <Projects />
-          </Suspense>
+          <Suspense fallback={<ClapperLoading />}>
+            <Studio />
+         </Suspense>
         ),
       },
     ],

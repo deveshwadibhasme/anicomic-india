@@ -40,7 +40,7 @@ const NavBar = () => {
             to={navItem.link} 
             key={i}
             href={navItem.link}
-            className={`text-white px-4 flex items-center gap-2 py-1 text-sm md:text-[16px] 2xl:text-xl border-[1px] border-slate-400 rounded-md  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}
+            className={`text-white select-none px-4 flex items-center gap-2 py-1 text-sm md:text-[16px] 2xl:text-xl border-[1px] border-slate-400 rounded-md  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}
           >
             <FontAwesomeIcon icon={navItem.icon} /> {navItem.title}
           </Link>

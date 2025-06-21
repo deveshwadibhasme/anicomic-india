@@ -6,7 +6,7 @@ import Services from "./Services";
 import Contact from "./Contact";
 import Testimonials from "../components/Testimonials";
 import Counter from "../components/Counter";
-import Projects from "./Projects";
+import Projects from "./Studio";
 
 const Home = () => {
 
