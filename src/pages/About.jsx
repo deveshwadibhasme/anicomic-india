@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import tree from "../assets/growing-tree.png";
+import tree from "../assets/illustration/growing-tree.png";
 
 const About = () => {
   if (location.pathname === "/about") {
@@ -22,7 +22,7 @@ const About = () => {
           initial={{ opacity: 0.4, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="relative custom-border custom-border-2 w-fit mx-auto px-10 py-2 h-15 text-2xl md:text-5xl text-center text-white hover:scale-105 transition-transform"
+          className="relative custom-border custom-border-2 w-fit mx-auto px-10 py-2 h-20 text-2xl md:text-5xl text-center text-white hover:scale-105 transition-transform"
         >
           Introduction
         </motion.h2>
@@ -69,7 +69,7 @@ const About = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.7 }}
-          className="relative custom-border custom-border-2 w-fit mx-auto px-10 py-2 h-15 text-2xl md:text-5xl text-center text-white mb-12 hover:scale-105 transition-transform"
+          className="relative custom-border custom-border-2 w-fit mx-auto px-10 py-2 h-20 text-2xl md:text-5xl text-center text-white mb-12 hover:scale-105 transition-transform"
         >
           Vision
         </motion.h2>
