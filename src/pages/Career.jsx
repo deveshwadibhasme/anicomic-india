@@ -1,4 +1,4 @@
-import Contruction from "../assets/under-construction.png";
+// import Contruction from "../assets/under-construction.png";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

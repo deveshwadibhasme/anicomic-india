@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import useToaster from "../hooks/toaster";
 import contactPoster from "../assets/illustration/contact-us.png";
-import Loading from "../components/Loading";
+// import Loading from "../components/Loading";
 
 const Contact = () => {
   const location = useLocation();
@@ -29,13 +29,13 @@ const Contact = () => {
     if (location.pathname === "/contact") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [location.pathname]);
+    if (location.state?.service) {
+      window.scrollTo({ top: 500, behavior: "smooth" });
+    }
+  }, [location.pathname,location.state?.service]);
 
   const { addToast, ToastContainer } = useToaster();
 
-  if (location.state?.service) {
-    window.scrollTo({ top: 500, behavior: "smooth" });
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
