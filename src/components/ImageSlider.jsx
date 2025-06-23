@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, reverseEasing } from "framer-motion";
 import Loading from "./Loading";
 import sliderImages from "./SliderImages";
 import { useState } from "react";
@@ -13,7 +13,7 @@ export default function ImageSlider({count,direction}) {
     }, 1000);
   };
 
-  const start = direction ? '-110%' : '50%';
+  const start = direction ? '-100%' : '0%';
   const end = direction ? '0%' : '-100%';
 
 
@@ -26,7 +26,8 @@ export default function ImageSlider({count,direction}) {
         transition={{
           duration: 50,
           ease: "linear",
-          repeat: Infinity
+          repeat: Infinity,
+          repeatType: "reverse",
         }}
       >
         {/* First set of images */}

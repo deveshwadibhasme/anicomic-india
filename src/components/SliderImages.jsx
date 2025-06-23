@@ -55,8 +55,8 @@ import content from "../assets/illustration/content-creation.jpg";
 import webDevs from "../assets/illustration/web-devs.jpg";
 import design from "../assets/illustration/graphic-design.jpg";
 import video from "../assets/illustration/video-editing.jpg";
-import threeD from "../assets/illustration/3d-animation.jpg"; 
-import cinematography from "../assets/illustration/cinematography.avif"; 
+import threeD from "../assets/illustration/3d-animation.jpg";
+import cinematography from "../assets/illustration/cinematography.avif";
 
 export const images = {
   social: social,
@@ -66,8 +66,8 @@ export const images = {
   design: design,
   video: video,
   threeD: threeD,
-  cinematography:cinematography
- };
+  cinematography: cinematography,
+};
 
 const sliderImages = [
   img1,

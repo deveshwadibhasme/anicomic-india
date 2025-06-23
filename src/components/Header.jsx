@@ -8,23 +8,17 @@ import { useEffect, useState } from "react";
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
  
-  window.addEventListener("resize", () => {
-    if (window.innerWidth < 1024) {
-      setScrolled(true)
-    } else {
-      setScrolled(false)
-    }
-  });
-
-  // useEffect(() => {
-  //   if(location.pathname !== '/studio'){
-  //     const header = document.body
-  //         .querySelector("#root")
-  //         .querySelector("#header")
-  //       header.classList.add("bg-black");
-  //       header.querySelector('header').classList.add("bg-black")
-  //   }
-  // }, [location.pathname]);
+  
+  useEffect(() => {
+    
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 1024) {
+        setScrolled(true)
+      } else {
+        setScrolled(false)
+      }
+    });
+  }, [scrolled]);
 
   return (
     <div id="header" className="max-w-screen w-full py-2 h-23 xl:h-20 2xl:h-18 fixed left-1/2 -translate-x-1/2 z-50 border-b-2 border-red bg-black">
