@@ -15,16 +15,16 @@ const Projects = () => {
   preloadImages();
 
   if (location.pathname === "/studio") {
+    window.scrollTo({ top: 0 , behavior: "smooth" });
     const clapAudioRef = useRef(null);
     const swingAudioRef = useRef(null);
     useAudioProvider(true, swingAudioRef, clapAudioRef);
   }
 
-  useEffect(() => {
-    if (location.pathname === "/studio") {
-      window.scrollTo({ top: 0 });
-    }
-  }, [location.pathname]);
+  // useEffect(() => {
+  //   if (location.pathname === "/studio") {
+  //   }
+  // }, [location.pathname]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -81,8 +81,8 @@ const Projects = () => {
           >
             {location.pathname === "/studio" && <Corousel />}
             <>
-              <motion.h1
-                initial={{
+              <motion.h1 
+               initial={{
                   scale: 0.5,
                   opacity: 0,
                   boxShadow: "0 0 0px orange",

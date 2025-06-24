@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Loading from "./components/Loading.jsx";
 import Studio from "./pages/Studio.jsx";
 import ClapperLoading from "./components/ClapperLoading.jsx";
+import ProjectInfo from "./pages/ProjectInfo.jsx";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Services = lazy(() => import("./pages/Services.jsx"));
@@ -63,6 +64,14 @@ const routes = createBrowserRouter([
         element: (
           <Suspense fallback={<ClapperLoading />}>
             <Studio />
+         </Suspense>
+        ),
+      },
+      {
+        path: "/studio/:project",
+        element: (
+          <Suspense fallback={<ClapperLoading />}>
+            <ProjectInfo />
          </Suspense>
         ),
       },

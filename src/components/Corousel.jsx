@@ -5,13 +5,15 @@ import { images } from "../utils/studio-data";
 const Courosel = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
-  const preloadImages = () => {
-    images.forEach((image) => {
-      const img = new Image();
-      img.src = image;
-    });
-  };
-  preloadImages();
+  useEffect(() => {
+    const preloadImages = () => {
+      images.forEach((image) => {
+        const img = new Image();
+        img.src = image.src;
+      });
+    };
+    preloadImages();
+  }, []);
 
   useEffect(() => {
     setTimeout(() => {
@@ -20,7 +22,7 @@ const Courosel = () => {
   }, [currentImage, images.length]);
   return (
     <motion.div
-      className="w-full relative flex flex-col items-center justify-center mb-8 h-150"
+      className="w-full relative border-amber-50 border flex flex-col items-center justify-center mt-2 mb-8 h-150"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.6 }}
