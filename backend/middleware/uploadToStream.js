@@ -1,19 +1,14 @@
 const { Readable } = require("stream");
 const dotenv = require("dotenv");
-const cloudinary = require('cloudinary').v2;
-dotenv.config();
+const cloudinaryConfig = require("../config/cloudinary"); 
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME, // Or your config file
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
+dotenv.config();
 
 const uploadToCloudinary = (fileBuffer, fileName) => {
   return new Promise((resolve, reject) => {
     console.log("📤 Starting Cloudinary upload...");
 
-    const uploadStream = cloudinary.uploader.upload_stream(
+    const uploadStream = cloudinaryConfig.uploader.upload_stream(
       { folder: "my_uploads", public_id: fileName, resource_type: "raw" }, // Use "raw" for PDFs
       (error, result) => {
         if (error) {

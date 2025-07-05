@@ -2,11 +2,11 @@ const dotenv = require("dotenv");
 const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const sendMail = require("./mailer");
 const mongoose = require("mongoose");
-
-const upload = require('./config/multerconfig');
-const uploadToCloudinary = require('./config/uploadToStream')
+const sendMail = require("./middleware/mailer");
+const Applicants = require('./models/applicant'); 
+const upload = require('./config/multer');
+const uploadToCloudinary = require('./middleware/uploadToStream')
 
 dotenv.config();
 const app = express();
@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 4000;
 app.use(cors({
   origin: function (origin, callback) {
     const allowedOrigins = ['http://localhost:5173', 'https://anicomic.in','https://anicomic-dummy.netlify.app'];
-
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -27,28 +26,12 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
+
+
 mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("✅ MongoDB Connected"))
-  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
+.catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
-// Define Schema
-const ApplicantsSchema = new mongoose.Schema({
-  firstName: String,
-  lastName: String,
-  email: String,
-  phone: Number,
-  country: String,
-  city: String,
-  address: String,
-  position: String,
-  message: String,
-  resume: String,
-  resumeFilePath: String,
-  date: { type: Date, default: Date.now }
-});
-const Applicants = mongoose.models.Applicants || mongoose.model("Applicants", ApplicantsSchema);
-
-module.exports = Applicants;
 
 app.post('/add-applicants', upload.single("resume"), async (req, res) => {
   const { firstName, lastName, phone, email, country, city, address, position, message } = req.body;
@@ -90,7 +73,6 @@ app.post('/add-applicants', upload.single("resume"), async (req, res) => {
 }
 )
 
-// API to send an email
 app.post("/send-email", async (req, res) => {
   const { name, email, phone, service, company, message } = req.body;
 
