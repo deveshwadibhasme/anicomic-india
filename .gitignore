@@ -22,3 +22,5 @@ slider-images
 *.sln
 *.sw?
 backend/.env
+backend/.env
+backend/models/series-info.js

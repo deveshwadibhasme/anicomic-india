@@ -4,9 +4,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const sendMail = require("./middleware/mailer");
-const Applicants = require('./models/applicant'); 
+const Applicants = require('./models/applicant');
 const upload = require('./config/multer');
-const uploadToCloudinary = require('./middleware/uploadToStream')
+const uploadToCloudinary = require('./middleware/uploadToStream');
 
 dotenv.config();
 const app = express();
@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(cors({
   origin: function (origin, callback) {
-    const allowedOrigins = ['http://localhost:5173', 'https://anicomic.in','https://anicomic-dummy.netlify.app'];
+    const allowedOrigins = ['http://localhost:5173', 'https://anicomic.in', 'https://anicomic-dummy.netlify.app'];
     if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 
 mongoose.connect(process.env.MONGO_URI, {
 }).then(() => console.log("✅ MongoDB Connected"))
-.catch((err) => console.error("❌ MongoDB Connection Error:", err));
+  .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
 
 app.post('/add-applicants', upload.single("resume"), async (req, res) => {
