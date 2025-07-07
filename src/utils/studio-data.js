@@ -45,7 +45,31 @@ export const projects = [
         image: Inside,
         posterImage: InsidePoster,
         spotifyLink: "https://open.spotify.com/playlist/",
-        released: false,
+        released: true,
+        characterName: [
+            "Alfiya", "Alfaaz", "Sofiya", "Hamza", "Alex", "Zareen", "Emma", "Aariz", "Sarah"
+        ],
+        characterVoice: [[
+            { name: "Alfiya", voice: "Ritika Anicomic" },
+            { name: "Alfaaz", voice: "Wasim" },
+            { name: "Sofiya", voice: "Huma" },
+            { name: "Hamza", voice: "Nishchay Hirekhan" },
+            { name: "Alex", voice: "Devesh Wadibhasme" },
+            { name: "Zareen", voice: "Saleha" },
+            { name: "Emma", voice: "Ridhi" },
+            { name: "Aariz", voice: "Faizan" },
+            { name: "Sarah", voice: "Saniya Kazi" }
+        ]],
+        managingTeam: [
+            { role: "Directed by", name: "Humaira" },
+            { role: "Assistant Director by", name: "Saniya" },
+            { role: "Produce by", name: "Aiyteshamkhan" },
+            { role: "Written by", name: "Syed Alfiya" },
+            { role: "Music by", name: "Mohammed Abubakr" },
+            { role: "Graphic by", name: "Shaikh Rehan" },
+            { role: "Supporting by", name: "Kashish & Swati Ambade" },
+            { role: "Marketing by", name: "Parth Girdhar & Piyush" }
+        ],
     },
 ];
 
