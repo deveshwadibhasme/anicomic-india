@@ -50,7 +50,7 @@ export const projects = [
             "Alfiya", "Alfaaz", "Sofiya", "Hamza", "Alex", "Zareen", "Emma", "Aariz", "Sarah"
         ],
         characterVoice: [[
-            { name: "Alfiya", voice: "Ritika Anicomic" },
+            { name: "Alfiya", voice: "Ritika Kale" },
             { name: "Alfaaz", voice: "Wasim" },
             { name: "Sofiya", voice: "Huma" },
             { name: "Hamza", voice: "Nishchay Hirekhan" },
