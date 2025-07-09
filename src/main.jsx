@@ -7,6 +7,7 @@ import Loading from "./components/Loading.jsx";
 import Studio from "./pages/Studio.jsx";
 import ClapperLoading from "./components/ClapperLoading.jsx";
 import ProjectInfo from "./pages/ProjectInfo.jsx";
+import CertificateVerified from "./components/Verification.jsx";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Services = lazy(() => import("./pages/Services.jsx"));
@@ -64,6 +65,14 @@ const routes = createBrowserRouter([
         element: (
           <Suspense fallback={<ClapperLoading />}>
             <Studio />
+         </Suspense>
+        ),
+      },
+      {
+        path: "/verification",
+        element: (
+          <Suspense fallback={<Loading fullScreen={true}/>}>
+            <CertificateVerified />
          </Suspense>
         ),
       },
