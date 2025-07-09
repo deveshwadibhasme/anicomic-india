@@ -7,13 +7,13 @@ import Loading from "./components/Loading.jsx";
 import Studio from "./pages/Studio.jsx";
 import ClapperLoading from "./components/ClapperLoading.jsx";
 import ProjectInfo from "./pages/ProjectInfo.jsx";
-import CertificateVerified from "./components/Verification.jsx";
 
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Services = lazy(() => import("./pages/Services.jsx"));
 const About = lazy(() => import("./pages/About.jsx"));
 const Contact = lazy(() => import("./pages/Contact.jsx"));
 const Career = lazy(() => import("./pages/Career.jsx"));
+const CertificateVerified = lazy(() => import("./components/Verification.jsx"));
 
 const routes = createBrowserRouter([
   {
