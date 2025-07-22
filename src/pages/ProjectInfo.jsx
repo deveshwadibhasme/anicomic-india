@@ -44,7 +44,7 @@ const ProjectInfo = () => {
       initial={{ opacity: 0, y: 40 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="max-w-screen min-h-screen mx-auto my-8 p-4 md:p-10 bg-white/90 rounded-3xl shadow-2xl backdrop-blur-lg"
+      className="max-w-screen min-h-screen mx-auto my-2 p-4 md:p-10 bg-white/90 rounded-3xl shadow-2xl backdrop-blur-lg"
     >
       <Link
         onClick={() => {window.history.back() , window.scrollTo({ top: 0 })}}

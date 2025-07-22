@@ -41,7 +41,10 @@ export const projects = [
     {
         id: 2,
         title: "Inside my Heart",
-        description: "A Lovely Story of Girl",
+        description: `Alphaz, a passionate and humble boy from a small village, arrives in the bustling city with dreams of becoming a top chef. He lands a job at Blossom Bite, a cozy yet ambitious restaurant run by a sharp and driven young woman, Aira. At first, Aira finds Alphaz’s rural charm and carefree nature annoying—but over time, his sincerity, talent, and warmth begin to melt her guarded heart.
+        Just as Aira builds up the courage to confess her growing feelings, she discovers a heartbreaking twist: Alphaz ............
+        
+        Set in a vibrant culinary world, Blossom Bite is a heartfelt tale of dreams, love, rivalry, and the bittersweet taste of unspoken emotions.`,
         image: Inside,
         posterImage: InsidePoster,
         spotifyLink: "https://open.spotify.com/playlist/",
