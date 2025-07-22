@@ -7,6 +7,7 @@ const sendMail = require("./middleware/mailer");
 const Applicants = require('./models/applicant');
 const upload = require('./config/multer');
 const uploadToCloudinary = require('./middleware/uploadToStream');
+const Registration = require("./models/registration");
 
 dotenv.config();
 const app = express();
@@ -44,15 +45,11 @@ app.post('/add-applicants', upload.single("resume"), async (req, res) => {
     })
   }
   const fileBuffer = req.file.buffer;
-  const fileName = originalname.replace(' ', '-').replace(".pdf", "-") + Date.now() + '.pdf';
+  const fileName = req.originalname.replace(' ', '-').replace(".pdf", "-") + Date.now() + '.pdf';
 
   try {
-    console.log("📤 Uploading file to Cloudinary...");
 
-    // 🔍 Debug: See if we enter this function
     const cloudinaryResult = await uploadToCloudinary(fileBuffer, fileName);
-
-    console.log("✅ Cloudinary Upload Result:", cloudinaryResult); // Debugging
 
     if (!cloudinaryResult || !cloudinaryResult.secure_url) {
       return res.status(500).json({ message: "Cloudinary upload failed" });
@@ -74,6 +71,50 @@ app.post('/add-applicants', upload.single("resume"), async (req, res) => {
   }
 }
 )
+
+app.post('/register', upload.single('file'), async (req, res) => {
+  const {
+    fullName,
+    phone,
+    email,
+    dob,
+    qualification,
+    institution,
+  } = req.body;
+
+  if (!req.file) {
+    return res.status(400).json({ message: 'Payment screenshot is required.' });
+  }
+
+  const fileBuffer = req.file.buffer;
+  const fileName = req.file.originalname.replace(' ', '-').replace(".pdf", "-") + Date.now() + '.pdf';
+
+  try {
+     const cloudinaryResult = await uploadToCloudinary(fileBuffer, fileName);
+
+    if (!cloudinaryResult || !cloudinaryResult.secure_url) {
+      return res.status(500).json({ message: "Cloudinary upload failed" });
+    }
+
+    const registration = new Registration({
+      fullName,
+      phone,
+      email,
+      dob,
+      qualification,
+      institution,
+      screenshotPath: cloudinaryResult.secure_url,
+    });
+
+    await registration.save();
+
+    return res.status(200).json({ message: 'Registration saved to database!' });
+  } catch (err) {
+    console.error('Error saving to DB:', err);
+    return res.status(500).json({ message: 'Internal Server Error' });
+  }
+});
+
 
 app.post("/send-email", async (req, res) => {
   const { name, email, phone, service, company, message } = req.body;
