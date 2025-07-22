@@ -32,6 +32,9 @@ const Footer = () => {
               <li>
                 <Link to="/contact" className="hover:text-amber-400 transition">Contact</Link>
               </li>
+              <li>
+                <Link to="/registration" className="hover:text-amber-400 transition">Registration for Internship</Link>
+              </li>
             </ul>
           </div>
           {/* Services */}

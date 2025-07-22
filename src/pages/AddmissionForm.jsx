@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,9 +21,17 @@ export default function RegistrationForm() {
     email: "",
     dob: "",
     qualification: "",
+    internship: "",
     institution: "",
     file: null,
   });
+  
+  
+  useEffect(() => {
+    if (location.pathname === "/registration") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  }, [location.pathname]);
 
   const { addToast, ToastContainer } = useToaster();
   const [preview, setPreview] = useState(null);
@@ -58,19 +66,32 @@ export default function RegistrationForm() {
     });
 
     try {
-      const response = await fetch(
-       API_BASE_URL + '/register',
-        {
-          method: "POST",
-          body: payload,
-        }
-      );
+      const response = await fetch(API_BASE_URL + "/register", {
+        method: "POST",
+        body: payload,
+      });
 
       if (response.ok) {
         setSuccess(true);
         addToast("Registration submitted successfully!");
+        if (location.pathname === "/registration") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+        setFormData({
+          fullName: "",
+          phone: "",
+          email: "",
+          dob: "",
+          qualification: "",
+          internship: "",
+          institution: "",
+          file: null,
+        });
       } else {
-        addToast("Submission failed. Please try again.");
+        addToast("Submission failed. Please try again. or fix your time");
+        if (location.pathname === "/registration") {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
       }
     } catch (err) {
       console.error(err);
@@ -88,12 +109,12 @@ export default function RegistrationForm() {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="bg-white p-10 rounded-lg shadow-2xl w-full max-w-6xl space-y-6 border-t-4 border-orange-500"
+        className="px-10 py-3 rounded-lg shadow-2xl text-center w-full max-w-7xl space-y-6  border-orange-500"
       >
-        <h2 className="text-3xl font-bold text-orange-600 text-center">
-          Kraftor Graphic Design Internship
+        <h2 className="text-2xl font-thin lg:text-5xl text-orange-600 tracking-wide font-Caprasimo-regular text-center">
+          Kraftor {formData.internship} Internship Form
         </h2>
-        <p className="text-base text-gray-800 text-center">Duration: 8 Weeks</p>
+        <p className="text-base text-slate-200 text-center">Duration: 8 Weeks</p>
 
         {/* QR Section */}
         <motion.div
@@ -102,20 +123,20 @@ export default function RegistrationForm() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-center w-full"
         >
-          <p className="text-sm text-gray-800 font-medium mb-3">
+          <p className="text-sm text-slate-200 font-medium mb-3">
             Pay ₹200 to the QR below and upload the screenshot
           </p>
           <img
             src={paymentQr}
             alt="Payment QR"
-            className="mx-auto h-80 w-auto bg-cover border border-orange-400 rounded-xl shadow-lg"
+            className="mx-auto h-80 w-auto bg-cover outline-none border-b-2 border-orange-400 rounded-xl shadow-lg"
           />
         </motion.div>
 
         {/* Form Fields */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="block text-sm font-medium text-orange-700">
+            <label className="block text-sm font-medium text-slate-300">
               <FontAwesomeIcon icon={faUser} className="mr-2" />
               Full Name*
             </label>
@@ -123,13 +144,13 @@ export default function RegistrationForm() {
               type="text"
               name="fullName"
               required
-              className="mt-1 w-full p-3 border border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
+              className="mt-1 w-full p-3 text-white outline-none border-b-2 border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
               onChange={handleChange}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-orange-700">
+            <label className="block text-sm font-medium text-slate-300">
               <FontAwesomeIcon icon={faPhone} className="mr-2" />
               Phone Number*
             </label>
@@ -137,26 +158,26 @@ export default function RegistrationForm() {
               type="number"
               name="phone"
               required
-              className="mt-1 w-full p-3 border border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
+              className="mt-1 w-full p-3 text-white outline-none border-b-2 border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
               onChange={handleChange}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-orange-700">
+            <label className="block text-sm font-medium text-slate-300">
               <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
               Email Address*
             </label>
             <input
               type="email"
               name="email"
-              className="mt-1 w-full p-3 border border-orange-300 rounded text-gray-600"
+              className="mt-1 w-full p-3 text-white outline-none border-b-2 border-orange-300 rounded"
               onChange={handleChange}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-orange-700">
+            <label className="block text-sm font-medium text-slate-300">
               <FontAwesomeIcon icon={faCalendarAlt} className="mr-2" />
               Date of Birth*
             </label>
@@ -164,46 +185,65 @@ export default function RegistrationForm() {
               type="date"
               name="dob"
               required
-              className="mt-1 w-full p-3 border border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
+              className="mt-1 w-full p-3 text-white outline-none border-b-2 border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
               onChange={handleChange}
             />
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-orange-700">
+            <label className="block text-sm font-medium text-slate-300">
               <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
               Highest Qualification*
             </label>
             <select
               name="qualification"
               required
-              className="mt-1 w-full p-3 border border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
+              className="mt-1 w-full p-3 text-white outline-none border-b-2 border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
               onChange={handleChange}
             >
-              <option value="">Select</option>
-              <option>High School</option>
-              <option>Diploma</option>
-              <option>Bachelor’s Degree</option>
-              <option>Master’s Degree</option>
-              <option>Other</option>
+              <option className="text-black" value="">Select</option>
+              <option className="text-black">High School</option>
+              <option className="text-black">Diploma</option>
+              <option className="text-black">Bachelor’s Degree</option>
+              <option className="text-black">Master’s Degree</option>
+              <option className="text-black">Other</option>
+            </select>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-slate-300">
+              <FontAwesomeIcon icon={faGraduationCap} className="mr-2" />
+              Internship*
+            </label>
+            <select
+              name="internship"
+              required
+              className="mt-1 w-full p-3 text-slate-200 outline-none border-b-2 border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
+              onChange={handleChange}
+            >
+              <option className="text-black" value="">Select</option>
+              <option className="text-black">Game Design</option>
+              <option className="text-black">Graphic Design</option>
+              <option className="text-black">Video Editing</option>
+              <option className="text-black">Web Development</option>
+              <option className="text-black">Other</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-orange-700">
+            <label className="block text-sm font-medium text-slate-300">
               <FontAwesomeIcon icon={faUniversity} className="mr-2" />
               Current Institution (if any)
             </label>
             <input
               type="text"
               name="institution"
-              className="mt-1 w-full p-3 border border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
+              className="mt-1 w-full p-3 text-white outline-none border-b-2 border-orange-300 rounded focus:ring-orange-500 focus:border-orange-500"
               onChange={handleChange}
             />
           </div>
 
-          <div className="md:col-span-2">
-            <label className="block text-sm font-medium text-orange-700">
+          <div className="md:col-span-2 mx-auto bg-orange-600 p-2 rounded-2xl">
+            <label className="block mx-auto text-sm w-auto font-medium bg-white p-1 rounded-2xl text-center text-orange-700">
               <FontAwesomeIcon icon={faUpload} className="mr-2" />
               Upload ₹200 Payment Screenshot*
             </label>
@@ -219,7 +259,7 @@ export default function RegistrationForm() {
               <img
                 src={preview}
                 alt="Uploaded Screenshot"
-                className="mt-2 h-32 object-contain border border-gray-300 rounded"
+                className="mt-2 mx-auto border-2 h-32 object-contain outline-none border-b-2 border-gray-300 rounded"
               />
             )}
           </div>

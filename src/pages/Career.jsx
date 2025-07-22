@@ -147,7 +147,8 @@ const Career = () => {
         grow, and make an impact. Whether you're just starting your career or
         you're an experienced professional, we offer a range of opportunities to
         help you reach your full potential. Explore our open positions and take
-        the next step in your journey with us!
+        the next step in your journey with us!<br></br>
+      <a className="italic text-teal-500" href="/registration"><br></br>Click here for Internship</a>
       </motion.p>
       {
         form.open ? <CareerForm formDiv={formDiv} position={form.text}/> : null

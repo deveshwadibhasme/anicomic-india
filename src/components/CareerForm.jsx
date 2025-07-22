@@ -1,10 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
-import axios from "axios";
+import { Link } from "react-dom";
 import useToaster from "../hooks/toaster";
 import submitApplication from "../utils/SubmitApplication";
 
-const CareerForm = ({ position , formDiv }) => {
+const CareerForm = ({ position, formDiv }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -15,7 +14,7 @@ const CareerForm = ({ position , formDiv }) => {
     address: "",
     position: "",
     message: "",
-    resume:null,
+    resume: null,
   });
 
   useEffect(() => {
@@ -24,10 +23,7 @@ const CareerForm = ({ position , formDiv }) => {
     }
   }, [position]);
 
-
-  const {addToast,ToastContainer} = useToaster()
-  
-  
+  const { addToast, ToastContainer } = useToaster();
 
   const handleChange = (e) => {
     const { name, value, type } = e.target;
@@ -40,9 +36,9 @@ const CareerForm = ({ position , formDiv }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    addToast("Sending...")
-    try { 
-      submitApplication(formData)
+    addToast("Sending...");
+    try {
+      submitApplication(formData);
       addToast("Application Submitted !");
       setTimeout(() => {
         handleReset();
@@ -69,10 +65,13 @@ const CareerForm = ({ position , formDiv }) => {
   };
 
   return (
-    <div ref={formDiv} className="flex items-center max-w-screen-lg p-2 mb-10 w-full justify-center min-h-screen">
+    <div
+      ref={formDiv}
+      className="flex items-center max-w-screen-lg p-2 mb-10 w-full justify-center min-h-screen"
+    >
       <div className="relative p-8 rounded-lg shadow-lg max-w-screen-md w-full">
         <h2 className="text-center text-2xl font-bold mb-10 text-white">
-          Job Application Form Widget
+          Job Application Form Widget (<a className="italic text-teal-500" href="/registration">Click here for Internship</a>)
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="grid grid-cols-2 gap-4 w-full">
@@ -157,7 +156,10 @@ const CareerForm = ({ position , formDiv }) => {
             onChange={handleChange}
           ></textarea>
           <div className="mt-4 bg-slate-200 p-1 rounded-2xl">
-            <label className="bg-orange-500 text-white py-2 px-4 rounded-xl cursor-pointer inline-block" title="PDF only">
+            <label
+              className="bg-orange-500 text-white py-2 px-4 rounded-xl cursor-pointer inline-block"
+              title="PDF only"
+            >
               Choose File | Resume{" "}
               <i className="text-sm text-slate-800">{`${
                 formData.resume?.name === undefined ? "" : formData.resume.name
@@ -174,7 +176,7 @@ const CareerForm = ({ position , formDiv }) => {
             </label>
           </div>
           <div className="relative flex justify-between mt-6">
-            <ToastContainer/> 
+            <ToastContainer />
             <button
               type="reset"
               className="btn cursor-pointer bg-gray-500 p-2 px-10 rounded-2xl"
