@@ -79,6 +79,7 @@ app.post('/register', upload.single('file'), async (req, res) => {
     email,
     dob,
     qualification,
+    internship,
     institution,
   } = req.body;
 
@@ -87,7 +88,7 @@ app.post('/register', upload.single('file'), async (req, res) => {
   }
 
   const fileBuffer = req.file.buffer;
-  const fileName = req.file.originalname.replace(' ', '-').replace(".pdf", "-") + Date.now() + '.pdf';
+  const fileName = req.file.originalname.replace(' ', '-').split(".")[0] + Date.now() + '.png';
 
   try {
      const cloudinaryResult = await uploadToCloudinary(fileBuffer, fileName);
@@ -102,8 +103,9 @@ app.post('/register', upload.single('file'), async (req, res) => {
       email,
       dob,
       qualification,
-      institution,
+      internship,
       screenshotPath: cloudinaryResult.secure_url,
+      institution,
     });
 
     await registration.save();

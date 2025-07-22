@@ -28,6 +28,10 @@ const RegistrationSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    internship:{
+        type:String,
+        required:true
+    },
     createdAt: {
         type: Date,
         default: Date.now,
