@@ -61,14 +61,14 @@ const routes = createBrowserRouter([
           </Suspense>
         ),
       },
-      {
-        path: "/studio",
-        element: (
-          <Suspense fallback={<ClapperLoading />}>
-            <Studio />
-         </Suspense>
-        ),
-      },
+      // {
+      //   path: "/studio",
+      //   element: (
+      //     <Suspense fallback={<ClapperLoading />}>
+      //       <Studio />
+      //    </Suspense>
+      //   ),
+      // },
       {
         path: "/verification",
         element: (
@@ -85,14 +85,14 @@ const routes = createBrowserRouter([
          </Suspense>
         ),
       },
-      {
-        path: "/studio/:project",
-        element: (
-          <Suspense fallback={<ClapperLoading />}>
-            <ProjectInfo />
-         </Suspense>
-        ),
-      },
+      // {
+      //   path: "/studio/:project",
+      //   element: (
+      //     <Suspense fallback={<ClapperLoading />}>
+      //       <ProjectInfo />
+      //    </Suspense>
+      //   ),
+      // },
     ],
   },
 ]);

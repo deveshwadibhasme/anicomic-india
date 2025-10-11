@@ -24,7 +24,7 @@ const Home = () => {
         <ImageSlider count={1} direction={true} />
         <Homepage />
         <ImageSlider count={20} direction={false} />
-        <Projects />
+        {/* <Projects /> */}
         <Counter />
         <Testimonials />
         <Services />
