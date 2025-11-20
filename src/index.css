@@ -4,7 +4,7 @@
   html,
   body {
     font-family: "Space Grotesk", sans-serif;
-    --loading-image:url('./public/ani-comic.svg')
+    --loading-image: url("./public/ani-comic.svg");
   }
 
   .blur {
@@ -17,16 +17,15 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    background-image: url("../src/assets/loadingLOGO.png");
+    background-image: url("/anicomic-logo.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 30%;
+    background-size: 50%;
     filter: opacity(0.2);
+    box-shadow: 10px 0px 10px white;
     z-index: -5;
     /* background-size: cover; */
   }
-
-
 
   @media (max-width: 800px) {
     .bg-image::after {
@@ -34,14 +33,14 @@
     }
   }
 
-  .custom-border::after{
-    content: '';
-    @apply absolute h-[30px] w-[30px] transition-all duration-[0.8s] left-2 -top-2 bg-orange-600 [clip-path:polygon(0%_0%,_0%_100%,_25%_100%,_25%_25%,_100%_25%,_100%_100%,_25%_100%,_25%_100%,_100%_100%,_100%_0%)]; 
+  .custom-border::after {
+    content: "";
+    @apply absolute h-[30px] w-[30px] transition-all duration-[0.8s] left-2 -top-2 bg-orange-600 [clip-path:polygon(0%_0%,_0%_100%,_25%_100%,_25%_25%,_100%_25%,_100%_100%,_25%_100%,_25%_100%,_100%_100%,_100%_0%)];
   }
-  .custom-border-2::before{
-    content: '';
-    @apply absolute h-[30px] w-[30px] transition-all duration-[0.8s] right-2 bottom-2 bg-orange-600 [clip-path:polygon(0_0,_0%_100%,_0_99%,_0_0,_76%_0,_76%_76%,_0_78%,_0_100%,_100%_100%,_100%_0%)]
-  } 
+  .custom-border-2::before {
+    content: "";
+    @apply absolute h-[30px] w-[30px] transition-all duration-[0.8s] right-2 bottom-2 bg-orange-600 [clip-path:polygon(0_0,_0%_100%,_0_99%,_0_0,_76%_0,_76%_76%,_0_78%,_0_100%,_100%_100%,_100%_0%)];
+  }
 
   .top-shadow {
     z-index: 10;
@@ -71,7 +70,7 @@
   }
 
   #div-to-hover:has(#div-to-hover:hover) .peer-mobile {
-      transform : translateY(-100);
+    transform: translateY(-100);
   }
 
   @keyframes moveLeft {
@@ -98,9 +97,9 @@
     animation: moveRight 70s linear infinite;
   }
 
-  .loader::after{
-    content: '';
-    @apply bg-black absolute top-0 left-0 w-full h-full z-[100] [background-image:url('/loader.gif')] bg-fixed bg-no-repeat bg-[length:300px_300px] ;
+  .loader::after {
+    content: "";
+    @apply bg-black absolute top-0 left-0 w-full h-full z-[100] [background-image:url('/loader.gif')] bg-fixed bg-no-repeat bg-[length:300px_300px];
   }
 }
 

@@ -8,6 +8,8 @@ import {
   faHome,
   faInfo,
   faClapperboard,
+  faLeaf,
+  faLandmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 const NavBar = () => {
@@ -15,6 +17,7 @@ const NavBar = () => {
   const navContent = [
     { title: "Home", link: "/", icon: faHome },
     { title: "Services", link: "/services", icon: faBolt },
+    { title: "Internship", link: "https://internship.anicomic.in", icon: faLandmark },
     { title: "Careers", link: "/career", icon: faGraduationCap },
     // { title: "Studio", link: "/studio", icon: faClapperboard },
     { title: "About", link: "/about", icon: faInfo },
@@ -38,6 +41,7 @@ const NavBar = () => {
         >
           <Link
             to={navItem.link} 
+            target="_blank"
             key={i}
             href={navItem.link}
             className={`text-white select-none px-4 flex items-center gap-2 py-1 text-sm md:text-[16px] 2xl:text-xl border-[1px] border-slate-400 rounded-md  hover:border-white hover:ring-1 bg-black ring-amber-400 ${navItem.link===pathname ? 'ring-1 ring-green-400' : ''}`}

@@ -8,7 +8,7 @@ const Footer = () => {
         {/* Title & Tagline */}
         <div className="text-center mb-10">
           <h2 className="font-extrabold tracking-wider text-3xl md:text-4xl mb-2 drop-shadow-lg">
-            ANICOMIC STUDIO
+            ANICOMIC INTERNATIONAL
           </h2>
           <div className="text-xl md:text-2xl font-bold bg-gradient-to-r from-orange-400 to-amber-300 bg-clip-text text-transparent tracking-wide font-montserrat">
             India's First Open Creator Studio
@@ -26,9 +26,9 @@ const Footer = () => {
               <li>
                 <Link to="/about" className="hover:text-amber-400 transition">About</Link>
               </li>
-              {/* <li>
-                <Link to="/studio" className="hover:text-amber-400 transition">Studio</Link>
-              </li> */}
+              <li>
+                <a href="https://internship.anicomic.in" target="_blank" className="hover:text-amber-400 transition">Internship</a>
+              </li>
               <li>
                 <Link to="/contact" className="hover:text-amber-400 transition">Contact</Link>
               </li>
@@ -81,10 +81,10 @@ const Footer = () => {
         {/* Copyright */}
         <div className="mt-10 text-center border-t border-orange-800 pt-6">
           <p className="m-0 text-lg">
-            &copy; {new Date().getFullYear()} AniComic. All rights reserved.
+            &copy; {new Date().getFullYear()} Anicomic. All rights reserved.
           </p>
           <small className="block mt-2 text-gray-300">
-            Made with <span className="text-red-400">&hearts;</span> by the AniComic Team
+            Made with <span className="text-red-400">&hearts;</span> by the Anicomic Team
           </small>
         </div>
       </div>

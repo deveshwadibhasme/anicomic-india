@@ -18,7 +18,7 @@ const Homepage = () => {
           <span className="text-white block font-normal text-lg md:text-2xl text-center font-monteseret-regular mb-3 md:mb-5 uppercase tracking-[0.2em] text-glow">
             Welcome to{" "}
           </span>
-          ANICOMIC STUDIO
+          ANICOMIC INTERNATIONAL
           <br />
           <span className="mt-6 text-xl md:text-3xl font-bold bg-gradient-to-r from-orange-500 to-amber-400 bg-clip-text font-monteseret-regular text-transparent tracking-wider">
              India's First Open Creator Studio
@@ -42,13 +42,13 @@ const Homepage = () => {
             transition={{ duration: 0.3, delay: 0.3 }}
             whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
           >
-            <Link
-              to={"/career"}
-              href={"/career"}
-              className={`text-white px-6 md:px-6 flex items-center gap-3 py-2 md:py-3 text-sm md:text-xl 2xl:text-2xl border-2 border-slate-400/50 rounded-xl hover:border-white hover:ring-2 ring-amber-400 backdrop-blur-md hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-amber-500/20`}
+            <a
+              href={"https://internship.anicomic.in"}
+              target="_blank"
+              className={`text-white px-6 md:px-6 flex items-center gap-3 py-2 md:py-2 text-sm md:text-lg 2xl:text-2xl border-2 border-slate-400/50 rounded-xl hover:border-white hover:ring-2 ring-amber-400 backdrop-blur-md hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-amber-500/20`}
             >
-              <FontAwesomeIcon icon={faGraduationCap} className="text-amber-400" />{""}{""}{""}Career
-            </Link>
+              <FontAwesomeIcon icon={faGraduationCap} className="text-amber-400" />{""}{""}{""}Internship
+            </a>
           </motion.span>
           <motion.span
             initial={{ scale: 0.2 }}
@@ -59,7 +59,7 @@ const Homepage = () => {
             <Link
               to={"/services"}
               href={"/services"}
-              className={`text-white px-6 md:px-8 flex items-center gap-3 py-2 md:py-3 text-sm md:text-xl 2xl:text-2xl border-2 border-slate-400/50 rounded-xl hover:border-white hover:ring-2 ring-amber-400 backdrop-blur-md hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-amber-500/20`}
+              className={`text-white px-6 md:px-8 flex items-center gap-3 py-2 md:py-2 text-sm md:text-lg 2xl:text-2xl border-2 border-slate-400/50 rounded-xl hover:border-white hover:ring-2 ring-amber-400 backdrop-blur-md hover:bg-white/10 transition-all duration-300 shadow-lg hover:shadow-amber-500/20`}
             >
               <FontAwesomeIcon icon={faBolt} className="text-amber-400" /> Services
             </Link>
