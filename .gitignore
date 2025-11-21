@@ -24,3 +24,4 @@ slider-images
 backend/.env
 backend/.env
 backend/models/series-info.js
+backend

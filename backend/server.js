@@ -38,7 +38,7 @@ mongoose.connect(process.env.MONGO_URI, {
 
 app.post('/add-applicants', upload.single("resume"), async (req, res) => {
   const { firstName, lastName, phone, email, country, city, address, position, message } = req.body;
-  const { originalname } = req.file
+  
   if (!req.file) {
     return res.status(400).json({
       message: "No File Uploaded"
@@ -59,7 +59,7 @@ app.post('/add-applicants', upload.single("resume"), async (req, res) => {
     const newApplicants = new Applicants({
       firstName, lastName, phone, email, country, city, address, position, message,
       resume: originalname,
-      resumeFilePath: cloudinaryResult.secure_url
+      resumeFilePath: cloudinaryResult.secure_url,
     });
 
     await newApplicants.save();

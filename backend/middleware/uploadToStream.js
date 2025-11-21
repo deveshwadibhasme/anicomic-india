@@ -1,6 +1,6 @@
 const { Readable } = require("stream");
 const dotenv = require("dotenv");
-const cloudinary = require("../config/cloudinary"); 
+const cloudinary = require("../config/cloudinary");
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ const uploadToCloudinary = (fileBuffer, fileName) => {
           console.error("❌ Cloudinary Upload Error:", error);
           return reject(error);
         }
-        resolve(result);
+        return resolve(result);
       }
     );
 
